@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<data-sources />
+
+	<form-beans>
+		
+		
+	</form-beans>
+	<global-exceptions />
+
+	<global-forwards>
+
+		<!-- SISTEMA -->
+		<forward name="fLogon" path="/jsp/home.jsp" />
+		<forward name="fError" path="/jsp/error.jsp" />
+		<forward name="fLogoff" path="/jsp/home.jsp" />
+		
+		<forward name="fIndexAdmin" path="/administrador.do?method=mostrarTelaListarCipes" />
+		<forward name="fIndexAluno" path="/aluno.do?method=mostrarTelaListarCursos" />
+		<forward name="fIndexProfessor" path="/professor.do?method=mostrarTelaListarCursos" />
+	</global-forwards>
+
+	<action-mappings>
+		<!-- SISTEMA -->
+		<action path="/sistema" 
+			type="struts.acoes.SistemaAcoes"
+			parameter="method" scope="request" validate="false" />
+			
+			
+		</action-mappings>
+	
+	<controller nocache="true" />
+	<message-resources null="false"
+		parameter="struts.mensagens.MessageResources" />
+
+</struts-config>

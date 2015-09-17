@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+   <form-beans>
+  <!-- 
+		<form-bean name="PesquisarContratoParcelamentoActionForm"
+			type="gcom.gui.cobranca.contratoparcelamento.PesquisarContratoParcelamentoActionForm" />
+   -->	
+			<!-- USUARIO -->
+		<form-bean name="usuarioAcoes"
+			type="org.apache.struts.validator.DynaValidatorForm">
+		</form-bean>
+	
+		
+		<form-bean name="usuarioAdd"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="nome" type="java.lang.String" />
+			<form-property name="sexo" type="java.lang.String" />
+			<form-property name="cpf" type="java.lang.String" />
+			<form-property name="telefone" type="java.lang.String" />
+			<form-property name="celular" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+			<form-property name="pais" type="java.lang.String" />
+			<form-property name="estado" type="java.lang.String" />
+			<form-property name="cidade" type="java.lang.String" />
+			<form-property name="bairro" type="java.lang.String" />
+			<form-property name="rua" type="java.lang.String" />
+			<form-property name="cep" type="java.lang.String" />
+			<form-property name="numero" type="java.lang.String" />
+			<form-property name="complemento" type="java.lang.String" />
+			<form-property name="pto_referencia" type="java.lang.String" />
+					
+			<form-property name="login" type="java.lang.String" />
+			<form-property name="confirmasenha" type="java.lang.String" />
+			
+			<form-property name="senha" type="java.lang.String" />
+			<form-property name="acao" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="usuarioExternoAdd"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="nome" type="java.lang.String" />
+			<form-property name="cpf" type="java.lang.String" />
+			<form-property name="endereco" type="java.lang.String" />
+			<form-property name="numero" type="java.lang.String" />
+			<form-property name="bairro" type="java.lang.String" />
+			<form-property name="cep" type="java.lang.String" />
+			<form-property name="cidade" type="java.lang.String" />
+			<form-property name="federacao" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+			<form-property name="sexo" type="java.lang.String" />
+			<form-property name="instituicaoOrigem" type="java.lang.String" />
+			<form-property name="pto_referencia" type="java.lang.String" />
+			<form-property name="restricaoAcesso" type="java.lang.String" />
+			<form-property name="login" type="java.lang.String" />
+			<form-property name="senha" type="java.lang.String" />
+			<form-property name="confirmasenha" type="java.lang.String" />
+			<form-property name="cursos" type="java.lang.String" />
+			<form-property name="acao" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="buscarUsuarios"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="tfBusca" type="java.lang.String" />
+			<form-property name="tipoDeBusca" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="mostrarTelaUsuarioEdit"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="id" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="usuarioAlterarSenha"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="senhaAntiga" type="java.lang.String" />
+			<form-property name="senhaNova" type="java.lang.String" />
+			<form-property name="senhaConfirmar" type="java.lang.String" />
+		</form-bean>
+		
+		
+		
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards >
+	<!-- USUARIO -->
+		<forward name="fUsuarioAdd" path="/jsp/usuario/usuariosAdicionar.jsp" />
+		<forward name="fUsuarioEdit" path="/jsp/usuario/usuariosEditar.jsp" />
+		<forward name="fUsuarioBusca" path="/jsp/usuario/usuariosBuscar.jsp" />
+		<forward name="fUsuarioAlterarSenha" path="/jsp/usuario/AlterarSenha.jsp" />
+		
+		<forward name="fUsuarioExternoAdd" path="/usuarioAdd.jsp" />
+		
+		
+		
+	</global-forwards>
+	
+	<action-mappings>
+	
+			<!-- USUARIO -->
+		<action path="/usuario"  name="usuarioAcoes"
+			type="struts.acoes.UsuarioAcoes"
+			parameter="method" scope="request" validate="false" />
+			
+			
+		<action path="/usuarioExternoAdd"  name="usuarioExternoAdd"
+			type="struts.acoes.UsuarioAcoes" 
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/usuarioAdd"  name="usuarioAdd"
+			type="struts.acoes.UsuarioAcoes" input="/jsp/usuario/usuariosAdicionar.jsp"
+			parameter="method" scope="request" validate="false" />	
+		
+				
+		<action path="/usuario"  name="mostrarTelaUsuarioEdit"
+			type="struts.acoes.UsuarioAcoes"
+			parameter="method" scope="request" validate="false" />
+			
+		<action path="/buscarUsuarios"  name="buscarUsuarios"
+			type="struts.acoes.UsuarioAcoes" input="/jsp/usuario/usuariosBuscar.jsp"
+			parameter="method" scope="request" validate="false" />
+		
+		<action path="/usuarioAlterarSenha"  name="usuarioAlterarSenha"
+			type="struts.acoes.UsuarioAcoes"
+			parameter="method" scope="request" validate="false" />	
+		
+</action-mappings>	
+
+<message-resources null="false"
+		parameter="struts.mensagens.MessageResources" />
+		
+</struts-config>

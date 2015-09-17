@@ -1,0 +1,100 @@
+.titulo_principal_pagina {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+.titulo_fase_arco {
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.subtitulo_fase_arco {
+	font-size: 14pt;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.campo_titulo {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.campo_subtitulo {
+	font-size: 8pt;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.campo_subtitulo_outro {
+	font-size: 8pt;
+	font-style: italic;
+}
+
+.mensagem_erro{
+	color: red;
+}
+
+.campo_conteudo {
+	font-size: 8pt;
+}
+
+.campo_conteudo .descricao_sistema_principal {
+	font-style: italic;
+}
+
+.campo_conteudo .campo_cheio{
+	width: 100%;
+}
+
+.link {
+	font-size: 8pt;
+	font-style: italic;
+}
+
+.inputText_invisivel {
+	border-style: none;
+}
+
+.panel_invisivel {
+	border-style: none;
+	border-color: transparent;
+}
+
+/* .rf-p .panel_invisivel .panel_titulo_arco {
+	width: 100%;
+	height: 130px;
+}
+
+.rf-p{
+	background-color: #AAFFA8;
+	border-style: none;
+}
+
+.rf-p .panel_logon{
+	background-color: #DBDADE
+} */
+
+.imagem_arco {
+	float: right;
+}
+
+.table_comum {
+	max-height: 200px;
+	width: 800px;
+}
+
+rf-edt-hdr-c {
+	border-right: none !important;
+	border-bottom: none !important;
+}
+
+.rf-edt-c {
+	height: 100% !important;
+	border-right: none !important;
+	border-bottom: none !important;
+}
+
+.rf-edt-cnt td {
+	border-bottom: 1px solid #9FC0E9;
+	border-right: 1px solid #9FC0E9;
+}

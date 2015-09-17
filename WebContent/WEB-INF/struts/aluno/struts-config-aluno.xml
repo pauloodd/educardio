@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+   <form-beans>
+		<form-bean name="mostrarTelaDetalheCurso"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idMatricula" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="mostrarTelaHyperLink"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idHyperLink" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="mostrarTelaObservacaoRealidade"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idEstudoCaso" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="pesquisarFeedBackEstudoCaso"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idEstudoCaso" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="organizarAmbulatorio"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="mobilia" type="java.lang.String[]" />
+			<form-property name="corrente" type="java.lang.String[]" />
+			<form-property name="clinico" type="java.lang.String[]" />
+		</form-bean>
+		
+		<form-bean name="salvarPontosChaves"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="determinantes" type="java.lang.String[]" />
+		</form-bean>
+		
+		<form-bean name="avancarPontosChaves"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="determinantes" type="java.lang.String[]" />
+		</form-bean>
+		
+		<form-bean name="salvarHipoteses"
+			type="org.apache.struts.validator.DynaValidatorForm">
+		</form-bean>
+		
+		<form-bean name="salvarTeorizacao"
+			type="util.FileUploadForm">
+		</form-bean>
+		
+		<form-bean name="avancarTeorizacao"
+			type="util.FileUploadForm">
+		</form-bean>
+		
+		<form-bean name="adicionarDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="determinante" type="java.lang.String" />
+			<form-property name="termoautocomplete" type="java.lang.String" />
+			<form-property name="idtermoautocomplete" type="java.lang.String" />
+			<form-property name="texto" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="editarDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idDiagnostico" type="java.lang.String" />
+			<form-property name="determinante" type="java.lang.String" />
+			<form-property name="termo2autocomplete" type="java.lang.String" />
+			<form-property name="idtermo2autocomplete" type="java.lang.String" />
+			<form-property name="texto" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="adicionarMetaDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idDiagnostico" type="java.lang.String" />
+			<form-property name="meta" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="editarMetaDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idMetaDiagnostico" type="java.lang.String" />
+			<form-property name="idDiagnostico" type="java.lang.String" />
+			<form-property name="meta" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="baixarArquivo"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idArquivo" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="removerDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idDiagnostico" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="removerMetaDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idMetaDiagnostico" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="editarIntervencaoDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idDiagnostico" type="java.lang.String" />
+			<form-property name="idMetaDiagnostico" type="java.lang.String" />
+			<form-property name="idIntervencaoDiagnostico" type="java.lang.String" />
+			<form-property name="idtermo4autocomplete" type="java.lang.String" />
+			<form-property name="termo4autocomplete" type="java.lang.String" />
+			<form-property name="texto" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="removerIntervencaoDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idIntervencaoDiagnostico" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="adicionarIntervencaoDiagnostico"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idDiagnostico" type="java.lang.String" />
+			<form-property name="idMetaDiagnostico" type="java.lang.String" />
+			<form-property name="idtermo3autocomplete" type="java.lang.String" />
+			<form-property name="texto" type="java.lang.String" />
+			<form-property name="termo3autocomplete" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="salvarAplicacao"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="texto" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="avancarAplicacao"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="texto" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="salvarOpniaoSobreCurso"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idMatriculaCursoAluno" type="java.lang.String" />
+			<form-property name="pergunta1" type="java.lang.String" />
+			<form-property name="pergunta2" type="java.lang.String" />
+			<form-property name="pergunta3" type="java.lang.String" />
+			<form-property name="pergunta4" type="java.lang.String" />
+		</form-bean>
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards >
+	<!-- USUARIO -->
+		<forward name="fAlunoListarCursos" path="/jsp/aluno/listar_cursos.jsp" />
+		<forward name="fAlunoDetalheCurso" path="/jsp/aluno/curso/detalhe_curso.jsp" />
+		<forward name="fAlunoOrganizarAmbulatorio" path="/jsp/aluno/curso/ambulatorio.jsp" />
+		<forward name="fAlunoListaEstudoDeCaso" path="/jsp/aluno/curso/estudo_de_caso/lista_estudo_de_caso.jsp" />
+		<forward name="fAlunoEstudoDeCasoObsRealidade" path="/jsp/aluno/curso/estudo_de_caso/observacao_realidade.jsp" />
+		<forward name="fAlunoEstudoDeCasoPontosChave" path="/jsp/aluno/curso/estudo_de_caso/pontos_chave.jsp" />
+		<forward name="fAlunoEstudoDeCasoTeorizacao" path="/jsp/aluno/curso/estudo_de_caso/teorizacao.jsp" />
+		<forward name="fAlunoEstudoDeCasoHipoteses" path="/jsp/aluno/curso/estudo_de_caso/hipoteses.jsp" />
+		<forward name="fAlunoEstudoDeCasoHipotesesRefresh" path="/hipoteses.do?method=mostrarTelaHipoteses" />
+		<forward name="fAlunoEstudoDeCasoAplicacao" path="/jsp/aluno/curso/estudo_de_caso/aplicacao.jsp" />
+		<forward name="fAlunoEstudoDeCasoProcurarTermo" path="/jsp/aluno/curso/estudo_de_caso/procurar-termo.jsp" />
+		
+		<forward name="fAlunoOpniaoCurso" path="/jsp/aluno/curso/opniao_curso.jsp" />
+		<forward name="fAlunoFeedBackCurso" path="/jsp/aluno/curso/feedback_listar_estudoscaso.jsp" />
+		<forward name="fAlunoMateriaPedagogico" path="/jsp/aluno/curso//estudo_de_caso/material_pedagogico.jsp" />
+		
+		<forward name="fAlunoHyperLink" path="/jsp/aluno/curso/estudo_de_caso/hyperlink.jsp" />
+		
+	</global-forwards>
+	
+	<action-mappings>
+	
+		<action path="/aluno"  name="alunoAcoes"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />
+			
+		<action path="/listarCursos"  name="mostrarTelaListarCursos"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+		
+		<action path="/matricularNovoCurso"  name="matricularNovoCurso"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+	
+		<action path="/detalheCurso"  name="mostrarTelaDetalheCurso"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/ambulatorio"  name="mostrarTelaAmbulatorio"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/organizarAmbulatorio"  name="organizarAmbulatorio"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+		
+		<action path="/baixarArquivo"  name="baixarArquivo"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/detalheEstudoCaso"  name="mostrarTelaListaEstudosDeCaso"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/estudoCaso"  name="mostrarTelaObservacaoRealidade"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />
+		
+		<action path="/avancarObsRealidade"  name="avancarObservacaoRealidade"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+		
+		<action path="/ptsChave"  name="mostrarTelaPontosChave"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />		
+			
+		<action path="/salvarPontosChaves"  name="salvarPontosChaves"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />		
+				
+		<action path="/avancarPontosChaves"  name="avancarPontosChaves"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/teorizacao"  name="mostrarTelaTeorizacao"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+		
+		<action path="/salvarTeorizacao"  name="salvarTeorizacao"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />		
+					
+		<action path="/avancarTeorizacao"  name="avancarTeorizacao"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/hipoteses"  name="mostrarTelaHipoteses"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+		
+		<action path="/adicionarDiagnostico"  name="adicionarDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/removerDiagnostico"  name="removerDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/editarDiagnostico"  name="editarDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/adicionarMetaDiagnostico"  name="adicionarMetaDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />
+			
+		<action path="/salvarHipoteses"  name="salvarHipoteses"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/editarMetaDiagnostico"  name="editarMetaDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/removerMetaDiagnostico"  name="removerMetaDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />		
+			
+		<action path="/adicionarIntervencaoDiagnostico"  name="adicionarIntervencaoDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />
+			
+		<action path="/editarIntervencaoDiagnostico"  name="editarIntervencaoDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/removerIntervencaoDiagnostico"  name="removerIntervencaoDiagnostico"
+			type="struts.acoes.AlunoAcoes"	
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/aplicacao"  name="mostrarTelaAplicacao"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/salvarAplicacao"  name="salvarAplicacao"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />		
+					
+		<action path="/avancarAplicacao"  name="avancarAplicacao"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />
+			
+		<action path="/salvarOpniaoSobreCurso"  name="salvarOpniaoSobreCurso"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />
+		
+		<action path="/mostrarTelaOpniaoSobreCurso"  name="mostrarTelaOpniaoSobreCurso"
+			type="struts.acoes.AlunoAcoes"
+			parameter="method" scope="request" validate="false" />
+						
+		<action path="/mostrarTelaFeedbackCurso"  name="mostrarTelaFeedbackCurso"
+			type="struts.acoes.AlunoAcoes"
+				parameter="method" scope="request" validate="false" />
+		
+		<action path="/pesquisarFeedBackEstudoCaso"  name="pesquisarFeedBackEstudoCaso"
+			type="struts.acoes.AlunoAcoes"
+				parameter="method" scope="request" validate="false" />
+				
+		<action path="/mostrarTelaMaterialPedagogico"  name="mostrarTelaMaterialPedagogico"
+			type="struts.acoes.AlunoAcoes"
+				parameter="method" scope="request" validate="false" />
+				
+		<action path="/mostrarTelaProcurarTermo"  name="mostrarTelaProcurarTermo"
+			type="struts.acoes.AlunoAcoes"
+				parameter="method" scope="request" validate="false" />
+		
+		<action path="/mostrarTelaHyperLink"  name="mostrarTelaHyperLink"
+			type="struts.acoes.AlunoAcoes"
+				parameter="method" scope="request" validate="false" />
+			
+				
+</action-mappings>	
+
+<message-resources null="false"
+		parameter="struts.mensagens.MessageResources" />
+		
+</struts-config>

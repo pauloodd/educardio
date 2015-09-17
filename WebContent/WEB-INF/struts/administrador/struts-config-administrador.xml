@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+   <form-beans>
+   
+   
+   	<form-bean name="adicionarCipe"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="codigo" type="java.lang.String" />
+			<form-property name="eixo" type="java.lang.String" />
+			<form-property name="termo" type="java.lang.String" />
+			<form-property name="descricao" type="java.lang.String" />
+			<form-property name="versao" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="editarCipe"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="codigo" type="java.lang.String" />
+			<form-property name="idCipe" type="java.lang.String" />
+			<form-property name="eixo" type="java.lang.String" />
+			<form-property name="termo" type="java.lang.String" />
+			<form-property name="descricao" type="java.lang.String" />
+			<form-property name="versao" type="java.lang.String" />
+		</form-bean>	
+	
+		<form-bean name="removerCipe"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idCipe" type="java.lang.String" />
+		</form-bean>	
+	
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards >
+	<!-- USUARIO -->
+		<forward name="fAdministradorListarCipes" path="/jsp/administrador/listar_cipes.jsp" />
+		
+		
+	</global-forwards>
+	
+	<action-mappings>
+	
+		<action path="/administrador"  name="administradorAcoes"
+			type="struts.acoes.AdministradorAcoes"
+			parameter="method" scope="request" validate="false" />
+			
+		<action path="/administrador"  name="mostrarTelaListarCipes"
+			type="struts.acoes.AdministradorAcoes"
+			parameter="method" scope="request" validate="false" />	
+	
+		<action path="/adicionarCipe"  name="adicionarCipe"
+			type="struts.acoes.AdministradorAcoes"	
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/removerCipe"  name="removerCipe"
+			type="struts.acoes.AdministradorAcoes"	
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/editarCipe"  name="editarCipe"
+			type="struts.acoes.AdministradorAcoes"	
+			parameter="method" scope="request" validate="false" />	
+		
+</action-mappings>	
+
+<message-resources null="false"
+		parameter="struts.mensagens.MessageResources" />
+		
+</struts-config>

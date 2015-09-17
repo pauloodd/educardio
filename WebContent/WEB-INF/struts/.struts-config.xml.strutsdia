@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="fLogon" NAME="forward14" PATH="/JSPs/home.jsp"
+  SHAPE="32,1585,0,0" TARGET="page0" TITLE="fLogon" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fLogoff" NAME="forward30" PATH="/JSPs/home.jsp"
+  SHAPE="32,3377,0,0" TARGET="page0" TITLE="fLogoff" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sistema" NAME="action0" PATH="/sistema"
+  SHAPE="32,6513,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#logon" NAME="action15" PATH="/logon"
+  SHAPE="656,6753,0,0" TITLE="logon" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page0" PATH="/JSPs/home.jsp" SHAPE="240,1697,0,0"
+  SUBTYPE="jsp" TITLE="home.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fIndex" NAME="forward0"
+  PATH="/JSPs/menu-principal/menuPacienteUsuario.jsp"
+  SHAPE="32,1697,0,0" TARGET="page2" TITLE="fIndex" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page2"
+  PATH="/JSPs/menu-principal/menuPacienteUsuario.jsp"
+  SHAPE="240,1809,0,0" SUBTYPE="jsp" TITLE="menuPacienteUsuario.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#usuario" NAME="action1" PATH="/usuario"
+  SHAPE="32,1921,0,0" TITLE="usuarioAcoes" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fUsuarioAdd" NAME="forward1"
+  PATH="/JSPs/menu-principal/usuario/usuariosAdicionar.jsp"
+  SHAPE="32,3489,0,0" TARGET="page1" TITLE="fUsuarioAdd" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fUsuarioEdit" NAME="forward2"
+  PATH="/JSPs/menu-principal/usuario/usuariosEditar.jsp"
+  SHAPE="32,1809,0,0" TARGET="page4" TITLE="fUsuarioEdit" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fUsuarioBusca" NAME="forward3"
+  PATH="/JSPs/menu-principal/usuario/usuariosBuscar.jsp"
+  SHAPE="32,1473,0,0" TARGET="page3" TITLE="fUsuarioBusca"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page1"
+  PATH="/JSPs/menu-principal/usuario/usuariosAdicionar.jsp"
+  SHAPE="240,3489,0,0" SUBTYPE="jsp" TITLE="usuariosAdicionar.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page3"
+  PATH="/JSPs/menu-principal/usuario/usuariosBuscar.jsp"
+  SHAPE="240,1921,0,0" SUBTYPE="jsp" TITLE="usuariosBuscar.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page4"
+  PATH="/JSPs/menu-principal/usuario/usuariosEditar.jsp"
+  SHAPE="240,1473,0,0" SUBTYPE="jsp" TITLE="usuariosEditar.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fPacienteAdd" NAME="forward4"
+  PATH="/JSPs/menu-principal/paciente/pacientesAdicionar.jsp"
+  SHAPE="32,3713,0,0" TARGET="page5" TITLE="fPacienteAdd" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fPacienteBusca" NAME="forward5"
+  PATH="/JSPs/menu-principal/paciente/pacientesBuscar.jsp"
+  SHAPE="32,2145,0,0" TARGET="page6" TITLE="fPacienteBusca"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page5"
+  PATH="/JSPs/menu-principal/paciente/pacientesAdicionar.jsp"
+  SHAPE="240,3713,0,0" SUBTYPE="jsp" TITLE="pacientesAdicionar.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page6"
+  PATH="/JSPs/menu-principal/paciente/pacientesBuscar.jsp"
+  SHAPE="240,2257,0,0" SUBTYPE="jsp" TITLE="pacientesBuscar.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#paciente" NAME="action7" PATH="/paciente"
+  SHAPE="32,2369,0,0" TITLE="pacienteAcoes" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#antendimento" NAME="action8" PATH="/antendimento"
+  SHAPE="240,2385,0,0" TITLE="antedimentosPaciente" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fPacienteAtendimentos" NAME="forward6"
+  PATH="/JSPs/Antendimentos/pacienteAtendimentos.jsp"
+  SHAPE="32,2369,0,0" TARGET="page8" TITLE="fPacienteAtendimentos"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page8"
+  PATH="/JSPs/Antendimentos/pacienteAtendimentos.jsp"
+  SHAPE="240,2481,0,0" SUBTYPE="jsp" TITLE="pacienteAtendimentos.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoQueixa" NAME="forward7"
+  PATH="/JSPs/Antendimentos/Atendimento/Queixa/QueixaDoencaAtual.jsp"
+  SHAPE="32,2593,0,0" TARGET="page36" TITLE="fAtendimentoQueixa"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoAvaliacoesProf" NAME="forward8"
+  PATH="/JSPs/Antendimentos/Atendimento/Avaliacoes/AvaliacoesProfessor.jsp"
+  SHAPE="32,2705,0,0" TARGET="page17" TITLE="fAtendimentoAvaliacoesProf"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimento" NAME="forward9"
+  PATH="/JSPs/Antendimentos/Atendimento/pacienteAtendimento.jsp"
+  SHAPE="32,2817,0,0" TARGET="page21" TITLE="fAtendimento"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoAssAtendimento" NAME="forward10"
+  PATH="/JSPs/Antendimentos/Atendimento/AssinarAtendimento.jsp"
+  SHAPE="32,2929,0,0" TARGET="page15" TITLE="fAtendimentoAssAtendimento"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoExMentalGeral" NAME="forward11"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameMental/ExameMentalGeral.jsp"
+  SHAPE="32,3041,0,0" TARGET="page11" TITLE="fAtendimentoExMentalGeral"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoProcEnfermagem" NAME="forward12"
+  PATH="/JSPs/Antendimentos/Atendimento/DiagnosticoIntervencoes/ProcessoEnfermagem.jsp"
+  SHAPE="32,3153,0,0" TARGET="page37" TITLE="fAtendimentoProcEnfermagem"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoAntPessoais" NAME="forward13"
+  PATH="/JSPs/Antendimentos/Atendimento/Historico/AntecedentesPessoais.jsp"
+  SHAPE="32,3265,0,0" TARGET="page20" TITLE="fAtendimentoAntPessoais"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoAlta" NAME="forward15"
+  PATH="/JSPs/Antendimentos/Atendimento/Alta.jsp" SHAPE="32,3377,0,0"
+  TARGET="page19" TITLE="fAtendimentoAlta" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoExMentalMini" NAME="forward16"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameMental/ExameMentalMiniMental.jsp"
+  SHAPE="32,3489,0,0" TARGET="page12" TITLE="fAtendimentoExMentalMini"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoAntFamiliares" NAME="forward17"
+  PATH="/JSPs/Antendimentos/Atendimento/Historico/AntecedentesFamiliares.jsp"
+  SHAPE="32,3713,0,0" TARGET="page7" TITLE="fAtendimentoAntFamiliares"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoObsAtendimento" NAME="forward18"
+  PATH="/JSPs/Antendimentos/Atendimento/Observacoes/ObservacoesAtendimento.jsp"
+  SHAPE="32,3937,0,0" TARGET="page16" TITLE="fAtendimentoObsAtendimento"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoNecessidades" NAME="forward19"
+  PATH="/JSPs/Antendimentos/Atendimento/Necessidades/NecessidadesBasicas.jsp"
+  SHAPE="32,4049,0,0" TARGET="page9" TITLE="fAtendimentoNecessidades"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoExameFisico" NAME="forward20"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/ExameFisico.jsp"
+  SHAPE="32,4161,0,0" TARGET="page10" TITLE="fAtendimentoExameFisico"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#buscarUsuarios" NAME="action2"
+  PATH="/buscarUsuarios" SHAPE="32,4385,0,0" TITLE="buscarUsuarios"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#usuarioAdd" NAME="action3" PATH="/usuarioAdd"
+  SHAPE="240,4401,0,0" TITLE="usuarioAdd" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#pacienteBuscar" NAME="action5"
+  PATH="/pacienteBuscar" SHAPE="656,4401,0,0" TITLE="pacienteBuscar"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#queixa" NAME="action6" PATH="/queixa"
+  SHAPE="864,4385,0,0" TITLE="queixaSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#antPessoais" NAME="action10" PATH="/antPessoais"
+  SHAPE="1072,4401,0,0" TITLE="antPessoaisSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fPacienteEditar" NAME="forward21"
+  PATH="/JSPs/menu-principal/paciente/pacientesEditar.jsp"
+  SHAPE="32,4385,0,0" TARGET="page14" TITLE="fPacienteEditar"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page14"
+  PATH="/JSPs/menu-principal/paciente/pacientesEditar.jsp"
+  SHAPE="240,4514,0,0" SUBTYPE="jsp" TITLE="pacientesEditar.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#pacienteAdd" NAME="action11" PATH="/pacienteAdd"
+  SHAPE="32,4609,0,0" TITLE="pacienteAdd" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fUsuarioAlterarSenha" NAME="forward22"
+  PATH="/JSPs/menu-principal/usuario/AlterarSenha.jsp"
+  SHAPE="32,4609,0,0" TARGET="page22" TITLE="fUsuarioAlterarSenha"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page22"
+  PATH="/JSPs/menu-principal/usuario/AlterarSenha.jsp"
+  SHAPE="240,4738,0,0" SUBTYPE="jsp" TITLE="AlterarSenha.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#atendimento" NAME="action12" PATH="/atendimento"
+  SHAPE="32,4833,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#cidAdd" NAME="action13" PATH="/cidAdd"
+  SHAPE="240,4849,0,0" TITLE="cidAdd" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoSinaisVitais" NAME="forward23"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SinaisVitais.jsp"
+  SHAPE="32,4833,0,0" TARGET="page13" TITLE="fExameFisicoSinaisVitais"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoCabeca" NAME="forward24"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Cabeca.jsp"
+  SHAPE="32,5057,0,0" TARGET="page23" TITLE="fExameFisicoCabeca"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoOlhos" NAME="forward25"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Olhos.jsp"
+  SHAPE="32,5169,0,0" TARGET="page24" TITLE="fExameFisicoOlhos"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoNariz" NAME="forward26"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Nariz.jsp"
+  SHAPE="32,5281,0,0" TARGET="page25" TITLE="fExameFisicoNariz"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoOrelhas" NAME="forward27"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Orelhas.jsp"
+  SHAPE="32,5393,0,0" TARGET="page26" TITLE="fExameFisicoOrelhas"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoBoca" NAME="forward28"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Boca.jsp"
+  SHAPE="32,5505,0,0" TARGET="page27" TITLE="fExameFisicoBoca"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoPescoco" NAME="forward29"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Pescoco.jsp"
+  SHAPE="32,5617,0,0" TARGET="page28" TITLE="fExameFisicoPescoco"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoMamas" NAME="forward31"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/ExameMamas.jsp"
+  SHAPE="32,5729,0,0" TARGET="page29" TITLE="fExameFisicoMamas"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoSistRespiratorio" NAME="forward32"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SistRespiratorio.jsp"
+  SHAPE="32,5841,0,0" TARGET="page30"
+  TITLE="fExameFisicoSistRespiratorio" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoSistCardio" NAME="forward33"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SistCardio.jsp"
+  SHAPE="32,5953,0,0" TARGET="page31" TITLE="fExameFisicoSistCardio"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoSistGastro" NAME="forward34"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SistGastro.jsp"
+  SHAPE="32,6065,0,0" TARGET="page32" TITLE="fExameFisicoSistGastro"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoSistUrina" NAME="forward35"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SistUrina.jsp"
+  SHAPE="32,6177,0,0" TARGET="page33" TITLE="fExameFisicoSistUrina"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fExameFisicoPelesAnexos" NAME="forward36"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/PelesAnexos.jsp"
+  SHAPE="32,6289,0,0" TARGET="page34" TITLE="fExameFisicoPelesAnexos"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page21"
+  PATH="/JSPs/Antendimentos/Atendimento/pacienteAtendimento.jsp"
+  SHAPE="240,4273,0,0" SUBTYPE="jsp" TITLE="pacienteAtendimento.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page36"
+  PATH="/JSPs/Antendimentos/Atendimento/Queixa/QueixaDoencaAtual.jsp"
+  SHAPE="240,2705,0,0" SUBTYPE="jsp" TITLE="QueixaDoencaAtual.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page20"
+  PATH="/JSPs/Antendimentos/Atendimento/Historico/AntecedentesPessoais.jsp"
+  SHAPE="240,2817,0,0" SUBTYPE="jsp" TITLE="AntecedentesPessoais.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page7"
+  PATH="/JSPs/Antendimentos/Atendimento/Historico/AntecedentesFamiliares.jsp"
+  SHAPE="240,2929,0,0" SUBTYPE="jsp" TITLE="AntecedentesFamiliares.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page9"
+  PATH="/JSPs/Antendimentos/Atendimento/Necessidades/NecessidadesBasicas.jsp"
+  SHAPE="240,3041,0,0" SUBTYPE="jsp" TITLE="NecessidadesBasicas.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page10"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/ExameFisico.jsp"
+  SHAPE="240,3153,0,0" SUBTYPE="jsp" TITLE="ExameFisico.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page11"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameMental/ExameMentalGeral.jsp"
+  SHAPE="240,3265,0,0" SUBTYPE="jsp" TITLE="ExameMentalGeral.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page12"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameMental/ExameMentalMiniMental.jsp"
+  SHAPE="448,3265,0,0" SUBTYPE="jsp" TITLE="ExameMentalMiniMental.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page13"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SinaisVitais.jsp"
+  SHAPE="448,4833,0,0" SUBTYPE="jsp" TITLE="SinaisVitais.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page23"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Cabeca.jsp"
+  SHAPE="448,5057,0,0" SUBTYPE="jsp" TITLE="Cabeca.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page24"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Olhos.jsp"
+  SHAPE="448,5281,0,0" SUBTYPE="jsp" TITLE="Olhos.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page25"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Nariz.jsp"
+  SHAPE="448,5393,0,0" SUBTYPE="jsp" TITLE="Nariz.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page26"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Orelhas.jsp"
+  SHAPE="448,5505,0,0" SUBTYPE="jsp" TITLE="Orelhas.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page27"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Boca.jsp"
+  SHAPE="448,5617,0,0" SUBTYPE="jsp" TITLE="Boca.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page28"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/Pescoco.jsp"
+  SHAPE="448,5729,0,0" SUBTYPE="jsp" TITLE="Pescoco.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page29"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/ExameMamas.jsp"
+  SHAPE="448,5841,0,0" SUBTYPE="jsp" TITLE="ExameMamas.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page30"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SistRespiratorio.jsp"
+  SHAPE="448,5953,0,0" SUBTYPE="jsp" TITLE="SistRespiratorio.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page31"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SistCardio.jsp"
+  SHAPE="448,6065,0,0" SUBTYPE="jsp" TITLE="SistCardio.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page32"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SistGastro.jsp"
+  SHAPE="448,6177,0,0" SUBTYPE="jsp" TITLE="SistGastro.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page33"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/SistUrina.jsp"
+  SHAPE="240,6401,0,0" SUBTYPE="jsp" TITLE="SistUrina.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page34"
+  PATH="/JSPs/Antendimentos/Atendimento/ExameFisico/PelesAnexos.jsp"
+  SHAPE="240,6513,0,0" SUBTYPE="jsp" TITLE="PelesAnexos.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#usuarioAlterarSenha" NAME="action4"
+  PATH="/usuarioAlterarSenha" SHAPE="32,6625,0,0"
+  TITLE="usuarioAlterarSenha" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#atendimentoBuscar" NAME="action9"
+  PATH="/atendimentoBuscar" SHAPE="240,6641,0,0"
+  TITLE="atendimentoBuscar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#exameFisico" NAME="action14" PATH="/exameFisico"
+  SHAPE="448,6625,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#antFamiliares" NAME="action16" PATH="/antFamiliares"
+  SHAPE="656,6641,0,0" TITLE="antFamiliaresSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#necessidades" NAME="action17" PATH="/necessidades"
+  SHAPE="864,6625,0,0" TITLE="necessidadesSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sinaisVitais" NAME="action18" PATH="/sinaisVitais"
+  SHAPE="1072,6641,0,0" TITLE="sinaisVitaisSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#couroCabeludo" NAME="action19" PATH="/couroCabeludo"
+  SHAPE="32,6737,0,0" TITLE="couroCabeludoSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#olhos" NAME="action20" PATH="/olhos"
+  SHAPE="240,6753,0,0" TITLE="olhosSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#nariz" NAME="action21" PATH="/nariz"
+  SHAPE="448,6737,0,0" TITLE="narizSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#orelhas" NAME="action22" PATH="/orelhas"
+  SHAPE="864,6737,0,0" TITLE="orelhasSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#boca" NAME="action23" PATH="/boca"
+  SHAPE="1072,6753,0,0" TITLE="bocaSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#pescoco" NAME="action24" PATH="/pescoco"
+  SHAPE="32,6849,0,0" TITLE="pescocoSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#mamas" NAME="action25" PATH="/mamas"
+  SHAPE="240,6865,0,0" TITLE="mamasSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sistRespiratorio" NAME="action26"
+  PATH="/sistRespiratorio" SHAPE="448,6849,0,0"
+  TITLE="sistRespiratorioSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sistCardio" NAME="action27" PATH="/sistCardio"
+  SHAPE="656,6865,0,0" TITLE="sistCardioSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sistGastro" NAME="action28" PATH="/sistGastro"
+  SHAPE="864,6849,0,0" TITLE="sistGastroSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sistUrina" NAME="action29" PATH="/sistUrina"
+  SHAPE="1072,6865,0,0" TITLE="sistUrinaSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#pelesAnexos" NAME="action30" PATH="/pelesAnexos"
+  SHAPE="32,6961,0,0" TITLE="pelesAnexosSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#exameMentalGeral" NAME="action31"
+  PATH="/exameMentalGeral" SHAPE="240,6977,0,0"
+  TITLE="exameMentalGeralSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#exameMentalMiniMental" NAME="action32"
+  PATH="/exameMentalMiniMental" SHAPE="448,6961,0,0"
+  TITLE="exameMentalMiniMentalSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoDiagnosticoIntervencoes" NAME="forward37"
+  PATH="/JSPs/Antendimentos/Atendimento/Avaliacoes/AvaliacoesProfessor.jsp"
+  SHAPE="240,3841,0,0" TARGET="page17"
+  TITLE="fAtendimentoDiagnosticoIntervencoes" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page37"
+  PATH="/JSPs/Antendimentos/Atendimento/DiagnosticoIntervencoes/ProcessoEnfermagem.jsp"
+  SHAPE="656,3153,0,0" SUBTYPE="jsp" TITLE="ProcessoEnfermagem.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page19"
+  PATH="/JSPs/Antendimentos/Atendimento/Alta.jsp" SHAPE="240,3601,0,0"
+  SUBTYPE="jsp" TITLE="Alta.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page15"
+  PATH="/JSPs/Antendimentos/Atendimento/AssinarAtendimento.jsp"
+  SHAPE="656,2929,0,0" SUBTYPE="jsp" TITLE="AssinarAtendimento.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page16"
+  PATH="/JSPs/Antendimentos/Atendimento/Observacoes/ObservacoesAtendimento.jsp"
+  SHAPE="448,3937,0,0" SUBTYPE="jsp" TITLE="ObservacoesAtendimento.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page17"
+  PATH="/JSPs/Antendimentos/Atendimento/Avaliacoes/AvaliacoesProfessor.jsp"
+  SHAPE="448,2705,0,0" SUBTYPE="jsp" TITLE="AvaliacoesProfessor.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#cipeBuscar" NAME="action33" PATH="/cipeBuscar"
+  SHAPE="656,6977,0,0" TITLE="cipeBuscar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#diagnosticoAdd" NAME="action34"
+  PATH="/diagnosticoAdd" SHAPE="864,6961,0,0" TITLE="diagnosticoAdd"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fDiagnosticoAdd" NAME="forward38"
+  PATH="/JSPs/Antendimentos/Atendimento/DiagnosticoIntervencoes/DiagnosticoAdd.jsp"
+  SHAPE="32,6625,0,0" TARGET="page18" TITLE="fDiagnosticoAdd"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page18"
+  PATH="/JSPs/Antendimentos/Atendimento/DiagnosticoIntervencoes/DiagnosticoAdd.jsp"
+  SHAPE="240,7090,0,0" SUBTYPE="jsp" TITLE="DiagnosticoAdd.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#nicNocBuscar" NAME="action35" PATH="/nicNocBuscar"
+  SHAPE="32,7185,0,0" TITLE="nicNocBuscar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#diagnosticoSalvar" NAME="action36"
+  PATH="/diagnosticoSalvar" SHAPE="240,7201,0,0"
+  TITLE="diagnosticoSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#nicAdd" NAME="action37" PATH="/nicAdd"
+  SHAPE="448,7185,0,0" TITLE="nicAdd" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#nocAdd" NAME="action38" PATH="/nocAdd"
+  SHAPE="656,7201,0,0" TITLE="nocAdd" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#diagnostico" NAME="action39" PATH="/diagnostico"
+  SHAPE="864,7185,0,0" TITLE="mostrarTelaDiagnostico" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fDiagnosticoEscolhido" NAME="forward39"
+  PATH="/JSPs/Antendimentos/Atendimento/DiagnosticoIntervencoes/Diagnostico.jsp"
+  SHAPE="32,7185,0,0" TARGET="page35" TITLE="fDiagnosticoEscolhido"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page35"
+  PATH="/JSPs/Antendimentos/Atendimento/DiagnosticoIntervencoes/Diagnostico.jsp"
+  SHAPE="240,7314,0,0" SUBTYPE="jsp" TITLE="Diagnostico.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#intervencaoAdd" NAME="action40"
+  PATH="/intervencaoAdd" SHAPE="32,7409,0,0" TITLE="intervencaoAdd"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#resultadoAdd" NAME="action41" PATH="/resultadoAdd"
+  SHAPE="240,7425,0,0" TITLE="resultadoAdd" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#alta" NAME="action42" PATH="/alta"
+  SHAPE="448,7409,0,0" TITLE="altaSalvar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#assinar" NAME="action43" PATH="/assinar"
+  SHAPE="656,7425,0,0" TITLE="assinarAtendimento" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#logoff" NAME="action44" PATH="/logoff"
+  SHAPE="864,7409,0,0" TITLE="logoff" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#cidRemover" NAME="action45" PATH="/cidRemover"
+  SHAPE="1072,7425,0,0" TITLE="removerCid" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#adendoAdd" NAME="action46" PATH="/adendoAdd"
+  SHAPE="32,7521,0,0" TITLE="adicionarAdendo" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoObsAtendimentoSelecionado"
+  NAME="forward40"
+  PATH="/JSPs/Antendimentos/Atendimento/Observacoes/Observacao.jsp"
+  SHAPE="32,7409,0,0" TARGET="page38"
+  TITLE="fAtendimentoObsAtendimentoSelecionado" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page38"
+  PATH="/JSPs/Antendimentos/Atendimento/Observacoes/Observacao.jsp"
+  SHAPE="240,7538,0,0" SUBTYPE="jsp" TITLE="Observacao.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="fAtendimentoAvaliacoesProfSelecionada"
+  NAME="forward41"
+  PATH="/JSPs/Antendimentos/Atendimento/Avaliacoes/Avaliacao.jsp"
+  SHAPE="32,7633,0,0" TARGET="page39"
+  TITLE="fAtendimentoAvaliacoesProfSelecionada" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page39"
+  PATH="/JSPs/Antendimentos/Atendimento/Avaliacoes/Avaliacao.jsp"
+  SHAPE="240,7650,0,0" SUBTYPE="jsp" TITLE="Avaliacao.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#adendoSelect" NAME="action47" PATH="/adendoSelect"
+  SHAPE="32,7745,0,0" TITLE="selecionarAdendo" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#observacoesBuscar" NAME="action48"
+  PATH="/observacoesBuscar" SHAPE="240,7761,0,0"
+  TITLE="observacoesBuscar" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#avaliacaoAdd" NAME="action49" PATH="/avaliacaoAdd"
+  SHAPE="448,7745,0,0" TITLE="adicionarAvaliacao" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#avaliacaoSelect" NAME="action50"
+  PATH="/avaliacaoSelect" SHAPE="656,7761,0,0"
+  TITLE="selecionarAvaliacao" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#avaliacoesBuscar" NAME="action51"
+  PATH="/avaliacoesBuscar" SHAPE="864,7745,0,0" TITLE="avaliacoesBuscar"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+</PROCESS>

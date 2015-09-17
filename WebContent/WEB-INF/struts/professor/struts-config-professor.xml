@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+   <form-beans>
+   		<form-bean name="mostrarTelaListaEstudosDeCaso"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idCurso" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="adicionarMencaoArcoMaguerez"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="idArcoMaguerez" type="java.lang.String" />
+			<form-property name="pontos-chave-comentarios" type="java.lang.String" />
+			<form-property name="pontos-chave-nota" type="java.lang.String" />
+			<form-property name="teorizacao-comentarios" type="java.lang.String" />
+			<form-property name="teorizacao-nota" type="java.lang.String" />
+			<form-property name="hipoteses-comentarios" type="java.lang.String" />
+			<form-property name="hipoteses-nota" type="java.lang.String" />
+		</form-bean>
+	</form-beans>
+
+	<!--******************* PÁGINAS GLOBAIS *******************-->
+	<global-forwards >
+	<!-- USUARIO -->
+		<forward name="fProfessorListarCursos" path="/jsp/professor/listar_cursos.jsp" />
+		<forward name="fProfessorListarEstudosCasos" path="/jsp/professor/curso/lista_estudo_de_caso.jsp" />
+		
+		
+	</global-forwards>
+	
+	<action-mappings>
+	
+		<action path="/professor"  name="professorAcoes"
+			type="struts.acoes.ProfessorAcoes"
+			parameter="method" scope="request" validate="false" />
+			
+		<action path="/professor"  name="mostrarTelaListarCursos"
+			type="struts.acoes.ProfessorAcoes"
+			parameter="method" scope="request" validate="false" />	
+			
+		<action path="/listarCursosProf"  name="mostrarTelaListarCursos"
+			type="struts.acoes.ProfessorAcoes"
+			parameter="method" scope="request" validate="false" />	
+	
+		<action path="/estudosCasosProf"  name="mostrarTelaListaEstudosDeCaso"
+			type="struts.acoes.ProfessorAcoes"
+			parameter="method" scope="request" validate="false" />	
+		
+		<action path="/adicionarMencaoArcoMaguerezProf"  name="adicionarMencaoArcoMaguerez"
+			type="struts.acoes.ProfessorAcoes"
+			parameter="method" scope="request" validate="false" />	
+		
+</action-mappings>	
+
+<message-resources null="false"
+		parameter="struts.mensagens.MessageResources" />
+		
+</struts-config>
