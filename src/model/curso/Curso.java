@@ -31,6 +31,7 @@ public class Curso implements Serializable{
 	public String titulo;
 	public String objetivos;
 	public String ementa;
+	public String metodologia;
 	public Date dataInicio;
 	public Date dataFim;
 	public int status;
@@ -206,6 +207,17 @@ public class Curso implements Serializable{
 			retorno = getEmenta();
 		}
 		return retorno;
+	}
+
+
+	@Column(name="metodologia", nullable=false, columnDefinition="TEXT")
+	public String getMetodologia() {
+		return metodologia;
+	}
+
+
+	public void setMetodologia(String metodologia) {
+		this.metodologia = metodologia;
 	}
 
 }

@@ -13,7 +13,7 @@
   <script type="text/javascript" src="jscripts/jquery.autocomplete.js"></script>
   <script>
   $(document).ready(function(){
-     	$("#autocomplete").autocomplete("http://localhost:8080/educardio/autocomplete.txt",
+     	$("#autocomplete").autocomplete("http://localhost:8080/isa/autocomplete.txt",
      			{
      		delay:10,
      		minChars:2,

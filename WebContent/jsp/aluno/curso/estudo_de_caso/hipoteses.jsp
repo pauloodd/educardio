@@ -16,7 +16,7 @@
 	 function avancarHipoteses(){
 			
 			var form = document.forms[0];
-			form.action = "/educardio/salvarHipoteses.do";
+			form.action = "/isa/salvarHipoteses.do";
 			form.method.value = "avancarHipoteses";
 			form.submit();
 		}

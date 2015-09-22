@@ -13,7 +13,7 @@
 		function avancarAplicacao(){
 			
 			var form = document.forms[0];
-			form.action = "/educardio/avancarAplicacao.do";
+			form.action = "/isa/avancarAplicacao.do";
 			form.method.value = "avancarAplicacao";
 			form.submit();
 		}
@@ -37,47 +37,47 @@
                     <h3>Material Pedagógico</h3>
 				<c:out value="${arcoMaguerez.estudoDeCaso.titulo}"></c:out><br/><br/>
         		<c:if test="${matricula.curso.id == 1}">
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/Comuns%20aos%203%20estudos%20de%20caso/caderneta_saude_crianca.pdf">caderneta_saude_crianca.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/Comuns%20aos%203%20estudos%20de%20caso/caderneta_saude_crianca_menina.pdf">caderneta_saude_crianca_menina.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/Comuns%20aos%203%20estudos%20de%20caso/caderneta_saude_crianca_menino.pdf">caderneta_saude_crianca_menino.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/Comuns%20aos%203%20estudos%20de%20caso/caderno_de_atencao_basica_crescimento_e_desenvolvimento_infantil.pdf">caderno_de_atencao_basica_crescimento_e_desenvolvimento_infantil.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/Comuns%20aos%203%20estudos%20de%20caso/curvas_oms_2006_2007.pdf">curvas_oms_2006_2007.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/Comuns%20aos%203%20estudos%20de%20caso/estatuto_crianca_adolescente_10ed.pdf">estatuto_crianca_adolescente_10ed.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/Comuns%20aos%203%20estudos%20de%20caso/Links_para_videos.docx">Links_para_videos.docx</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/Comuns%20aos%203%20estudos%20de%20caso/Organizacao_dos_cuidados_e_a_parceria_com_os_pais_em_pediatria_2012.pdf">Organizacao_dos_cuidados_e_a_parceria_com_os_pais_em_pediatria_2012.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/Comuns%20aos%203%20estudos%20de%20caso/caderneta_saude_crianca.pdf">caderneta_saude_crianca.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/Comuns%20aos%203%20estudos%20de%20caso/caderneta_saude_crianca_menina.pdf">caderneta_saude_crianca_menina.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/Comuns%20aos%203%20estudos%20de%20caso/caderneta_saude_crianca_menino.pdf">caderneta_saude_crianca_menino.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/Comuns%20aos%203%20estudos%20de%20caso/caderno_de_atencao_basica_crescimento_e_desenvolvimento_infantil.pdf">caderno_de_atencao_basica_crescimento_e_desenvolvimento_infantil.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/Comuns%20aos%203%20estudos%20de%20caso/curvas_oms_2006_2007.pdf">curvas_oms_2006_2007.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/Comuns%20aos%203%20estudos%20de%20caso/estatuto_crianca_adolescente_10ed.pdf">estatuto_crianca_adolescente_10ed.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/Comuns%20aos%203%20estudos%20de%20caso/Links_para_videos.docx">Links_para_videos.docx</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/Comuns%20aos%203%20estudos%20de%20caso/Organizacao_dos_cuidados_e_a_parceria_com_os_pais_em_pediatria_2012.pdf">Organizacao_dos_cuidados_e_a_parceria_com_os_pais_em_pediatria_2012.pdf</a><br/>
         		</c:if>
                 <br/>
                 <c:if test="${arcoMaguerez.estudoDeCaso.id == 1}">
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/Barbosa et at_2012.pdf">Barbosa et at_2012.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/calendário vacinal_2013.pdf">calendário vacinal_2013.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/Collet_2003.pdf">Collet_2003.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/Figueiredo et al_2011.pdf">Figueiredo et al_2011.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/Goulart_2010.pdf">Goulart_2010.pdf</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/Homma_2011.PDF">Homma_2011.PDF</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/Links para texto_imagem.docx">Links para texto_imagem.docx</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/Links para vídeos.docx">Links para vídeos.docx</a><br/>
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%201/Vasconcelos et al_2009.pdf">Vasconcelos et al_2009.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/Barbosa et at_2012.pdf">Barbosa et at_2012.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/calendário vacinal_2013.pdf">calendário vacinal_2013.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/Collet_2003.pdf">Collet_2003.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/Figueiredo et al_2011.pdf">Figueiredo et al_2011.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/Goulart_2010.pdf">Goulart_2010.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/Homma_2011.PDF">Homma_2011.PDF</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/Links para texto_imagem.docx">Links para texto_imagem.docx</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/Links para vídeos.docx">Links para vídeos.docx</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%201/Vasconcelos et al_2009.pdf">Vasconcelos et al_2009.pdf</a><br/>
         	</c:if>
                 
                 
                 <c:if test="${arcoMaguerez.estudoDeCaso.id == 2}">
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%202/apoio_mulher_trabalhadora_amamentacao.pdf">apoio_mulher_trabalhadora_amamentacao.pdf</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%202/cartilha_mae_trabalhadora_amamenta.pdf">cartilha_mae_trabalhadora_amamenta.pdf</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%202/Monteiro et al_2011.PDF">Monteiro et al_2011.PDF</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%202/Piccinini_2009.PDF">Piccinini_2009.PDF</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%202/Pinto_2010.pdf">Pinto_2010.pdf</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%202/saude_crianca_nutricao_aleitamento_alimentacao.pdf">saude_crianca_nutricao_aleitamento_alimentacao.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%202/apoio_mulher_trabalhadora_amamentacao.pdf">apoio_mulher_trabalhadora_amamentacao.pdf</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%202/cartilha_mae_trabalhadora_amamenta.pdf">cartilha_mae_trabalhadora_amamenta.pdf</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%202/Monteiro et al_2011.PDF">Monteiro et al_2011.PDF</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%202/Piccinini_2009.PDF">Piccinini_2009.PDF</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%202/Pinto_2010.pdf">Pinto_2010.pdf</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%202/saude_crianca_nutricao_aleitamento_alimentacao.pdf">saude_crianca_nutricao_aleitamento_alimentacao.pdf</a><br/>
         		</c:if>
                 
                 
                 <c:if test="${arcoMaguerez.estudoDeCaso.id == 3}">
-        			<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%203/Brito et al_2005.pdf">Brito et al_2005.pdf</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%203/Brito_2005.pdf">Brito_2005.pdf</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%203/Ferreira_2005 ok.pdf">Ferreira_2005 ok.pdf</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%203/Lise_Motta_2012 ok.pdf">Lise_Motta_2012 ok.pdf</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%203/notificacao_maustratos_criancas_adolescentes.pdf">notificacao_maustratos_criancas_adolescentes.pdf</a><br/>
-					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%203/Silva et al_2011.pdf">Silva et al_2011.pdf</a><br/>
- 					<a target="_blank" href="http://www.ideias.ufpe.br/educardio/estudo%20de%20caso%203/Silva_2002.pdf">Silva_2002.pdf</a><br/>
+        			<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%203/Brito et al_2005.pdf">Brito et al_2005.pdf</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%203/Brito_2005.pdf">Brito_2005.pdf</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%203/Ferreira_2005 ok.pdf">Ferreira_2005 ok.pdf</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%203/Lise_Motta_2012 ok.pdf">Lise_Motta_2012 ok.pdf</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%203/notificacao_maustratos_criancas_adolescentes.pdf">notificacao_maustratos_criancas_adolescentes.pdf</a><br/>
+					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%203/Silva et al_2011.pdf">Silva et al_2011.pdf</a><br/>
+ 					<a target="_blank" href="http://www.ideias.ufpe.br/isa/estudo%20de%20caso%203/Silva_2002.pdf">Silva_2002.pdf</a><br/>
         		</c:if>
                 
             </div><!-- /#wrapper -->

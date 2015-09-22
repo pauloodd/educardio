@@ -96,7 +96,7 @@
 					<input type="text" name="termo-buscar" id="termo-buscar" style="float:left;" /> 
 					<input type="submit" value="Pesquisar" style="margin-top:0px;" />
 				</form>
-				
+				<br /><br />
 				<div>
 				
  				<table id="demoTable" style="border: 1px solid #ccc;" cellspacing="0" width="700">

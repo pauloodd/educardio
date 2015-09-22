@@ -27,7 +27,7 @@
                 <p>Algo inesperado ocorreu no sistema.<br />
 				Favor reportar a mensagem abaixo para o administrador e fazer login novamente.</p> 
                 
-                <input type="button" value="Logar Novamente" onclick="window.location.href = '/educardio';">
+                <input type="button" value="Logar Novamente" onclick="window.location.href = '/isa';">
                 <input type="button" value="Reportar Bug" onclick="document.forms[1].submit();">         
                 
             </div>

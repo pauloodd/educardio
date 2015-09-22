@@ -16,7 +16,7 @@
 		function avancarTeorizacao(){
 			
 			var form = document.forms[0];
-			form.action = "/educardio/avancarTeorizacao.do";
+			form.action = "/isa/avancarTeorizacao.do";
 			form.method.value = "avancarTeorizacao";
 			form.submit();
 		}

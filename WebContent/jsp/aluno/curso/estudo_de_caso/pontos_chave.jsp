@@ -64,7 +64,7 @@
 		function avancarPtsChave(){
 			
 			var form = document.forms[0];
-			form.action = "/educardio/salvarPontosChaves.do";
+			form.action = "/isa/salvarPontosChaves.do";
 			form.method.value = "avancarPontosChaves";
 			form.submit();
 		}
@@ -110,7 +110,7 @@
                 	
                 	 <div class="help">
                                 <h3 class="arco pontos"> Diagnósticos</h3>
-                                Nesta segunda etapa do Método do Arco ("Pontos-Chaves") você deverá refletir sobre as prováveis causas determinantes do problema, listando abaixo palavras ou frases que o referenciem ou os fatores que motivaram o seu aparecimento. Não se esqueça de justificar suas escolhas! 
+                               A partir das informações presentes no estudo de caso, formule diagnósticos de Enfermagem, a fim de prestar a melhor assistência possível. 
                     </div>
                     
                 	<br />

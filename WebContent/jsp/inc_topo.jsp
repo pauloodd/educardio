@@ -2,7 +2,7 @@
 	<div id="header">
     	<div id="header_width">
             <div id="header_l">
-                <p class="logo"><a href="/educardio">EduCardio</a></p>
+                <p class="logo"><a href="/isa">ISA</a></p>
 	                           
             </div><!-- /#header_l -->
             

@@ -43,7 +43,7 @@
 		<div id="middle_align">
 
             <div id="wrapper" class='logado caso'>
-        	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Observação da Realidade</h3>
+        	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Investigação</h3>
 
                <jsp:include page="inc_topo_estudo_caso.jsp"  flush="true"/>  
                 
@@ -52,9 +52,8 @@
                 <div class="rf-tab-hdr-brd hipotese">
                 	
                 	 <div class="help">
-                                <h3 class="arco obs"> Observação da Realidade</h3>
-                                Aprenda a agir no campo profissional e a refletir sobre suas ações, numa troca dinâmica de experiências e conhecimentos, seguindo as cinco etapas do Método do Arco de Charles Maguerez. 
-						Na primeira etapa do Método do Arco ("Observação da Realidade") você deverá desvelar as situações-problemas descritas abaixo que ainda não foram resolvidas ou exploradas, observando e tomando nota, de maneira ordenada, sobre a realidade dos fatos. 
+                                <h3 class="arco obs"> Investigação</h3>
+                                Analise o estudo de caso a seguir, observando as informações relevantes ao planejamento da assistência de Enfermagem.  
                     </div>
 
 				 <div class="img_descricao">

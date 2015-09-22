@@ -397,7 +397,7 @@
                             		<table>
                             			<tr style="border: 0;">
 											<td style="width: 70%;">
-								            	<input type="button" onclick="window.location.href = '/educardio';" value="Voltar" />
+								            	<input type="button" onclick="window.location.href = '/isa';" value="Voltar" />
 											</td>
 											<td style="width: 15%;" align="right">
 												<h:reset onclick="removerTodosCursos();" value="Limpar"/>

@@ -13,7 +13,7 @@
 		function avancarAplicacao(){
 			
 			var form = document.forms[0];
-			form.action = "/educardio/avancarAplicacao.do";
+			form.action = "/isa/avancarAplicacao.do";
 			form.method.value = "avancarAplicacao";
 			form.submit();
 		}

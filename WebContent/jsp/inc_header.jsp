@@ -1,12 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
-<title>EduCardio</title>
+<title>ISA</title>
 </head>
 
-<meta name="title" content="Educardio" />
-<meta name="description" content="Intervenção educacional sobre cardiopatias congênitas para graduandos em Enfermagem: uma abordagem de métodos mistos" />
-<meta name="keywords" content="Enfermagem, Educação, Cardiopatia" />
+<meta name="title" content="ISA" />
+<meta name="description" content="Integração de conteúdos para Sistematização da Assistência de Enfermagem em Adaptações cardiorrespiratórias no recém-nascido" />
+<meta name="keywords" content="Enfermagem, Educação" />
 <meta name="language" content="pt-BR" />
 <meta name="robots" content="All" />
 <meta name="revisit" content="7 days" />

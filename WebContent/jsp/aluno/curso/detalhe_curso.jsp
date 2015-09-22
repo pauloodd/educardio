@@ -31,6 +31,7 @@
 	           		</c:forEach>
 		            <p>Ementa:<br/><c:out value="${matricula.curso.ementa}"></c:out></p>
 		            <p>Objetivos:<br/><c:out value="${matricula.curso.objetivos}"></c:out></p>
+		            <p>Metodologia:<br/><c:out value="${matricula.curso.metodologia}"></c:out></p>
                     <p>Professor Responsável:<br/><c:out value="${matricula.curso.professor.nome}"></c:out></p>
 					<br clear="all" />
 
