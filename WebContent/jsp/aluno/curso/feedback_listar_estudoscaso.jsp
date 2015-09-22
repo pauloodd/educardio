@@ -30,11 +30,11 @@
             	<tr>
                 	<th>Cód</th>
                     <th>Caso</th>
-                    <th>Observação da Realidade</th>
-                    <th>Pontos-Chaves</th>
-                    <th>Teorização</th>
-                    <th>Hipóteses de Solução</th>
-                    <th>Aplicação à Realidade</th> 
+                    <th>Investigação</th>
+                    <th>Planejamento</th>
+                    <th>Implementação</th>
+                    <th>Resultados Esperados</th>
+                    <th>avaliação</th> 
                     <th>Comentários e Menção</th>
                 </tr>
             	
@@ -136,15 +136,15 @@
 		<a id="popupContactClose">sair</a>
 		<h1>Visualizar Avaliação!</h1>
 		<p id="contactArea">
-				<b>Pontos-Chaves:</b><br />
+				<b>Planejamento:</b><br />
 				<div id="pontos-chave-comentarios"></div><br />
 				<div id="pontos-chave-nota"></div><br />
 				
-				<b>Teorização:</b><br />
+				<b>Implementação:</b><br />
 				<div id="teorizacao-comentarios"></div><br />
 				<div id="teorizacao-nota"></div><br />
 				
-				<b>Hipóteses de Solução:</b><br />
+				<b>Resultados Esperados:</b><br />
 				<div id="hipoteses-comentarios"></div><br />
 				<div id="hipoteses-nota"></div><br />
 		</p>

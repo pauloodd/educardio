@@ -148,12 +148,12 @@
 		<forward name="fAlunoDetalheCurso" path="/jsp/aluno/curso/detalhe_curso.jsp" />
 		<forward name="fAlunoOrganizarAmbulatorio" path="/jsp/aluno/curso/ambulatorio.jsp" />
 		<forward name="fAlunoListaEstudoDeCaso" path="/jsp/aluno/curso/estudo_de_caso/lista_estudo_de_caso.jsp" />
-		<forward name="fAlunoEstudoDeCasoObsRealidade" path="/jsp/aluno/curso/estudo_de_caso/observacao_realidade.jsp" />
-		<forward name="fAlunoEstudoDeCasoPontosChave" path="/jsp/aluno/curso/estudo_de_caso/pontos_chave.jsp" />
-		<forward name="fAlunoEstudoDeCasoTeorizacao" path="/jsp/aluno/curso/estudo_de_caso/teorizacao.jsp" />
-		<forward name="fAlunoEstudoDeCasoHipoteses" path="/jsp/aluno/curso/estudo_de_caso/hipoteses.jsp" />
+		<forward name="fAlunoEstudoDeCasoInvestigacao" path="/jsp/aluno/curso/estudo_de_caso/investigacao.jsp" />
+		<forward name="fAlunoEstudoDeCasoPlanejamento" path="/jsp/aluno/curso/estudo_de_caso/planejamento.jsp" />
+		<forward name="fAlunoEstudoDeCasoImplementacao" path="/jsp/aluno/curso/estudo_de_caso/implementacao.jsp" />
+		<forward name="fAlunoEstudoDeCasoResultados" path="/jsp/aluno/curso/estudo_de_caso/resultados.jsp" />
 		<forward name="fAlunoEstudoDeCasoHipotesesRefresh" path="/hipoteses.do?method=mostrarTelaHipoteses" />
-		<forward name="fAlunoEstudoDeCasoAplicacao" path="/jsp/aluno/curso/estudo_de_caso/aplicacao.jsp" />
+		<forward name="fAlunoEstudoDeCasoAvaliacao" path="/jsp/aluno/curso/estudo_de_caso/avaliacao.jsp" />
 		<forward name="fAlunoEstudoDeCasoProcurarTermo" path="/jsp/aluno/curso/estudo_de_caso/procurar-termo.jsp" />
 		
 		<forward name="fAlunoOpniaoCurso" path="/jsp/aluno/curso/opniao_curso.jsp" />

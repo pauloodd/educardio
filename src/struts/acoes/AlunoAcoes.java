@@ -45,12 +45,12 @@ public class AlunoAcoes extends DispatchAction {
 	private static final String fALUNODETALHECURSO = "fAlunoDetalheCurso";
 	private static final String fALUNOORGANIZARAMBULATORIO = "fAlunoOrganizarAmbulatorio";
 	private static final String fALUNOLISTAESTUDODECASO = "fAlunoListaEstudoDeCaso";
-	private static final String fALUNOESTUDOCASOOBSREALIDADE = "fAlunoEstudoDeCasoObsRealidade";
-	private static final String fALUNOESTUDOCASOPONTOSCHAVE= "fAlunoEstudoDeCasoPontosChave";
-	private static final String fALUNOESTUDOCASOTEORIZACAO= "fAlunoEstudoDeCasoTeorizacao";
-	private static final String fALUNOESTUDOCASOHIPOTESES= "fAlunoEstudoDeCasoHipoteses";
+	private static final String fALUNOESTUDOCASOINVESTIGACAO = "fAlunoEstudoDeCasoInvestigacao";
+	private static final String fALUNOESTUDOCASOPLANEJAMENTO= "fAlunoEstudoDeCasoPlanejamento";
+	private static final String fALUNOESTUDOCASOIMPLEMENTACAO= "fAlunoEstudoDeCasoImplementacao";
+	private static final String fALUNOESTUDOCASORESULTADOS= "fAlunoEstudoDeCasoResultados";
 	private static final String fALUNOESTUDOCASOHIPOTESESREFRESH = "fAlunoEstudoDeCasoHipotesesRefresh";
-	private static final String fALUNOESTUDOCASOAPLICACAO= "fAlunoEstudoDeCasoAplicacao";
+	private static final String fALUNOESTUDOCASOAVALIACAO= "fAlunoEstudoDeCasoAvaliacao";
 	private static final String fALUNOESTUDOCASOPROCURARTERMO= "fAlunoEstudoDeCasoProcurarTermo";
 	private static final String fALUNOOPNIAOCURSO = "fAlunoOpniaoCurso";
 	private static final String fALUNOFEEDBACKCURSO = "fAlunoFeedBackCurso";
@@ -232,7 +232,7 @@ public class AlunoAcoes extends DispatchAction {
 			request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
 		}
 		
-		return map.findForward(fALUNOESTUDOCASOOBSREALIDADE);
+		return map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 	}
 	
 	public ActionForward mostrarTelaPontosChave(ActionMapping map, ActionForm form,
@@ -246,10 +246,10 @@ public class AlunoAcoes extends DispatchAction {
 			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
 				List<Determinante> determinantes = fachada.buscarDeterminantePorPontoChave(arcoMaguerez.getPontosChave());
 				request.getSession().setAttribute("determinantes", determinantes);
-				retorno =  map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+				retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase Observação da Realidade para visualizar esta Fase do Arco");
-				retorno =  map.findForward(fALUNOESTUDOCASOOBSREALIDADE);
+				retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -281,7 +281,7 @@ public class AlunoAcoes extends DispatchAction {
 			request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
 		}
 		
-		return map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+		return map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 	}
 	
 	public ActionForward salvarPontosChaves(ActionMapping map, ActionForm form,
@@ -314,14 +314,14 @@ public class AlunoAcoes extends DispatchAction {
 			request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
 		}
 		
-		return map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+		return map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 	}
 	
 	
 	public ActionForward avancarPontosChaves(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
-		ActionForward retorno = map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+		ActionForward retorno = map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 		
 		try{
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
@@ -354,7 +354,7 @@ public class AlunoAcoes extends DispatchAction {
 				
 				request.setAttribute("mensagem", "Fase Diagnóstico concluída com sucesso!");
 			}
-			retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
+			retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 			
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -375,13 +375,13 @@ public class AlunoAcoes extends DispatchAction {
 			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
 			
 			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.TEORIZACAO){
-				retorno =  map.findForward(fALUNOESTUDOCASOTEORIZACAO);
+				retorno =  map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase Pontos-Chave para visualizar esta Fase do Arco");
 				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
-					retorno =  map.findForward(fALUNOESTUDOCASOOBSREALIDADE);
+					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 				}else{
-					retorno =  map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 				}
 			}
 		}catch(Exception ex){
@@ -403,7 +403,7 @@ public class AlunoAcoes extends DispatchAction {
 			
 			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.HIPOTESES){
 //				retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
-				retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
+				retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 			}else{
 				FileUploadForm fileUploadForm = (FileUploadForm)form;
 				 
@@ -437,7 +437,7 @@ public class AlunoAcoes extends DispatchAction {
 			    }else if(file.getFileName().equals("") && (teorizacao.getArquivos() == null || teorizacao.getArquivos().isEmpty())){
 			    	request.setAttribute("mensagem", "Nenhum arquivo foi selecionado!");
 			    }
-				retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
+				retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -456,7 +456,7 @@ public class AlunoAcoes extends DispatchAction {
 			Teorizacao teorizacao = arcoMaguerez.getTeorizacao(); 
 			
 			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.HIPOTESES){
-				retorno = map.findForward(fALUNOESTUDOCASOHIPOTESES);
+				retorno = map.findForward(fALUNOESTUDOCASORESULTADOS);
 			}else{
 //				FileUploadForm fileUploadForm = (FileUploadForm)form;
 //				 
@@ -527,15 +527,15 @@ public class AlunoAcoes extends DispatchAction {
 			request.getSession().setAttribute("diagnosticos", diagnosticos);
 			
 			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.HIPOTESES){
-				retorno =  map.findForward(fALUNOESTUDOCASOHIPOTESES);
+				retorno =  map.findForward(fALUNOESTUDOCASORESULTADOS);
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
 				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
-					retorno =  map.findForward(fALUNOESTUDOCASOOBSREALIDADE);
+					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
-					retorno =  map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 				}else{
-					retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
+					retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 				}
 			}
 		}catch(Exception ex){
@@ -560,16 +560,16 @@ public class AlunoAcoes extends DispatchAction {
 			request.getSession().setAttribute("diagnosticos", diagnosticos);
 			
 			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.HIPOTESES){
-				retorno =  map.findForward(fALUNOESTUDOCASOHIPOTESES);
+				retorno =  map.findForward(fALUNOESTUDOCASORESULTADOS);
 				request.setAttribute("mensagem", "Dados salvos com sucesso!");
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
 				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
-					retorno =  map.findForward(fALUNOESTUDOCASOOBSREALIDADE);
+					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
-					retorno =  map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 				}else{
-					retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
+					retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 				}
 			}
 		}catch(Exception ex){
@@ -598,17 +598,17 @@ public class AlunoAcoes extends DispatchAction {
 			    arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 				
 			    request.setAttribute("mensagem", "Fase Implementação concluída com sucesso!");
-			    retorno =  map.findForward(fALUNOESTUDOCASOAPLICACAO);
+			    retorno =  map.findForward(fALUNOESTUDOCASOAVALIACAO);
 			}else if(arcoMaguerez.getFaseDoArco() > ArcoMaguerezEstudoDeCaso.HIPOTESES){
-				retorno =  map.findForward(fALUNOESTUDOCASOAPLICACAO);
+				retorno =  map.findForward(fALUNOESTUDOCASOAVALIACAO);
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
 				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
-					retorno =  map.findForward(fALUNOESTUDOCASOOBSREALIDADE);
+					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
-					retorno =  map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 				}else{
-					retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
+					retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 				}
 			}
 		}catch(Exception ex){
@@ -654,7 +654,7 @@ public class AlunoAcoes extends DispatchAction {
 			 ex.printStackTrace();
 			 request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
 		}
-    	  return  map.findForward(fALUNOESTUDOCASOHIPOTESES);
+    	  return  map.findForward(fALUNOESTUDOCASORESULTADOS);
 	}
 	
 	public ActionForward editarDiagnostico(ActionMapping map, ActionForm form,
@@ -695,7 +695,7 @@ public class AlunoAcoes extends DispatchAction {
 			 ex.printStackTrace();
 			 request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
 		}
-    	  return  map.findForward(fALUNOESTUDOCASOHIPOTESES);
+    	  return  map.findForward(fALUNOESTUDOCASORESULTADOS);
 	}
 	
 	public ActionForward removerDiagnostico(ActionMapping map, ActionForm form,
@@ -774,7 +774,7 @@ public class AlunoAcoes extends DispatchAction {
 			 ex.printStackTrace();
 			 request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
 		}
-    	  return  map.findForward(fALUNOESTUDOCASOHIPOTESES);
+    	  return  map.findForward(fALUNOESTUDOCASORESULTADOS);
 	}
 	
 	public ActionForward removerMetaDiagnostico(ActionMapping map, ActionForm form,
@@ -831,7 +831,7 @@ public class AlunoAcoes extends DispatchAction {
 			 ex.printStackTrace();
 			 request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
 		}
-    	  return  map.findForward(fALUNOESTUDOCASOHIPOTESES);
+    	  return  map.findForward(fALUNOESTUDOCASORESULTADOS);
 	}
 	
 	public ActionForward editarIntervencaoDiagnostico(ActionMapping map, ActionForm form,
@@ -869,7 +869,7 @@ public class AlunoAcoes extends DispatchAction {
 			 ex.printStackTrace();
 			 request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
 		}
-    	  return  map.findForward(fALUNOESTUDOCASOHIPOTESES);
+    	  return  map.findForward(fALUNOESTUDOCASORESULTADOS);
 	}
 	
 	public ActionForward removerIntervencaoDiagnostico(ActionMapping map, ActionForm form,
@@ -906,17 +906,17 @@ public class AlunoAcoes extends DispatchAction {
 			}
 			
 			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.APLICACAO){
-				retorno =  map.findForward(fALUNOESTUDOCASOAPLICACAO);
+				retorno =  map.findForward(fALUNOESTUDOCASOAVALIACAO);
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
 				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
-					retorno =  map.findForward(fALUNOESTUDOCASOOBSREALIDADE);
+					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
-					retorno =  map.findForward(fALUNOESTUDOCASOPONTOSCHAVE);
+					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.TEORIZACAO){
-					retorno =  map.findForward(fALUNOESTUDOCASOTEORIZACAO);
+					retorno =  map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 				}else{
-					retorno = map.findForward(fALUNOESTUDOCASOHIPOTESES);
+					retorno = map.findForward(fALUNOESTUDOCASORESULTADOS);
 				}
 			}
 		}catch(Exception ex){
@@ -930,7 +930,7 @@ public class AlunoAcoes extends DispatchAction {
 	public ActionForward salvarAplicacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
-		ActionForward retorno = map.findForward(fALUNOESTUDOCASOAPLICACAO);
+		ActionForward retorno = map.findForward(fALUNOESTUDOCASOAVALIACAO);
 		try{
 			String texto = ((DynaActionForm)form).getString("texto");
 			if(texto != null && !texto.equals("")){
@@ -955,7 +955,7 @@ public class AlunoAcoes extends DispatchAction {
 	public ActionForward avancarAplicacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
-		ActionForward retorno = map.findForward(fALUNOESTUDOCASOAPLICACAO);
+		ActionForward retorno = map.findForward(fALUNOESTUDOCASOAVALIACAO);
 		try{
 			String texto = ((DynaActionForm)form).getString("texto");
 			if(texto != null && !texto.equals("")){

@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="css/popup.css" type="text/css" media="screen" />	
 
 	 <script type="text/javascript">
-		function avancarTeorizacao(){
+	 function avancarHipoteses(){
 			
 			var form = document.forms[0];
-			form.action = "/isa/avancarTeorizacao.do";
-			form.method.value = "avancarTeorizacao";
+			form.action = "/isa/salvarHipoteses.do";
+			form.method.value = "avancarHipoteses";
 			form.submit();
 		}
 	</script>
@@ -95,19 +95,19 @@
     <div id="middle">    
 		<div id="middle_align">
 
-          	<h:form action="salvarTeorizacao" method="post" enctype="multipart/form-data">
-          						<h:hidden property="method" value="salvarTeorizacao"/>
+          	<h:form action="salvarHipoteses" method="post" enctype="multipart/form-data">
+          						<h:hidden property="method" value="salvarHipoteses"/>
           	
             <div id="wrapper" class='logado caso'>
-        	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Planejamento</h3>
+        	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Resultados Esperado</h3>
 
                <jsp:include page="inc_topo_estudo_caso.jsp"  flush="true"/>  
-            <c:if test="${arcoMaguerez.faseDoArco > 2}"><div class="desabilitar-form" style="height:100%;"></div>	</c:if>    
+            <c:if test="${arcoMaguerez.faseDoArco > 3}"><div class="desabilitar-form" style="height:100%;"></div>	</c:if>    
             	
                 	
                 	<div class="help">
-                                <h3 class="arco teorizacao"> Planejamento</h3>
-                               Nesta terceira etapa do Método do Arco ("Planejamento") você deverá estudar os pontos-chaves em artigos científicos, livros, anais de congresso, vídeos educativos, entre outros materiais de aprendizagem. Podendo também participar de palestras, encontros e reuniões científicas. Anexe abaixo um documento com o resumo do conteúdo pesquisado e as referências relacionadas. Atente-se para não desviar do tema proposto!
+                                <h3 class="arco hipotese"> Resultados Esperados</h3>
+                               Cite as mudanças esperadas após a implementação dos cuidados de Enfermagem.
                                </div>
                     
                 	 
@@ -117,7 +117,7 @@
 			            	<tr>
 			            		<th>index</th>
 			                	<th>Diagnóstico</th>
-			                    <th>Planejamento</th>
+			                    <th>Implementação</th>
 			                    <th>Ação</th>
 			                </tr>
 		                </thead>
@@ -130,7 +130,7 @@
 				                	<td><c:out value="${determinante.titulo}"></c:out></td>
 				                	<td></td>
 				                	 <td align="center">
-				                	 		 <input type="button" value="Adicionar Planejamento" id="button"/>
+				                	 		 <input type="button" value="Adicionar Implementação" id="button"/>
 				                	 		<h:hidden property="determinantes" value='${determinante.id}##${determinante.titulo}' ></h:hidden>
 				                	 </td>
 				                </tr>
@@ -149,14 +149,14 @@
 		                </td>
 		                <td class="space"></td>
 		            	<td class="left">    
-		                	<input type="button" value="Cancelar" onclick="window.location.href = 'teorizacao.do?method=mostrarTelaTeorizacao';" class="bt_cancelar" class="left">
+		                	<input type="button" value="Cancelar" onclick="window.location.href = 'hipoteses.do?method=mostrarTelaHipoteses';" class="bt_cancelar" class="left">
 		                </td>
 		               <td class="right">
 		                	<input type="submit"  value="Salvar Dados" class="bt_salvar" class="right">
 	               		 </td>
 		                <td class="space"></td>
 		                 <td style="vertical-align: top;">
-		        			<input type="button"  value="Avançar Fase" onclick="avancarTeorizacao();"  class="bt_avancar" class="left">
+		        			<input type="button"  value="Avançar Fase" onclick="avancarHipoteses();"  class="bt_avancar" class="left">
 		                </td>
 	              </tr>
 	            </table>
@@ -173,12 +173,12 @@
 
 <div id="popupContact" style="position: absolute; top: 184.167px; left: 0px; display: none;">
 		<a id="popupContactClose">sair</a>
-		<h1>Adicionar Planejamento!</h1>
+		<h1>Adicionar Implementação!</h1>
 		<p id="contactArea">
 			<table border='0' style="border:none !important; font-size: 13px !important; color: black !important;">
 						<tr style="border:none !important;">
 							<td align="left" style="text-align:justify;">
-								Planejamento:<br />
+								Implementação:<br />
 							</td>
 						</tr>
 						<tr style="border:none !important;">
@@ -201,7 +201,7 @@
 					</table>
 			<br />
 			
-			<input type="button" value="Adicionar Planejamento" onclick="adicionarDeterminante();"/>
+			<input type="button" value="Adicionar Implementação" onclick="adicionarDeterminante();"/>
 		</p>
 	</div>
 	<div id="backgroundPopup"></div>

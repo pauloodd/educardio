@@ -100,7 +100,7 @@
 		<div id="middle_align">
 
             <div id="wrapper" class='logado caso'>
-        	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Diagnósticos</h3>
+        	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Planejamento</h3>
 
                <jsp:include page="inc_topo_estudo_caso.jsp"  flush="true"/>  
                 
@@ -109,7 +109,7 @@
 				
                 	
                 	 <div class="help">
-                                <h3 class="arco pontos"> Diagnósticos</h3>
+                                <h3 class="arco pontos"> Planejamento</h3>
                                A partir das informações presentes no estudo de caso, formule diagnósticos de Enfermagem, a fim de prestar a melhor assistência possível. 
                     </div>
                     

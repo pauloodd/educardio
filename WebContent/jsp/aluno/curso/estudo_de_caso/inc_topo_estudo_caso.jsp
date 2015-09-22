@@ -23,7 +23,7 @@
         <c:if test="${arcoMaguerez.faseDoArco > 1}">
 	        <img src="imagens/icons/Actions-dialog-ok-apply-icon.png">
        </c:if>
-        <a href="ptsChave.do?method=mostrarTelaPontosChave">Diagnóstico</a></span></td>
+        <a href="ptsChave.do?method=mostrarTelaPontosChave">Planejamento</a></span></td>
         <td class="rf-tab-hdr-spcr rf-tab-hortab-tabspcr-wdh" style=""><br></td>
         
         <td style="" class="rf-tab-hdr rf-tab-hdr-act rf-tab-hdr-top" id="j_idt2345:j_idt2349:1:j_idt2350:header:active"><span class="rf-tab-lbl">
@@ -36,7 +36,7 @@
         <c:if test="${arcoMaguerez.faseDoArco > 2}">
 	        <img src="imagens/icons/Actions-dialog-ok-apply-icon.png">
        </c:if>
-        <a href="teorizacao.do?method=mostrarTelaTeorizacao">Planejamento</a></span></td>
+        <a href="teorizacao.do?method=mostrarTelaTeorizacao">Implementação</a></span></td>
         <td class="rf-tab-hdr-spcr rf-tab-hortab-tabspcr-wdh" style=""><br></td>
         
         <td style="" class="rf-tab-hdr rf-tab-hdr-act rf-tab-hdr-top" id="j_idt2345:j_idt2349:2:j_idt2350:header:active"><span class="rf-tab-lbl">
@@ -49,7 +49,7 @@
         <c:if test="${arcoMaguerez.faseDoArco > 3}">
 	        <img src="imagens/icons/Actions-dialog-ok-apply-icon.png">
        </c:if>
-        <a href="hipoteses.do?method=mostrarTelaHipoteses">Implementação</a></span></td>
+        <a href="hipoteses.do?method=mostrarTelaHipoteses">Resultados Esperados</a></span></td>
         <td class="rf-tab-hdr-spcr rf-tab-hortab-tabspcr-wdh" style=""><br></td>
         
         <td style="" class="rf-tab-hdr rf-tab-hdr-act rf-tab-hdr-top" id="j_idt2345:j_idt2349:3:j_idt2350:header:active"><span class="rf-tab-lbl">
