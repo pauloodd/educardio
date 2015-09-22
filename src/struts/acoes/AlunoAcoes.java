@@ -206,7 +206,7 @@ public class AlunoAcoes extends DispatchAction {
 		
 	}
 	
-	public ActionForward  mostrarTelaObservacaoRealidade(ActionMapping map, ActionForm form,
+	public ActionForward  mostrarTelaInvestigacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		try{
@@ -235,7 +235,7 @@ public class AlunoAcoes extends DispatchAction {
 		return map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 	}
 	
-	public ActionForward mostrarTelaPontosChave(ActionMapping map, ActionForm form,
+	public ActionForward mostrarTelaPlanejamento(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = null;
@@ -364,7 +364,7 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	public ActionForward mostrarTelaTeorizacao(ActionMapping map, ActionForm form,
+	public ActionForward mostrarTelaImplementacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = null;
@@ -513,7 +513,7 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	public ActionForward mostrarTelaHipoteses(ActionMapping map, ActionForm form,
+	public ActionForward mostrarTelaResultados(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = null;

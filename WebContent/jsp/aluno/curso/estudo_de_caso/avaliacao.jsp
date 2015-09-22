@@ -53,7 +53,7 @@
         		<table class="navegacao" style="position: relative; z-index:2;">
 	            	<tr>
 		             	 <td style="vertical-align: top;">
-		               		<input type="button" value="Voltar" onclick="window.location.href = 'hipoteses.do?method=mostrarTelaHipoteses';" class="bt_voltar" />
+		               		<input type="button" value="Voltar" onclick="window.location.href = 'hipoteses.do?method=mostrarTelaResultados';" class="bt_voltar" />
 		                </td>
 		                <td class="space"></td>
 		            	<td class="left">    

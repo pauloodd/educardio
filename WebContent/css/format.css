@@ -40,23 +40,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	-moz-opacity:0.2; opacity:0.2; 
 }
 
-a{ color: #4f60ff; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 11px; text-decoration: underline;}
-a:hover{ color:#000538; text-decoration:none; cursor:pointer;}
+a{ color: #000538; /* old  #4f60ff */  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 11px; text-decoration: underline;}
+a:hover{ color:#444444; /* #000538 */ text-decoration:none; cursor:pointer;}
 .dnone { display: none !important }
 .border-none{ border:none !important;}
 h2{
-	color: #000c88;
+	color: #000;/* #000538 */ 
 	font-size: 140%;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
 }
 
 h3{
-	color: #000c88;
+	color: #000; /* #000c88 */ 
 	font-size: 130%;
+	
 	padding: 0 0 15px 0;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
 }
-h3.bread{ text-indent:50px; line-height: 35px;}
+h3.bread{ text-indent:50px; line-height: 35px; color:#000538;}
 
 h4{
 	font-size: 120%;
@@ -85,7 +86,7 @@ input, select, textarea, button[type="button"]{
 	height: auto; 	
 	padding: 2px 5px;
 	display: block;
-	color: #000c88;
+	color: #000538; /* #000c88*/
 	
 	background: rgb(254,255,255) 0 32px; /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(254,255,255,1) 50%, rgba(232,242,235,1) 100%); /* FF3.6+ */
@@ -315,7 +316,7 @@ table.nav_curso li ul li a:hover{ text-decoration: underline; background-color: 
 	}
 
 #wrapper{
-	color: #000c88;	
+	color: #000000;	 /* #555555 */
 }
 
 #wrapper.avalia{ background:url(../imagens/icons/avalia_pic.png) no-repeat top left; }
@@ -534,7 +535,7 @@ background: linear-gradient(to bottom,  rgba(255,255,255,1) 92%,rgba(239,255,240
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#effff0',GradientType=0 ); /* IE6-9 */
 }
 
-.login h2{ color:#000c88; font-size:140%; padding:5px 0 20px 40px; background: url("../imagens/icons/icon_key.png") no-repeat;  }
+.login h2{ color:#000538; font-size:140%; padding:5px 0 20px 40px; background: url("../imagens/icons/icon_key.png") no-repeat;  }
 .login .form{ margin:0 0 0 5%; padding:0 0 0 5%; width:90%; border-left: 1px solid #ccc;  }
 .login .form label{ display: none;}
 .login .form input{ width:96%; margin: 10px 0}
@@ -655,9 +656,9 @@ table.rf-dt input[type="image"]{ border: none; background: none; text-align: cen
 
 /* ui elements */
 
-.ui-widget-header { border: none; background-color: #E8F2EB; color:#000c88;}
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{ border: 1px solid #ccc; background-color: #E8F2EB; color:#000c88; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{ border: 1px solid #000c88; background-color: #E8F2EB; color:#000c88; }
+.ui-widget-header { border: none; background-color: #E8F2EB; color:#000538;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{ border: 1px solid #ccc; background-color: #E8F2EB; color:#000538; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{ border: 1px solid #000538; background-color: #E8F2EB; color:#000538; }
 
 /* Menu Arco Marguerez */
 

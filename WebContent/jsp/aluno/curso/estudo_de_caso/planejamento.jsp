@@ -144,11 +144,11 @@
         		<table class="navegacao" style="position: relative; z-index:2;">
 	            	<tr>
 		             	 <td style="vertical-align: top;">
-		               		<input type="button" value="Voltar"  onclick="window.location.href = 'estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudoDeCaso.id}';" class="bt_voltar" >
+		               		<input type="button" value="Voltar"  onclick="window.location.href = 'estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudoDeCaso.id}';" class="bt_voltar" >
 		                </td>
 		                <td class="space"></td>
 		            	<td class="left">    
-		                	<input type="button" value="Cancelar" onclick="window.location.href = 'ptsChave.do?method=mostrarTelaPontosChave';" class="bt_cancelar" class="left">
+		                	<input type="button" value="Cancelar" onclick="window.location.href = 'ptsChave.do?method=mostrarTelaPlanejamento';" class="bt_cancelar" class="left">
 		                </td>
 		               <td class="right">
 		                	<input type="submit" value="Salvar Dados" class="bt_salvar" class="right">

@@ -13,7 +13,7 @@
 			<form-property name="idHyperLink" type="java.lang.String" />
 		</form-bean>
 		
-		<form-bean name="mostrarTelaObservacaoRealidade"
+		<form-bean name="mostrarTelaInvestigacao"
 			type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="idEstudoCaso" type="java.lang.String" />
 		</form-bean>
@@ -152,7 +152,7 @@
 		<forward name="fAlunoEstudoDeCasoPlanejamento" path="/jsp/aluno/curso/estudo_de_caso/planejamento.jsp" />
 		<forward name="fAlunoEstudoDeCasoImplementacao" path="/jsp/aluno/curso/estudo_de_caso/implementacao.jsp" />
 		<forward name="fAlunoEstudoDeCasoResultados" path="/jsp/aluno/curso/estudo_de_caso/resultados.jsp" />
-		<forward name="fAlunoEstudoDeCasoHipotesesRefresh" path="/hipoteses.do?method=mostrarTelaHipoteses" />
+		<forward name="fAlunoEstudoDeCasoHipotesesRefresh" path="/hipoteses.do?method=mostrarTelaResultados" />
 		<forward name="fAlunoEstudoDeCasoAvaliacao" path="/jsp/aluno/curso/estudo_de_caso/avaliacao.jsp" />
 		<forward name="fAlunoEstudoDeCasoProcurarTermo" path="/jsp/aluno/curso/estudo_de_caso/procurar-termo.jsp" />
 		
@@ -198,7 +198,7 @@
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 			
-		<action path="/estudoCaso"  name="mostrarTelaObservacaoRealidade"
+		<action path="/estudoCaso"  name="mostrarTelaInvestigacao"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />
 		
@@ -206,7 +206,7 @@
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 		
-		<action path="/ptsChave"  name="mostrarTelaPontosChave"
+		<action path="/ptsChave"  name="mostrarTelaPlanejamento"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />		
 			
@@ -218,7 +218,7 @@
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 			
-		<action path="/teorizacao"  name="mostrarTelaTeorizacao"
+		<action path="/teorizacao"  name="mostrarTelaImplementacao"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 		
@@ -230,7 +230,7 @@
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 			
-		<action path="/hipoteses"  name="mostrarTelaHipoteses"
+		<action path="/hipoteses"  name="mostrarTelaResultados"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 		

@@ -117,7 +117,7 @@
 			            	<tr>
 			            		<th>index</th>
 			                	<th>Diagnóstico</th>
-			                    <th>Implementação</th>
+			                    <th>Resultado</th>
 			                    <th>Ação</th>
 			                </tr>
 		                </thead>
@@ -130,7 +130,7 @@
 				                	<td><c:out value="${determinante.titulo}"></c:out></td>
 				                	<td></td>
 				                	 <td align="center">
-				                	 		 <input type="button" value="Adicionar Implementação" id="button"/>
+				                	 		 <input type="button" value="Adicionar Resultado" id="button"/>
 				                	 		<h:hidden property="determinantes" value='${determinante.id}##${determinante.titulo}' ></h:hidden>
 				                	 </td>
 				                </tr>
@@ -145,11 +145,11 @@
         		<table class="navegacao" style="position: relative; z-index:2;">
 	            	<tr>
 		             	 <td style="vertical-align: top;">
-		               		<input type="button" value="Voltar" onclick="window.location.href = 'ptsChave.do?method=mostrarTelaPontosChave';" class="bt_voltar" >
+		               		<input type="button" value="Voltar" onclick="window.location.href = 'ptsChave.do?method=mostrarTelaPlanejamento';" class="bt_voltar" >
 		                </td>
 		                <td class="space"></td>
 		            	<td class="left">    
-		                	<input type="button" value="Cancelar" onclick="window.location.href = 'hipoteses.do?method=mostrarTelaHipoteses';" class="bt_cancelar" class="left">
+		                	<input type="button" value="Cancelar" onclick="window.location.href = 'hipoteses.do?method=mostrarTelaResultados';" class="bt_cancelar" class="left">
 		                </td>
 		               <td class="right">
 		                	<input type="submit"  value="Salvar Dados" class="bt_salvar" class="right">

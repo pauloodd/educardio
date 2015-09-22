@@ -34,24 +34,24 @@
             	
                  <c:forEach items="${estudosDeCasos}" var="estudo" varStatus="index">
 	            	<tr>
-	            		<td><a href="estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudo.id}">EC<c:out value="${estudo.id}"></c:out></a></td>
-	                    <td><a href="estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudo.id}"><c:out value="${estudo.titulo}"></c:out></a></td>
-	                    <td><a href="estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudo.id}">${estudo.descricaoResumida}...</a></td>
+	            		<td><a href="estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudo.id}">EC<c:out value="${estudo.id}"></c:out></a></td>
+	                    <td><a href="estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudo.id}"><c:out value="${estudo.titulo}"></c:out></a></td>
+	                    <td><a href="estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudo.id}">${estudo.descricaoResumida}...</a></td>
 	                    
 	                    <c:if test="${estudo.statusDescricao == 'em andamentos'}">
-		                    <td><a href="estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/Play-1-Normal-Red-icon.png" title="Estudo de Caso em andamento" /></a></td>
+		                    <td><a href="estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/Play-1-Normal-Red-icon.png" title="Estudo de Caso em andamento" /></a></td>
 	                    </c:if>
                         <c:if test="${estudo.statusDescricao == 'em pausa ou suspenso'}">
-		                    <td><a href="estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/Pause-Normal-Red-icon.png" title="Estudo de Caso em pausa ou suspenso" /></a></td>
+		                    <td><a href="estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/Pause-Normal-Red-icon.png" title="Estudo de Caso em pausa ou suspenso" /></a></td>
 	                    </c:if>
 	    				<c:if test="${estudo.statusDescricao == 'previsto'}">
-		                    <td><a href="estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/Play-1-Disabled-icon.png" title="Estudo de Caso Previsto" /></a></td>
+		                    <td><a href="estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/Play-1-Disabled-icon.png" title="Estudo de Caso Previsto" /></a></td>
 	                    </c:if>
 	                    <c:if test="${estudo.statusDescricao == 'bloqueado'}">
-		                    <td><a href="estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/restrict.gif" title="Estudo de Caso bloqueado" /></a></td>
+		                    <td><a href="estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/restrict.gif" title="Estudo de Caso bloqueado" /></a></td>
 	                    </c:if>
        		            <c:if test="${estudo.statusDescricao == 'concluído'}">
-		                    <td><a href="estudoCaso.do?method=mostrarTelaObservacaoRealidade&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/Actions-dialog-ok-apply-icon.png" title="Estudo de Caso concluído" /></a></td>
+		                    <td><a href="estudoCaso.do?method=mostrarTelaInvestigacao&idEstudoCaso=${ estudo.id}"><img src="imagens/icons/Actions-dialog-ok-apply-icon.png" title="Estudo de Caso concluído" /></a></td>
 	                    </c:if>
 	            	</tr>
 	            </c:forEach>

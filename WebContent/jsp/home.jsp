@@ -52,15 +52,16 @@
       			<h2 class="noticias">Notícias e Eventos</h2>
                 
                 <ul class="noticias">
-                	<li>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> <span>
+                	<li><span>
+                		TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> 
+                		Data: 29/10/2013</span></li>
+					<li><span>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> 
 Data: 29/10/2013</span></li>
-					<li>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> <span>
+					<li><span>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> 
 Data: 29/10/2013</span></li>
-					<li>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> <span>
+					<li><span>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> 
 Data: 29/10/2013</span></li>
-					<li>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> <span>
-Data: 29/10/2013</span></li>
-					<li>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> <span>
+					<li><span>TIES - Disciplina Tecnologias da Informação em Educação e Saúde. <br> 
 Data: 29/10/2013</span></li>                  
                 </ul>
 				<p class="saiba_mais"><a href="#">Veja mais</a></p>
@@ -72,12 +73,12 @@ Data: 29/10/2013</span></li>
       			<h2 class="cursos">Cursos Disponíveis</h2>
                 
                 <ul class="cursos">
-                	<li>LIKA - Novas instalações - O Laboratório de Imunopatologia Keizo Asami conta com novas instalações.
-                    <br><span>Início: 09/10/2013</span></li>
-                    <li>LIKA - Novas instalações - O Laboratório de Imunopatologia Keizo Asami conta com novas instalações.
-                    <br><span>Início: 09/10/2013</span></li>
-                    <li>LIKA - Novas instalações - O Laboratório de Imunopatologia Keizo Asami conta com novas instalações.
-                    <br><span>Início: 09/10/2013</span></li>
+                	<li><span>LIKA - Novas instalações - O Laboratório de Imunopatologia Keizo Asami conta com novas instalações.
+                    <br>Início: 09/10/2013</span></li>
+                    <li><span>LIKA - Novas instalações - O Laboratório de Imunopatologia Keizo Asami conta com novas instalações.
+                    <br>Início: 09/10/2013</span></li>
+                    <li><span>LIKA - Novas instalações - O Laboratório de Imunopatologia Keizo Asami conta com novas instalações.
+                    <br>Início: 09/10/2013</span></li>
                 	               
                 </ul>
 				<p class="saiba_mais"><a href="#">Veja mais</a></p>
