@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="css/popup.css" type="text/css" media="screen" />	
 
 	 <script type="text/javascript">
-	 function avancarHipoteses(){
+	 function avancarResultadosEsperados(){
 			
 			var form = document.forms[0];
-			form.action = "/isa/salvarHipoteses.do";
-			form.method.value = "avancarHipoteses";
+			form.action = "/isa/salvarResultadosEsperados.do";
+			form.method.value = "avancarResultadosEsperados";
 			form.submit();
 		}
 	</script>
@@ -95,8 +95,8 @@
     <div id="middle">    
 		<div id="middle_align">
 
-          	<h:form action="salvarHipoteses" method="post" enctype="multipart/form-data">
-          						<h:hidden property="method" value="salvarHipoteses"/>
+          	<h:form action="salvarResultadosEsperados" method="post" enctype="multipart/form-data">
+          						<h:hidden property="method" value="salvarResultadosEsperados"/>
           	
             <div id="wrapper" class='logado caso'>
         	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Resultados Esperado</h3>
@@ -156,7 +156,7 @@
 	               		 </td>
 		                <td class="space"></td>
 		                 <td style="vertical-align: top;">
-		        			<input type="button"  value="Avançar Fase" onclick="avancarHipoteses();"  class="bt_avancar" class="left">
+		        			<input type="button"  value="Avançar Fase" onclick="avancarResultadosEsperados();"  class="bt_avancar" class="left">
 		                </td>
 	              </tr>
 	            </table>

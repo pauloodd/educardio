@@ -3,7 +3,7 @@ package dados.hibernate.conteudo;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Cipe;
+import model.Nanda;
 import model.curso.Curso;
 import model.curso.matricula.MatriculaCursoAluno;
 import model.curso.matricula.arcomaguerez.ArcoMaguerezEstudoDeCaso;

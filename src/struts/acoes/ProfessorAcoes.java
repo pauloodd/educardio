@@ -9,9 +9,9 @@ import model.curso.Curso;
 import model.curso.EstudoDeCaso;
 import model.curso.matricula.AvaliacaoProfessor;
 import model.curso.matricula.arcomaguerez.ArcoMaguerezEstudoDeCaso;
-import model.curso.matricula.arcomaguerez.HipotesesDeSolucao;
-import model.curso.matricula.arcomaguerez.PontosChave;
-import model.curso.matricula.arcomaguerez.Teorizacao;
+import model.curso.matricula.arcomaguerez.ResultadosEsperados;
+import model.curso.matricula.arcomaguerez.Planejamento;
+import model.curso.matricula.arcomaguerez.Implementacao;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -68,37 +68,37 @@ public class ProfessorAcoes extends DispatchAction {
 			String idArcoMaguerez = ((DynaActionForm)form).getString("idArcoMaguerez");
 			String pontosChaveComentarios = ((DynaActionForm)form).getString("pontos-chave-comentarios");
 			String pontosChaveNota = ((DynaActionForm)form).getString("pontos-chave-nota");
-			String teorizacaoComentarios = ((DynaActionForm)form).getString("teorizacao-comentarios");
-			String teorizacaoNota = ((DynaActionForm)form).getString("teorizacao-nota");
+			String teorizacaoComentarios = ((DynaActionForm)form).getString("resultadosEsperados-comentarios");
+			String teorizacaoNota = ((DynaActionForm)form).getString("resultadosEsperados-nota");
 			String hipotesesComentarios = ((DynaActionForm)form).getString("hipoteses-comentarios");
 			String hipotesesNota = ((DynaActionForm)form).getString("hipoteses-nota");
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = fachada.getArcoMaguerezId(Integer.parseInt(idArcoMaguerez));
-			PontosChave pontos = arcoMaguerez.getPontosChave();
+			Planejamento pontos = arcoMaguerez.getPlanejamento();
 			AvaliacaoProfessor avaliacao = new AvaliacaoProfessor(pontosChaveNota, pontosChaveComentarios);
-			if(arcoMaguerez.getPontosChave().getAvaliacaoProfessor() != null){
-				avaliacao = arcoMaguerez.getPontosChave().getAvaliacaoProfessor();
+			if(arcoMaguerez.getPlanejamento().getAvaliacaoProfessor() != null){
+				avaliacao = arcoMaguerez.getPlanejamento().getAvaliacaoProfessor();
 				avaliacao.setComentario(pontosChaveComentarios);
 				avaliacao.setNota(pontosChaveNota);
 			}
 			pontos.setAvaliacaoProfessor(avaliacao);
 			
 			AvaliacaoProfessor avaliacao2 = new AvaliacaoProfessor(teorizacaoNota, teorizacaoComentarios);
-			if(arcoMaguerez.getTeorizacao().getAvaliacaoProfessor() != null){
-				avaliacao2 = arcoMaguerez.getTeorizacao().getAvaliacaoProfessor();
+			if(arcoMaguerez.getImplementacao().getAvaliacaoProfessor() != null){
+				avaliacao2 = arcoMaguerez.getImplementacao().getAvaliacaoProfessor();
 				avaliacao2.setComentario(teorizacaoComentarios);
 				avaliacao2.setNota(teorizacaoNota);
 			}
-			Teorizacao teorizacao = arcoMaguerez.getTeorizacao();
+			Implementacao teorizacao = arcoMaguerez.getImplementacao();
 			teorizacao.setAvaliacaoProfessor(avaliacao2);
 			
 			AvaliacaoProfessor avaliacao3 = new AvaliacaoProfessor(hipotesesNota, hipotesesComentarios);
-			if(arcoMaguerez.getHipotesesDeSolucao().getAvaliacaoProfessor() != null){
-				avaliacao3 = arcoMaguerez.getHipotesesDeSolucao().getAvaliacaoProfessor();
+			if(arcoMaguerez.getResultadosEsperados().getAvaliacaoProfessor() != null){
+				avaliacao3 = arcoMaguerez.getResultadosEsperados().getAvaliacaoProfessor();
 				avaliacao3.setComentario(hipotesesComentarios);
 				avaliacao3.setNota(hipotesesNota);
 			}
-			HipotesesDeSolucao hipoteses = arcoMaguerez.getHipotesesDeSolucao();
+			ResultadosEsperados hipoteses = arcoMaguerez.getResultadosEsperados();
 			hipoteses.setAvaliacaoProfessor(avaliacao3);
 			
 			fachada.inserirAvaliacaoProfessor(avaliacao);

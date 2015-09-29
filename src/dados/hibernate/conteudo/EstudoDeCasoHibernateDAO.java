@@ -2,15 +2,13 @@ package dados.hibernate.conteudo;
 
 import java.util.List;
 
-import model.curso.Curso;
-import model.curso.DeterminanteHipoteses;
-import model.curso.EstudoDeCaso;
-
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 import dados.basicas.EstudoDeCasoDAO;
 import dados.hibernate.DAOGenericoHibernate;
+import model.curso.Curso;
+import model.curso.EstudoDeCaso;
 
 public class EstudoDeCasoHibernateDAO extends DAOGenericoHibernate<EstudoDeCaso, Integer>
 		implements EstudoDeCasoDAO {
@@ -27,20 +25,7 @@ public class EstudoDeCasoHibernateDAO extends DAOGenericoHibernate<EstudoDeCaso,
 		return retorno;
 	}
 
-	@Override
-	public List<DeterminanteHipoteses> buscarDeterminantesHipotesesPorEstudoCaso(
-			EstudoDeCaso estudoDeCaso) {
-		List<DeterminanteHipoteses> retorno = null;
-		
-		Criteria crit = getSession().createCriteria(DeterminanteHipoteses.class);
-		crit.add(Restrictions.eq("estudoDeCaso", estudoDeCaso));
-		
-		retorno =  crit.list();
-		
-		
-		return retorno;
-	}
-
+	
 	
 	
 		

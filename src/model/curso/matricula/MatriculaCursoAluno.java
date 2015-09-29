@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import model.curso.Curso;
-import model.curso.matricula.ambulatorio.Ambulatorio;
 import model.usuario.Aluno;
 
 @Entity
@@ -28,7 +26,6 @@ public class MatriculaCursoAluno implements Serializable{
 	public Curso curso;
 	
 	public Date dataMatricula;
-	public Ambulatorio ambulatorio;
 	
 	public String pergunta1;
 	public String pergunta2;
@@ -59,16 +56,6 @@ public class MatriculaCursoAluno implements Serializable{
 		this.dataMatricula = dataMatricula;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.MERGE, CascadeType.PERSIST})
-	@JoinColumn(name="fk_idAmbulatorio",nullable=false)
-	public Ambulatorio getAmbulatorio() {
-		return ambulatorio;
-	}
-
-	public void setAmbulatorio(Ambulatorio ambulatorio) {
-		this.ambulatorio = ambulatorio;
-	}
-	
 	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
 	@JoinColumn(name="fk_idAluno",nullable=false)
 	public Aluno getAluno() {

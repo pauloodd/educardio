@@ -16,10 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import model.sistema.Arquivo;
-
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
+import model.Nanda;
+import model.sistema.Arquivo;
 
 @Entity
 @Table(name="estudo_de_caso")
@@ -39,6 +40,8 @@ public class EstudoDeCaso implements Serializable{
 	
 	public List<Arquivo> imagensCaso;
 	public List<Arquivo> imagensAuxiliares;
+	
+	public List<Nanda> diagnosticosSelecionadoProfessor;
 	
 	public String pontosChave;
 	
@@ -168,7 +171,7 @@ public class EstudoDeCaso implements Serializable{
 		this.imagensAuxiliares = imagensAuxiliares;
 	}
 
-	@Column(name="pontosChave", nullable=false, columnDefinition="TEXT")
+	@Column(name="planejamento", nullable=false, columnDefinition="TEXT")
 	public String getPontosChave() {
 		return pontosChave;
 	}
@@ -189,9 +192,20 @@ public class EstudoDeCaso implements Serializable{
 		this.curso = curso;
 	}
 	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JoinTable(name = "diagnosticos_professor", joinColumns = { @JoinColumn(name = "estudoCasoId") }, inverseJoinColumns = { @JoinColumn(name = "nandaId") })
+	public List<Nanda> getDiagnosticosSelecionadoProfessor() {
+		return diagnosticosSelecionadoProfessor;
+	}
+
+	public void setDiagnosticosSelecionadoProfessor(List<Nanda> diagnosticosSelecionadoProfessor) {
+		this.diagnosticosSelecionadoProfessor = diagnosticosSelecionadoProfessor;
+	}
+	
 	@Transient
 	public String getDescricaoResumida(){
-		return this.getDescricao().substring(0, 100);
+		return this.getDescricao().replaceAll("\\<.*?>","").substring(0, 100);
 	}
 
 	@Transient

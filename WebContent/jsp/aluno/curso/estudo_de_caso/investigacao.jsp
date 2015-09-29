@@ -68,7 +68,7 @@
                      </div>	
                 	
                 	<p style="font-size: 16px;"><c:out value="${estudoDeCaso.titulo}"></c:out></p><br />
-        			<b>Descrição:</b><br /><div style="text-align: justify;">${estudoDeCaso.descricao}</div><br /><br />
+        			<b>Descrição:</b><br /><div style="text-align: justify; position: relative; z-index:2;">${estudoDeCaso.descricao}</div><br /><br />
         			<%-- <b>Objetivos Gerais:</b><br /><c:out value="${estudoDeCaso.objetivosGerais}"></c:out><br /><br />
         			<b>Objetivos Específicos:</b><br /><c:out value="${estudoDeCaso.objetivosEspecificos}"></c:out><br /><br /> --%>
         			
@@ -94,11 +94,11 @@
 		                	<input type="button" value="Cancelar" class="bt_cancelar" class="left">
 		                </td>
 		               <td class="right">
-		                	<input type="button" onclick="window.location.href = 'avancarObsRealidade.do?method=avancarObservacaoRealidade';" value="Salvar Dados" class="bt_salvar" class="right">
+		                	<input type="button" onclick="window.location.href = 'avancarObsRealidade.do?method=avancarInvestigacao';" value="Salvar Dados" class="bt_salvar" class="right">
 	               		 </td>
 		                <td class="space"></td>
 		                 <td style="vertical-align: top;">
-		        			<input type="button"  value="Avançar Fase" onclick="window.location.href = 'avancarObsRealidade.do?method=avancarObservacaoRealidade';" class="bt_avancar" class="left">
+		        			<input type="button"  value="Avançar Fase" onclick="window.location.href = 'avancarObsRealidade.do?method=avancarInvestigacao';" class="bt_avancar" class="left">
 		                </td>
 	              </tr>
 	            </table>

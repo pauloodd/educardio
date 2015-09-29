@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Cipe;
+import model.Nanda;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -31,7 +31,7 @@ public class AdministradorAcoes extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		try{
-			List<Cipe> cipes = null;
+			List<Nanda> cipes = null;
 			String acao = request.getParameter("acao");
 			String foco = request.getParameter("foco");
 			String termo = request.getParameter("termo-buscar");
@@ -78,12 +78,12 @@ public class AdministradorAcoes extends DispatchAction {
 			String descricao = ((DynaActionForm)form).getString("descricao");
 			String versao = ((DynaActionForm)form).getString("versao");
 			
-			Cipe cipeCadastrar = new Cipe(Integer.parseInt(codigo),termo, descricao,eixo,versao);
-			Cipe cipe = fachada.cadastrarCipe(cipeCadastrar);
+			Nanda cipeCadastrar = new Nanda(Integer.parseInt(codigo),termo, descricao,eixo,versao);
+			Nanda cipe = fachada.cadastrarCipe(cipeCadastrar);
 			
-			 request.setAttribute("mensagem", "Cipe cadastrada com sucesso!");
+			 request.setAttribute("mensagem", "Nanda cadastrada com sucesso!");
 			 
-			 List<Cipe> cipes = fachada.pesquisarCipe(null ,null);
+			 List<Nanda> cipes = fachada.pesquisarCipe(null ,null);
 			 request.getSession().setAttribute("cipes", cipes);
 		 }catch(Exception ex){
 			 ex.printStackTrace();
@@ -104,12 +104,12 @@ public class AdministradorAcoes extends DispatchAction {
 			String descricao = ((DynaActionForm)form).getString("descricao");
 			String versao = ((DynaActionForm)form).getString("versao");
 			
-			Cipe cipeCadastrar = new Cipe(Integer.parseInt(idCipe), Integer.parseInt(codigo),termo, descricao,eixo,versao);
-			Cipe cipe = fachada.editarCipe(cipeCadastrar);
+			Nanda cipeCadastrar = new Nanda(Integer.parseInt(idCipe), Integer.parseInt(codigo),termo, descricao,eixo,versao);
+			Nanda cipe = fachada.editarCipe(cipeCadastrar);
 			
-			 request.setAttribute("mensagem", "Cipe editada com sucesso!");
+			 request.setAttribute("mensagem", "Nanda editada com sucesso!");
 			 
-			 List<Cipe> cipes = fachada.pesquisarCipe(null ,null);
+			 List<Nanda> cipes = fachada.pesquisarCipe(null ,null);
 			 request.getSession().setAttribute("cipes", cipes);
 		 }catch(Exception ex){
 			 ex.printStackTrace();
@@ -124,10 +124,10 @@ public class AdministradorAcoes extends DispatchAction {
 			
 			String idCipe = request.getParameter("idCipe");
 			if(idCipe != null && !idCipe.equals("")){
-				Cipe cipe = new Cipe(Integer.parseInt(idCipe));
+				Nanda cipe = new Nanda(Integer.parseInt(idCipe));
 				fachada.removerCipe(cipe);
-				request.setAttribute("mensagem", "Cipe removida com sucesso!");
-				List<Cipe> cipes = fachada.pesquisarCipe(null ,null);
+				request.setAttribute("mensagem", "Nanda removida com sucesso!");
+				List<Nanda> cipes = fachada.pesquisarCipe(null ,null);
 				request.getSession().setAttribute("cipes", cipes);
 			}
 			

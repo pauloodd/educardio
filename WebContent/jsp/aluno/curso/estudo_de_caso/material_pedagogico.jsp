@@ -10,11 +10,11 @@
  	
 
 	 <script type="text/javascript">
-		function avancarAplicacao(){
+		function avancarAvaliacao(){
 			
 			var form = document.forms[0];
-			form.action = "/isa/avancarAplicacao.do";
-			form.method.value = "avancarAplicacao";
+			form.action = "/isa/avancarAvaliacao.do";
+			form.method.value = "avancarAvaliacao";
 			form.submit();
 		}
 	</script>

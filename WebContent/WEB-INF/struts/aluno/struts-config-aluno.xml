@@ -30,25 +30,25 @@
 			<form-property name="clinico" type="java.lang.String[]" />
 		</form-bean>
 		
-		<form-bean name="salvarPontosChaves"
+		<form-bean name="salvarPlanejamento"
 			type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="determinantes" type="java.lang.String[]" />
 		</form-bean>
 		
-		<form-bean name="avancarPontosChaves"
+		<form-bean name="avancarPlanejamento"
 			type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="determinantes" type="java.lang.String[]" />
 		</form-bean>
 		
-		<form-bean name="salvarHipoteses"
+		<form-bean name="salvarResultadosEsperados"
 			type="org.apache.struts.validator.DynaValidatorForm">
 		</form-bean>
 		
-		<form-bean name="salvarTeorizacao"
+		<form-bean name="salvarImplementacao"
 			type="util.FileUploadForm">
 		</form-bean>
 		
-		<form-bean name="avancarTeorizacao"
+		<form-bean name="avancarImplementacao"
 			type="util.FileUploadForm">
 		</form-bean>
 		
@@ -121,12 +121,12 @@
 			<form-property name="termo3autocomplete" type="java.lang.String" />
 		</form-bean>
 		
-		<form-bean name="salvarAplicacao"
+		<form-bean name="salvarAvaliacao"
 			type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="texto" type="java.lang.String" />
 		</form-bean>
 		
-		<form-bean name="avancarAplicacao"
+		<form-bean name="avancarAvaliacao"
 			type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="texto" type="java.lang.String" />
 		</form-bean>
@@ -202,7 +202,7 @@
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />
 		
-		<action path="/avancarObsRealidade"  name="avancarObservacaoRealidade"
+		<action path="/avancarObsRealidade"  name="avancarInvestigacao"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 		
@@ -210,11 +210,11 @@
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />		
 			
-		<action path="/salvarPontosChaves"  name="salvarPontosChaves"
+		<action path="/salvarPlanejamento"  name="salvarPlanejamento"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />		
 				
-		<action path="/avancarPontosChaves"  name="avancarPontosChaves"
+		<action path="/avancarPlanejamento"  name="avancarPlanejamento"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 			
@@ -222,11 +222,11 @@
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 		
-		<action path="/salvarTeorizacao"  name="salvarTeorizacao"
+		<action path="/salvarImplementacao"  name="salvarImplementacao"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />		
 					
-		<action path="/avancarTeorizacao"  name="avancarTeorizacao"
+		<action path="/avancarImplementacao"  name="avancarImplementacao"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 			
@@ -250,7 +250,7 @@
 			type="struts.acoes.AlunoAcoes"	
 			parameter="method" scope="request" validate="false" />
 			
-		<action path="/salvarHipoteses"  name="salvarHipoteses"
+		<action path="/salvarResultadosEsperados"  name="salvarResultadosEsperados"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 			
@@ -274,15 +274,15 @@
 			type="struts.acoes.AlunoAcoes"	
 			parameter="method" scope="request" validate="false" />	
 			
-		<action path="/aplicacao"  name="mostrarTelaAplicacao"
+		<action path="/aplicacao"  name="mostrarTelaAvaliacao"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />	
 			
-		<action path="/salvarAplicacao"  name="salvarAplicacao"
+		<action path="/salvarAvaliacao"  name="salvarAvaliacao"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />		
 					
-		<action path="/avancarAplicacao"  name="avancarAplicacao"
+		<action path="/avancarAvaliacao"  name="avancarAvaliacao"
 			type="struts.acoes.AlunoAcoes"
 			parameter="method" scope="request" validate="false" />
 			

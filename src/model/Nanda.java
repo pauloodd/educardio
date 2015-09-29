@@ -11,8 +11,13 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="cipe")
-public class Cipe implements Serializable{
+@Table(name="nanda")
+public class Nanda implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	public int id;
 	public int codigo;
@@ -22,7 +27,7 @@ public class Cipe implements Serializable{
 	public String versao;
 	
 	
-	public Cipe(int id, int codigo, String termo, String descricao,
+	public Nanda(int id, int codigo, String termo, String descricao,
 			String eixo, String versao) {
 		super();
 		this.id = id;
@@ -33,7 +38,7 @@ public class Cipe implements Serializable{
 		this.versao = versao;
 	}
 
-	public Cipe(int codigo, String termo, String descricao, String eixo,
+	public Nanda(int codigo, String termo, String descricao, String eixo,
 			String versao) {
 		super();
 		this.codigo = codigo;
@@ -43,9 +48,9 @@ public class Cipe implements Serializable{
 		this.versao = versao;
 	}
 
-	public Cipe(){}
+	public Nanda(){}
 	
-	public Cipe(int id) {
+	public Nanda(int id) {
 		super();
 		this.id = id;
 	}

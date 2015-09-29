@@ -7,7 +7,7 @@
      
     
 	      <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-         <property name="hibernate.connection.url">jdbc:mysql://localhost/educardio</property>
+         <property name="hibernate.connection.url">jdbc:mysql://localhost/isa</property>
          <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
          <property name="hibernate.connection.username">root</property>
          <property name="hibernate.connection.password"></property>
@@ -54,7 +54,9 @@
 
          <!-- Enable Hibernate's automatic session context management -->
  		 <mapping class="model.Endereco" />
-         <mapping class="model.Cipe" />
+         <mapping class="model.Nanda" />
+         <mapping class="model.Nic" />
+         <mapping class="model.Noc" />
          <mapping class="model.sistema.Erro" />
       	  <mapping class="model.sistema.Arquivo" />
          <mapping class="model.usuario.Usuario" />
@@ -62,21 +64,16 @@
          <mapping class="model.usuario.Professor" />
          <mapping class="model.usuario.Administrador" />
           <mapping class="model.curso.Curso" />
-          <mapping class="model.curso.DeterminanteHipoteses" />
           <mapping class="model.curso.EstudoDeCaso" />
           
           <mapping class="model.curso.matricula.AvaliacaoProfessor" />
-         <mapping class="model.curso.matricula.ambulatorio.Material" />
-         <mapping class="model.curso.matricula.ambulatorio.Ambulatorio" />
          
-         <mapping class="model.curso.matricula.arcomaguerez.Teorizacao" />
-         <mapping class="model.curso.matricula.arcomaguerez.PontosChave" />
-         <mapping class="model.curso.matricula.arcomaguerez.HipotesesDeSolucao" />
-         <mapping class="model.curso.matricula.arcomaguerez.Determinante" />
-         <mapping class="model.curso.matricula.arcomaguerez.Diagnostico" />
-         <mapping class="model.curso.matricula.arcomaguerez.Aplicacao" />
-         <mapping class="model.curso.matricula.arcomaguerez.Meta" />
-         <mapping class="model.curso.matricula.arcomaguerez.Intervencao" />
+         <mapping class="model.curso.matricula.arcomaguerez.Implementacao" />
+         <mapping class="model.curso.matricula.arcomaguerez.Planejamento" />
+         <mapping class="model.curso.matricula.arcomaguerez.ResultadosEsperados" />
+         <mapping class="model.curso.matricula.arcomaguerez.DiagnosticosImplementacoes" />
+         <mapping class="model.curso.matricula.arcomaguerez.DiagnosticosResultados" />
+         <mapping class="model.curso.matricula.arcomaguerez.Avaliacao" />
          <mapping class="model.curso.matricula.arcomaguerez.ArcoMaguerezEstudoDeCaso" />
          
          <mapping class="model.curso.matricula.MatriculaCursoAluno" />

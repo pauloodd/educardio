@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Cipe;
+import model.Nanda;
 import fachada.Fachada;
 
 public class AutocompleteServlet extends HttpServlet{
@@ -21,9 +21,9 @@ public class AutocompleteServlet extends HttpServlet{
 		
 		String valor = req.getParameter("q");
 		String eixo = req.getParameter("eixo");
-		List<Cipe> cipes = fachada.pesquisarCipe(valor, eixo);
+		List<Nanda> cipes = fachada.pesquisarCipe(valor, eixo);
 		PrintWriter print = resp.getWriter();
-		for (Cipe cipe : cipes) {
+		for (Nanda cipe : cipes) {
 			print.println(cipe.getTermo().trim()+"["+cipe.getId()+"]");
 		}
 		

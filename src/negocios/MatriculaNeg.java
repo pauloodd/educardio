@@ -3,38 +3,29 @@ package negocios;
 import java.util.ArrayList;
 import java.util.List;
 
+import dados.FabricaDAO;
+import dados.basicas.ArcoMaguerezDAO;
+import dados.basicas.ArquivoDAO;
+import dados.basicas.AvaliacaoDAO;
+import dados.basicas.AvaliacaoProfessorDAO;
+import dados.basicas.DiagnosticoDAO;
+import dados.basicas.ImplementacaoDAO;
+import dados.basicas.MatriculaCursoAlunoDAO;
+import dados.basicas.PlanejamentoDAO;
+import dados.basicas.ResultadosEsperadosDAO;
+import dados.hibernate.FabricaHibernateDAO;
 import model.curso.Curso;
-import model.curso.DeterminanteHipoteses;
 import model.curso.EstudoDeCaso;
 import model.curso.matricula.AvaliacaoProfessor;
 import model.curso.matricula.MatriculaCursoAluno;
-import model.curso.matricula.arcomaguerez.Aplicacao;
 import model.curso.matricula.arcomaguerez.ArcoMaguerezEstudoDeCaso;
-import model.curso.matricula.arcomaguerez.Determinante;
-import model.curso.matricula.arcomaguerez.Diagnostico;
-import model.curso.matricula.arcomaguerez.HipotesesDeSolucao;
-import model.curso.matricula.arcomaguerez.Intervencao;
-import model.curso.matricula.arcomaguerez.Meta;
-import model.curso.matricula.arcomaguerez.PontosChave;
-import model.curso.matricula.arcomaguerez.Teorizacao;
+import model.curso.matricula.arcomaguerez.Avaliacao;
+import model.curso.matricula.arcomaguerez.DiagnosticosImplementacoes;
+import model.curso.matricula.arcomaguerez.Implementacao;
+import model.curso.matricula.arcomaguerez.Planejamento;
+import model.curso.matricula.arcomaguerez.ResultadosEsperados;
 import model.sistema.Arquivo;
 import model.usuario.Aluno;
-import dados.FabricaDAO;
-import dados.basicas.AplicacaoDAO;
-import dados.basicas.ArcoMaguerezDAO;
-import dados.basicas.ArquivoDAO;
-import dados.basicas.AvaliacaoProfessorDAO;
-import dados.basicas.DeterminanteDAO;
-import dados.basicas.DeterminanteHipotesesDAO;
-import dados.basicas.DiagnosticoDAO;
-import dados.basicas.EstudoDeCasoDAO;
-import dados.basicas.HipotesesDeSolucaoDAO;
-import dados.basicas.IntervencaoDAO;
-import dados.basicas.MatriculaCursoAlunoDAO;
-import dados.basicas.MetaDAO;
-import dados.basicas.PontosChaveDAO;
-import dados.basicas.TeorizacaoDAO;
-import dados.hibernate.FabricaHibernateDAO;
 
 public class MatriculaNeg {
 
@@ -97,18 +88,18 @@ public class MatriculaNeg {
 	
 	public ArcoMaguerezEstudoDeCaso inserirArcoMaguerez(ArcoMaguerezEstudoDeCaso arcoMaguerez){
 		ArcoMaguerezDAO daoArco = fabrica.getArcoMaguerezDAO();
-		PontosChaveDAO daoPts = fabrica.getPontosChaveDAO();
-		TeorizacaoDAO daoTeorizacao = fabrica.getTeorizacaoDAO();
-		HipotesesDeSolucaoDAO daoHipoteses = fabrica.getHipotesesDeSolucaoDAO();
-		AplicacaoDAO daoApp = fabrica.getAplicacaoDAO();
-		PontosChave pontosChave = daoPts.persistir(arcoMaguerez.getPontosChave());
-		Teorizacao teorizacao = daoTeorizacao.persistir(arcoMaguerez.getTeorizacao());
-		HipotesesDeSolucao hipoteses = daoHipoteses.persistir(arcoMaguerez.getHipotesesDeSolucao());
-		Aplicacao aplicacao = daoApp.persistir(arcoMaguerez.getAplicacao());
-		arcoMaguerez.setPontosChave(pontosChave);
-		arcoMaguerez.setTeorizacao(teorizacao);
-		arcoMaguerez.setHipotesesDeSolucao(hipoteses);
-		arcoMaguerez.setAplicacao(aplicacao);
+		PlanejamentoDAO daoPts = fabrica.getPontosChaveDAO();
+		ImplementacaoDAO daoTeorizacao = fabrica.getTeorizacaoDAO();
+		ResultadosEsperadosDAO daoHipoteses = fabrica.getHipotesesDeSolucaoDAO();
+		AvaliacaoDAO daoApp = fabrica.getAplicacaoDAO();
+		Planejamento planejamento = daoPts.persistir(arcoMaguerez.getPlanejamento());
+		Implementacao implementacao = daoTeorizacao.persistir(arcoMaguerez.getImplementacao());
+		ResultadosEsperados resultadosEsperados = daoHipoteses.persistir(arcoMaguerez.getResultadosEsperados());
+		Avaliacao avaliacao = daoApp.persistir(arcoMaguerez.getAvaliacao());
+		arcoMaguerez.setPontosChave(planejamento);
+		arcoMaguerez.setImplementacao(implementacao);
+		arcoMaguerez.setResultadosEsperados(resultadosEsperados);
+		arcoMaguerez.setAvaliacao(avaliacao);
 		return daoArco.persistir(arcoMaguerez);
 	}
 	
@@ -117,28 +108,7 @@ public class MatriculaNeg {
 		return daoArco.persistir(arcoMaguerez);
 	}
 	
-	public List<Determinante> buscarDeterminantePorPontoChave(
-			PontosChave pontosChave) {
-		DeterminanteDAO dao = fabrica.getDeterminanteDAO();
-		return dao.buscarDeterminantePorPontoChave(pontosChave);
-	}
-	
-	public List<Determinante> inserirDeterminantePontosChave(List<Determinante> listaDeterminantes, PontosChave pontosChave){
-		List<Determinante> retorno = new ArrayList<Determinante>();
-		DeterminanteDAO dao = fabrica.getDeterminanteDAO();
-		dao.removerDeterminantesPontosChave(pontosChave);
-
-		if(listaDeterminantes != null && !listaDeterminantes.isEmpty()){
-			for (Determinante determinante : listaDeterminantes) {
-				Determinante determAdd = dao.persistir(determinante);
-				retorno.add(determAdd);
-			}
-		}
-		
-		return retorno;
-	}
-	
-	public List<Arquivo> inserirArquivosTeorizacao(List<Arquivo> arquivos, Teorizacao teorizacao){
+	public List<Arquivo> inserirArquivosTeorizacao(List<Arquivo> arquivos, Implementacao teorizacao){
 		ArquivoDAO arqDao = fabrica.getArquivoDAO();
 		List<Arquivo> retorno = new ArrayList<Arquivo>();
 		for (Arquivo arquivo : arquivos) {
@@ -148,98 +118,45 @@ public class MatriculaNeg {
 		return retorno;
 	}
 	
-	public PontosChave atualizarPontosChave(PontosChave pontosChave){
-		PontosChaveDAO dao = fabrica.getPontosChaveDAO();
+	public Planejamento atualizarPontosChave(Planejamento pontosChave){
+		PlanejamentoDAO dao = fabrica.getPontosChaveDAO();
 		return dao.persistir(pontosChave);
 	}
 	
-	public HipotesesDeSolucao atualizarHipotesesDeSolucao(HipotesesDeSolucao hipotesesDeSolucao){
-		HipotesesDeSolucaoDAO dao = fabrica.getHipotesesDeSolucaoDAO();
+	public ResultadosEsperados atualizarHipotesesDeSolucao(ResultadosEsperados hipotesesDeSolucao){
+		ResultadosEsperadosDAO dao = fabrica.getHipotesesDeSolucaoDAO();
 		return dao.persistir(hipotesesDeSolucao);
 	}
 	
-	public Teorizacao atualizarTeorizacao(Teorizacao teorizacao){
-		TeorizacaoDAO dao = fabrica.getTeorizacaoDAO();
+	public Implementacao atualizarTeorizacao(Implementacao teorizacao){
+		ImplementacaoDAO dao = fabrica.getTeorizacaoDAO();
 		return dao.persistir(teorizacao);
 	}
 	
-	public List<DeterminanteHipoteses> buscarDeterminantesHipotesesPorEstudoCaso(
-			EstudoDeCaso estudoDeCaso) {
-		EstudoDeCasoDAO dao = fabrica.getEstudoDeCasoDAO();
-		return dao.buscarDeterminantesHipotesesPorEstudoCaso(estudoDeCaso);
-	}
-	
-	public Diagnostico adicionarDiagnostico(Diagnostico diagnostico){
+	public DiagnosticosImplementacoes adicionarDiagnostico(DiagnosticosImplementacoes diagnostico){
 		DiagnosticoDAO dao = fabrica.getDiagnosticoDAO();
 		return dao.persistir(diagnostico);
 	}
 	
-	public Diagnostico editarDiagnostico(Diagnostico diagnostico){
+	public DiagnosticosImplementacoes editarDiagnostico(DiagnosticosImplementacoes diagnostico){
 		DiagnosticoDAO dao = fabrica.getDiagnosticoDAO();
 		return dao.persistir(diagnostico);
 	}
 	
-	public DeterminanteHipoteses adicionarDeterminanteHipoteses(DeterminanteHipoteses determinanteHipoteses){
-		DeterminanteHipotesesDAO dao = fabrica.getDeterminanteHipotesesDAO();
-		DeterminanteHipoteses retorno = dao.persistir(determinanteHipoteses);
-		return retorno;
-	}
-	
-	public List<Diagnostico> buscarDiagnosticoPorEstudoDeCaso(
+	public List<DiagnosticosImplementacoes> buscarDiagnosticoPorEstudoDeCaso(
 			EstudoDeCaso estudoDeCaso) {
 		DiagnosticoDAO dao = fabrica.getDiagnosticoDAO();
 		return dao.buscarDiagnosticoPorEstudoDeCaso(estudoDeCaso);
 	}
 	
-	public void removerDiagnostico(Diagnostico diagnostico){
-		IntervencaoDAO daoInter = fabrica.getIntervencaoDAO();
-		daoInter.removerIntervencoesDiagnostico(diagnostico);
-		MetaDAO daoMeta = fabrica.getMetaDAO();
-		daoMeta.removerMetasDeDiagnostico(diagnostico);
-		DiagnosticoDAO dao = fabrica.getDiagnosticoDAO();
-		dao.remover(diagnostico);
-	}
-	
-	public Meta inserirMeta(Meta meta){
-		MetaDAO dao = fabrica.getMetaDAO();
-		return dao.persistir(meta);
-	}
-	
-	public Meta editarMeta(Meta meta){
-		MetaDAO dao = fabrica.getMetaDAO();
-		return dao.persistir(meta);
-	}
-	
-	public void removerMetaDiagnostico(Meta meta){
-		IntervencaoDAO daoInter = fabrica.getIntervencaoDAO();
-		daoInter.removerIntervencoesMeta(meta);
-		MetaDAO daoMeta = fabrica.getMetaDAO();
-		daoMeta.removerMeta(meta);
-	}
-	
-	public Intervencao adicionarIntervencaoMetaDiagnostico(Intervencao intervencao){
-		IntervencaoDAO dao = fabrica.getIntervencaoDAO();
-		return dao.persistir(intervencao);
-	}
-	
-	public Intervencao editarIntervencaoMetaDiagnostico(Intervencao intervencao){
-		IntervencaoDAO dao = fabrica.getIntervencaoDAO();
-		return dao.persistir(intervencao);
-	}
-	
-	public void removerIntervencaoDiagnostico(Intervencao intervencao){
-		IntervencaoDAO dao = fabrica.getIntervencaoDAO();
-		dao.removerIntervencao(intervencao);
-	}
-	
-	public List<Diagnostico> buscarDiagnosticoPorHipotesesDeSolucao(
-			HipotesesDeSolucao hipotesesDeSolucao) {
+	public List<DiagnosticosImplementacoes> buscarDiagnosticoPorHipotesesDeSolucao(
+			ResultadosEsperados hipotesesDeSolucao) {
 		DiagnosticoDAO dao = fabrica.getDiagnosticoDAO();
 		return dao.buscarDiagnosticoPorHipotesesDeSolucao(hipotesesDeSolucao);
 	}
 	
-	public Aplicacao atualizarAplicacao(Aplicacao aplicacao){
-		AplicacaoDAO dao = fabrica.getAplicacaoDAO();
+	public Avaliacao atualizarAplicacao(Avaliacao aplicacao){
+		AvaliacaoDAO dao = fabrica.getAplicacaoDAO();
 		return dao.persistir(aplicacao);
 	}
 	

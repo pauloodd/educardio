@@ -20,7 +20,14 @@ import model.curso.matricula.MatriculaCursoAluno;
 @Table(name="arco_maguerez_estudo_de_caso")
 public class ArcoMaguerezEstudoDeCaso implements Serializable{
 	
-	public static int OBS_REALIDADE = 0, PONTOS_CHAVE = 1, TEORIZACAO = 2, HIPOTESES = 3, APLICACAO= 4, FINALIZADO = 5;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public static int INVESTIGACAO = 0, PLANEJAMENTO = 1, IMPLEMENTACAO = 2, RESULTADOS_ESPERADOS = 3, AVALIACAO= 4, FINALIZADO = 5;
+// public static int OBS_REALIDADE = 0, PONTOS_CHAVE = 1, TEORIZACAO = 2,		 HIPOTESES = 3, 		APLICACAO= 4, FINALIZADO = 5;
 
 	
 	public int id;
@@ -30,24 +37,24 @@ public class ArcoMaguerezEstudoDeCaso implements Serializable{
 	public MatriculaCursoAluno matriculaAluno;
 	public EstudoDeCaso estudoDeCaso;
 	
-	public PontosChave pontosChave;
-	public Teorizacao teorizacao;
-	public HipotesesDeSolucao hipotesesDeSolucao;
-	public Aplicacao aplicacao;
+	public Planejamento planejamento;
+	public Implementacao implementacao;
+	public ResultadosEsperados resultadosEsperados;
+	public Avaliacao avaliacao;
 		
 	public ArcoMaguerezEstudoDeCaso(){}
 	
 	public ArcoMaguerezEstudoDeCaso(int faseDoArco,
 			MatriculaCursoAluno matriculaAluno, EstudoDeCaso estudoDeCaso,
-			PontosChave pontosChave, Teorizacao teorizacao, HipotesesDeSolucao hipotesesDeSolucao, Aplicacao aplicacao) {
+			Planejamento planejamento, Implementacao implementacao, ResultadosEsperados resultadosEsperados, Avaliacao avaliacao) {
 		super();
 		this.faseDoArco = faseDoArco;
 		this.matriculaAluno = matriculaAluno;
 		this.estudoDeCaso = estudoDeCaso;
-		this.pontosChave = pontosChave;
-		this.teorizacao = teorizacao;
-		this.hipotesesDeSolucao = hipotesesDeSolucao;
-		this.aplicacao = aplicacao;
+		this.planejamento = planejamento;
+		this.implementacao = implementacao;
+		this.resultadosEsperados = resultadosEsperados;
+		this.avaliacao = avaliacao;
 	}
 
 	@Id
@@ -73,14 +80,14 @@ public class ArcoMaguerezEstudoDeCaso implements Serializable{
 	}
 
 	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
-	@JoinColumn(name="fk_idTeorizacao",nullable=false)
-	public Teorizacao getTeorizacao() {
-		return teorizacao;
+	@JoinColumn(name="fk_idImplementacao",nullable=false)
+	public Implementacao getImplementacao() {
+		return implementacao;
 	}
 
 
-	public void setTeorizacao(Teorizacao teorizacao) {
-		this.teorizacao = teorizacao;
+	public void setImplementacao(Implementacao implementacao) {
+		this.implementacao = implementacao;
 	}
 
 	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
@@ -95,34 +102,34 @@ public class ArcoMaguerezEstudoDeCaso implements Serializable{
 	}
 
 	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
-	@JoinColumn(name="fk_idPontosChave",nullable=false)
-	public PontosChave getPontosChave() {
-		return pontosChave;
+	@JoinColumn(name="fk_idPlanejamento",nullable=false)
+	public Planejamento getPlanejamento() {
+		return planejamento;
 	}
 
 
-	public void setPontosChave(PontosChave pontosChave) {
-		this.pontosChave = pontosChave;
+	public void setPontosChave(Planejamento planejamento) {
+		this.planejamento = planejamento;
 	}
 	
 	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
-	@JoinColumn(name="fk_idHipotesesSolucao",nullable=false)
-	public HipotesesDeSolucao getHipotesesDeSolucao() {
-		return hipotesesDeSolucao;
+	@JoinColumn(name="fk_idResultadosEsperados",nullable=false)
+	public ResultadosEsperados getResultadosEsperados() {
+		return resultadosEsperados;
 	}
 
-	public void setHipotesesDeSolucao(HipotesesDeSolucao hipotesesDeSolucao) {
-		this.hipotesesDeSolucao = hipotesesDeSolucao;
+	public void setResultadosEsperados(ResultadosEsperados resultadosEsperados) {
+		this.resultadosEsperados = resultadosEsperados;
 	}
 	
 	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
-	@JoinColumn(name="fk_idAplicacao",nullable=false)
-	public Aplicacao getAplicacao() {
-		return aplicacao;
+	@JoinColumn(name="fk_idAvaliacao",nullable=false)
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
 	}
 
-	public void setAplicacao(Aplicacao aplicacao) {
-		this.aplicacao = aplicacao;
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
 	}
 	
 	@Column(name="faseDoArco", nullable=true)
@@ -139,7 +146,7 @@ public class ArcoMaguerezEstudoDeCaso implements Serializable{
 	public String getFaseDescricao(){
 		String retorno = "";
 		
-		//public static int OBS_REALIDADE = 0, PONSTO_CHAVE = 1, TEORIZACAO = 2, HIPOTESES = 3, APLICACAO= 4, FINALIZADO = 5;
+		//public static int INVESTIGACAO = 0, PONSTO_CHAVE = 1, IMPLEMENTACAO = 2, RESULTADOS_ESPERADOS = 3, AVALIACAO= 4, FINALIZADO = 5;
 		switch (getFaseDoArco()) {
 		
 		case 0:

@@ -64,8 +64,8 @@
 		function avancarPtsChave(){
 			
 			var form = document.forms[0];
-			form.action = "/isa/salvarPontosChaves.do";
-			form.method.value = "avancarPontosChaves";
+			form.action = "/isa/salvarPlanejamento.do";
+			form.method.value = "avancarPlanejamento";
 			form.submit();
 		}
 		
@@ -115,8 +115,8 @@
                     
                 	<br />
 				 <input type="button" value="Adicionar Diagnóstico" id="button"/>
-				<h:form action="salvarPontosChaves" >
-					<h:hidden property="method" value="salvarPontosChaves"/>
+				<h:form action="salvarPlanejamento" >
+					<h:hidden property="method" value="salvarPlanejamento"/>
 	              	<table >
 	              		<thead>
 			            	<tr>

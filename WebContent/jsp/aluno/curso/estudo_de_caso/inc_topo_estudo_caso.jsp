@@ -62,7 +62,7 @@
         <c:if test="${arcoMaguerez.faseDoArco > 4}">
 	        <img src="imagens/icons/Actions-dialog-ok-apply-icon.png">
        </c:if>
-        <a href="aplicacao.do?method=mostrarTelaAplicacao">Avaliação</a></span></td>
+        <a href="aplicacao.do?method=mostrarTelaAvaliacao">Avaliação</a></span></td>
         
         <td class="rf-tab-hdr-spcr rf-tab-hortab-tabspcr-wdh" style=""><br></td>
         <td class="rf-tab-hdr-spcr" style="padding-right: 5px; width: 100%;"><br></td>

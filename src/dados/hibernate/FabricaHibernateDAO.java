@@ -5,51 +5,39 @@ import org.hibernate.Session;
 import dados.FabricaDAO;
 import dados.basicas.AdministradorDAO;
 import dados.basicas.AlunoDAO;
-import dados.basicas.AmbulatorioDAO;
-import dados.basicas.AplicacaoDAO;
 import dados.basicas.ArcoMaguerezDAO;
 import dados.basicas.ArquivoDAO;
+import dados.basicas.AvaliacaoDAO;
 import dados.basicas.AvaliacaoProfessorDAO;
-import dados.basicas.CipeDAO;
 import dados.basicas.CursoDAO;
-import dados.basicas.DeterminanteDAO;
-import dados.basicas.DeterminanteHipotesesDAO;
 import dados.basicas.DiagnosticoDAO;
 import dados.basicas.EnderecoDAO;
 import dados.basicas.ErroDAO;
 import dados.basicas.EstudoDeCasoDAO;
-import dados.basicas.HipotesesDeSolucaoDAO;
-import dados.basicas.IntervencaoDAO;
-import dados.basicas.MaterialDAO;
+import dados.basicas.ImplementacaoDAO;
 import dados.basicas.MatriculaCursoAlunoDAO;
-import dados.basicas.MetaDAO;
-import dados.basicas.PontosChaveDAO;
+import dados.basicas.NandaDAO;
+import dados.basicas.PlanejamentoDAO;
 import dados.basicas.ProfessorDAO;
-import dados.basicas.TeorizacaoDAO;
+import dados.basicas.ResultadosEsperadosDAO;
 import dados.basicas.UsuarioDAO;
 import dados.hibernate.conteudo.AdministradorHibernateDAO;
 import dados.hibernate.conteudo.AlunoHibernateDAO;
-import dados.hibernate.conteudo.AmbulatorioHibernateDAO;
-import dados.hibernate.conteudo.AplicacaoHibernateDAO;
 import dados.hibernate.conteudo.ArcoMaguerezHibernateDAO;
 import dados.hibernate.conteudo.ArquivoHibernateDAO;
+import dados.hibernate.conteudo.AvaliacaoHibernateDAO;
 import dados.hibernate.conteudo.AvaliacaoProfessorHibernateDAO;
-import dados.hibernate.conteudo.CipeHibernateDAO;
 import dados.hibernate.conteudo.CursoHibernateDAO;
-import dados.hibernate.conteudo.DeterminanteHibernateDAO;
-import dados.hibernate.conteudo.DeterminanteHipotesesHibernateDAO;
 import dados.hibernate.conteudo.DiagnosticoHibernateDAO;
 import dados.hibernate.conteudo.EnderecoHibernateDAO;
 import dados.hibernate.conteudo.ErroHibernateDAO;
 import dados.hibernate.conteudo.EstudoDeCasoHibernateDAO;
-import dados.hibernate.conteudo.HipotesesDeSolucaoHibernateDAO;
-import dados.hibernate.conteudo.IntervencaoHibernateDAO;
-import dados.hibernate.conteudo.MaterialHibernateDAO;
+import dados.hibernate.conteudo.ImplementacaoHibernateDAO;
 import dados.hibernate.conteudo.MatriculaAlunoCursoHibernateDAO;
-import dados.hibernate.conteudo.MetaHibernateDAO;
-import dados.hibernate.conteudo.PontosChaveHibernateDAO;
+import dados.hibernate.conteudo.NandaHibernateDAO;
+import dados.hibernate.conteudo.PlanejamentoHibernateDAO;
 import dados.hibernate.conteudo.ProfessorHibernateDAO;
-import dados.hibernate.conteudo.TeorizacaoHibernateDAO;
+import dados.hibernate.conteudo.ResultadosEsperadosHibernateDAO;
 import dados.hibernate.conteudo.UsuarioHibernateDAO;
 
 public class FabricaHibernateDAO extends FabricaDAO{
@@ -119,16 +107,6 @@ public class FabricaHibernateDAO extends FabricaDAO{
 	}
 
 	@Override
-	public AmbulatorioDAO getAmbulatorioDAO() {
-		return (AmbulatorioDAO) this.instanciarDAO(AmbulatorioHibernateDAO.class);
-	}
-
-	@Override
-	public MaterialDAO getMaterialDAO() {
-		return (MaterialDAO) this.instanciarDAO(MaterialHibernateDAO.class);
-	}
-	
-	@Override
 	public ArquivoDAO getArquivoDAO() {
 		return (ArquivoDAO) this.instanciarDAO(ArquivoHibernateDAO.class);
 	}
@@ -144,23 +122,18 @@ public class FabricaHibernateDAO extends FabricaDAO{
 	}
 
 	@Override
-	public PontosChaveDAO getPontosChaveDAO() {
-		return (PontosChaveDAO) this.instanciarDAO(PontosChaveHibernateDAO.class);
+	public PlanejamentoDAO getPontosChaveDAO() {
+		return (PlanejamentoDAO) this.instanciarDAO(PlanejamentoHibernateDAO.class);
 	}
 
 	@Override
-	public TeorizacaoDAO getTeorizacaoDAO() {
-		return (TeorizacaoDAO) this.instanciarDAO(TeorizacaoHibernateDAO.class);
+	public ImplementacaoDAO getTeorizacaoDAO() {
+		return (ImplementacaoDAO) this.instanciarDAO(ImplementacaoHibernateDAO.class);
 	}
 
 	@Override
-	public DeterminanteDAO getDeterminanteDAO() {
-		return (DeterminanteDAO) this.instanciarDAO(DeterminanteHibernateDAO.class);
-	}
-
-	@Override
-	public CipeDAO getCipeDAO() {
-		return (CipeDAO) this.instanciarDAO(CipeHibernateDAO.class);
+	public NandaDAO getCipeDAO() {
+		return (NandaDAO) this.instanciarDAO(NandaHibernateDAO.class);
 	}
 
 	@Override
@@ -169,28 +142,13 @@ public class FabricaHibernateDAO extends FabricaDAO{
 	}
 
 	@Override
-	public DeterminanteHipotesesDAO getDeterminanteHipotesesDAO() {
-		return (DeterminanteHipotesesDAO) this.instanciarDAO(DeterminanteHipotesesHibernateDAO.class);
+	public AvaliacaoDAO getAplicacaoDAO() {
+		return (AvaliacaoDAO) this.instanciarDAO(AvaliacaoHibernateDAO.class);
 	}
 
 	@Override
-	public MetaDAO getMetaDAO() {
-		return (MetaDAO) this.instanciarDAO(MetaHibernateDAO.class);
-	}
-
-	@Override
-	public IntervencaoDAO getIntervencaoDAO() {
-		return (IntervencaoDAO) this.instanciarDAO(IntervencaoHibernateDAO.class);
-	}
-
-	@Override
-	public AplicacaoDAO getAplicacaoDAO() {
-		return (AplicacaoDAO) this.instanciarDAO(AplicacaoHibernateDAO.class);
-	}
-
-	@Override
-	public HipotesesDeSolucaoDAO getHipotesesDeSolucaoDAO() {
-		return (HipotesesDeSolucaoDAO) this.instanciarDAO(HipotesesDeSolucaoHibernateDAO.class);
+	public ResultadosEsperadosDAO getHipotesesDeSolucaoDAO() {
+		return (ResultadosEsperadosDAO) this.instanciarDAO(ResultadosEsperadosHibernateDAO.class);
 	}
 
 	@Override

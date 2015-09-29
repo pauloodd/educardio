@@ -3,17 +3,15 @@ package negocios;
 import java.util.Date;
 import java.util.List;
 
-import model.Endereco;
-import model.curso.Curso;
-import model.curso.matricula.MatriculaCursoAluno;
-import model.curso.matricula.ambulatorio.Ambulatorio;
-import model.usuario.Aluno;
 import dados.FabricaDAO;
 import dados.basicas.AlunoDAO;
-import dados.basicas.AmbulatorioDAO;
 import dados.basicas.EnderecoDAO;
 import dados.basicas.MatriculaCursoAlunoDAO;
 import dados.hibernate.FabricaHibernateDAO;
+import model.Endereco;
+import model.curso.Curso;
+import model.curso.matricula.MatriculaCursoAluno;
+import model.usuario.Aluno;
 
 public class AlunoNeg {
 	
@@ -69,10 +67,6 @@ public class AlunoNeg {
 			matricula.setAluno(aluno);
 			matricula.setCurso(curso);
 			matricula.setDataMatricula(new Date());
-			Ambulatorio ambulatorio = new Ambulatorio();
-			ambulatorio.setDataMatricula(new Date());
-			persistiraAmbulatorio(ambulatorio);
-			matricula.setAmbulatorio(ambulatorio);
 			persistirMatriculaCursoALuno(matricula);
 		}
 		
@@ -94,8 +88,4 @@ public class AlunoNeg {
 		dao.persistir(matricula);
 	}
 	
-	private void persistiraAmbulatorio(Ambulatorio ambulatorio) {
-		AmbulatorioDAO dao = this.fabrica.getAmbulatorioDAO();
-		dao.persistir(ambulatorio);
-	}
 }

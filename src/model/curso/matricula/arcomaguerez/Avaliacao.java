@@ -10,23 +10,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="aplicacao")
-public class Aplicacao implements Serializable{
+@Table(name="avaliacao")
+public class Avaliacao implements Serializable{
 	
 	public int id;
 	public String texto;
 	
 	
-	public Aplicacao(){}
+	public Avaliacao(){}
 	
 
-	public Aplicacao(String texto) {
+	public Avaliacao(String texto) {
 		super();
 		this.texto = texto;
 	}
 
 
-	public Aplicacao(int id, String texto) {
+	public Avaliacao(int id, String texto) {
 		super();
 		this.id = id;
 		this.texto = texto;

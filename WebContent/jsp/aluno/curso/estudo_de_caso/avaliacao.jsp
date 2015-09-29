@@ -10,11 +10,11 @@
  	
 
 	 <script type="text/javascript">
-		function avancarAplicacao(){
+		function avancarAvaliacao(){
 			
 			var form = document.forms[0];
-			form.action = "/isa/avancarAplicacao.do";
-			form.method.value = "avancarAplicacao";
+			form.action = "/isa/avancarAvaliacao.do";
+			form.method.value = "avancarAvaliacao";
 			form.submit();
 		}
 	</script>
@@ -29,7 +29,7 @@
     <div id="middle">    
 		<div id="middle_align">
 
-          	<h:form action="salvarAplicacao" method="post" >
+          	<h:form action="salvarAvaliacao" method="post" >
             <div id="wrapper" class='logado caso'>
         	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Avaliação</h3>
 
@@ -42,7 +42,7 @@
 	                	 
                     </div>
                     
-					<h:hidden property="method" value="salvarAplicacao"/>
+					<h:hidden property="method" value="salvarAvaliacao"/>
 					<br /><br />
 					Comparar os resultados esperados à situação de saúde e a capacidade funcional do RN: 
 					<textarea id="texto"  name="texto" style="width: 600px; height: 150px; "><c:out value="${arcoMaguerez.aplicacao.texto}"></c:out></textarea><br />
@@ -57,14 +57,14 @@
 		                </td>
 		                <td class="space"></td>
 		            	<td class="left">    
-		                	<input type="button" value="Cancelar" onclick="window.location.href = 'aplicacao.do?method=mostrarTelaAplicacao';" class="bt_cancelar" class="left" />
+		                	<input type="button" value="Cancelar" onclick="window.location.href = 'aplicacao.do?method=mostrarTelaAvaliacao';" class="bt_cancelar" class="left" />
 		                </td>
 		               <td class="right">
 		                	<input type="submit"  value="Salvar Dados" class="bt_salvar" class="right" />
 	               		 </td>
 		                <td class="space"></td>
 		                 <td style="vertical-align: top;">
-		        			<input type="button"  value="Avançar Fase" onclick="avancarAplicacao();" style="display: none;" class="bt_avancar" class="left" />
+		        			<input type="button"  value="Avançar Fase" onclick="avancarAvaliacao();" style="display: none;" class="bt_avancar" class="left" />
 		                </td>
 	              </tr>
 	            </table>

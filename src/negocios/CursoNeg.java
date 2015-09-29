@@ -3,20 +3,16 @@ package negocios;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Cipe;
-import model.curso.Curso;
-import model.curso.EstudoDeCaso;
-import model.curso.matricula.ambulatorio.Ambulatorio;
-import model.curso.matricula.ambulatorio.Material;
-import model.sistema.Arquivo;
 import dados.FabricaDAO;
-import dados.basicas.AmbulatorioDAO;
 import dados.basicas.ArquivoDAO;
-import dados.basicas.CipeDAO;
 import dados.basicas.CursoDAO;
 import dados.basicas.EstudoDeCasoDAO;
-import dados.basicas.MaterialDAO;
+import dados.basicas.NandaDAO;
 import dados.hibernate.FabricaHibernateDAO;
+import model.Nanda;
+import model.curso.Curso;
+import model.curso.EstudoDeCaso;
+import model.sistema.Arquivo;
 
 public class CursoNeg {
 
@@ -60,28 +56,6 @@ public class CursoNeg {
 		return dao.persistir(curso);
 	}
 	
-	public Material cadastrarMaterial(Material material){
-		MaterialDAO dao = fabrica.getMaterialDAO();
-		return dao.persistir(material);
-	}
-	
-	public List<Material> getTodosMateriaisPorTipo(int... tipos) {
-		MaterialDAO dao = fabrica.getMaterialDAO();
-		return dao.getTodosMateriaisPorTipo(tipos);
-	}
-	
-	public Ambulatorio organizarAmbulatorioAluno(Ambulatorio ambulatorio){
-		MaterialDAO matDao = fabrica.getMaterialDAO();
-		List<Material> listMat = ambulatorio.getMateriais();
-		for (int i = 0; i < listMat.size(); i++) {
-			Material matTemp = matDao.getPorId(listMat.get(i).getId(), true);
-			ambulatorio.getMateriais().set(i, matTemp);
-		}
-		AmbulatorioDAO ambDao = this.fabrica.getAmbulatorioDAO();
-		ambDao.removerTodosMateriasAmbulatorio(ambulatorio);
-		return ambDao.persistir(ambulatorio);
-	}
-	
 	public List<Arquivo> inserirArquivosCurso(List<Arquivo> arquivos){
 		ArquivoDAO arqDao = fabrica.getArquivoDAO();
 		List<Arquivo> retorno = new ArrayList<Arquivo>();
@@ -107,23 +81,23 @@ public class CursoNeg {
 		return dao.listarEstudosDeCasosPorCurso(curso);
 	}
 	
-	public List<Cipe> pesquisarCipe(String query, String eixo) {
-		CipeDAO dao = fabrica.getCipeDAO();
+	public List<Nanda> pesquisarCipe(String query, String eixo) {
+		NandaDAO dao = fabrica.getCipeDAO();
 		return dao.pesquisarCipe(query, eixo);
 	}
 	
-	public Cipe cadastrarCipe(Cipe cipe){
-		CipeDAO dao = fabrica.getCipeDAO();
+	public Nanda cadastrarCipe(Nanda cipe){
+		NandaDAO dao = fabrica.getCipeDAO();
 		return dao.persistir(cipe);
 	}
 	
-	public void removerCipe(Cipe cipe){
-		CipeDAO dao = fabrica.getCipeDAO();
+	public void removerCipe(Nanda cipe){
+		NandaDAO dao = fabrica.getCipeDAO();
 		dao.remover(cipe);
 	}
 	
-	public Cipe editarCipe(Cipe cipe){
-		CipeDAO dao = fabrica.getCipeDAO();
+	public Nanda editarCipe(Nanda cipe){
+		NandaDAO dao = fabrica.getCipeDAO();
 		return dao.persistir(cipe);
 	}
 	

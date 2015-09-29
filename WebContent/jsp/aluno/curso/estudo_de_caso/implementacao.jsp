@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="css/popup.css" type="text/css" media="screen" />	
 
 	 <script type="text/javascript">
-		function avancarTeorizacao(){
+		function avancarImplementacao(){
 			
 			var form = document.forms[0];
-			form.action = "/isa/avancarTeorizacao.do";
-			form.method.value = "avancarTeorizacao";
+			form.action = "/isa/avancarImplementacao.do";
+			form.method.value = "avancarImplementacao";
 			form.submit();
 		}
 	</script>
@@ -95,8 +95,8 @@
     <div id="middle">    
 		<div id="middle_align">
 
-          	<h:form action="salvarTeorizacao" method="post" enctype="multipart/form-data">
-          						<h:hidden property="method" value="salvarTeorizacao"/>
+          	<h:form action="salvarImplementacao" method="post" enctype="multipart/form-data">
+          						<h:hidden property="method" value="salvarImplementacao"/>
           	
             <div id="wrapper" class='logado caso'>
         	  <h3 class="bread">CR<c:out value="${matricula.curso.id}"></c:out> > EC<c:out value="${arcoMaguerez.estudoDeCaso.id}"></c:out> > Implementação</h3>
@@ -156,7 +156,7 @@
 	               		 </td>
 		                <td class="space"></td>
 		                 <td style="vertical-align: top;">
-		        			<input type="button"  value="Avançar Fase" onclick="avancarTeorizacao();"  class="bt_avancar" class="left">
+		        			<input type="button"  value="Avançar Fase" onclick="avancarImplementacao();"  class="bt_avancar" class="left">
 		                </td>
 	              </tr>
 	            </table>
@@ -173,12 +173,12 @@
 
 <div id="popupContact" style="position: absolute; top: 184.167px; left: 0px; display: none;">
 		<a id="popupContactClose">sair</a>
-		<h1>Adicionar Planejamento!</h1>
+		<h1>Adicionar Intervenção!</h1>
 		<p id="contactArea">
 			<table border='0' style="border:none !important; font-size: 13px !important; color: black !important;">
 						<tr style="border:none !important;">
 							<td align="left" style="text-align:justify;">
-								Planejamento:<br />
+								Intervenção:<br />
 							</td>
 						</tr>
 						<tr style="border:none !important;">

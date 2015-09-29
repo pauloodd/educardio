@@ -8,26 +8,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Cipe;
-import model.curso.Curso;
-import model.curso.DeterminanteHipoteses;
-import model.curso.EstudoDeCaso;
-import model.curso.matricula.MatriculaCursoAluno;
-import model.curso.matricula.ambulatorio.Ambulatorio;
-import model.curso.matricula.ambulatorio.Material;
-import model.curso.matricula.ambulatorio.TipoMaterialEnum;
-import model.curso.matricula.arcomaguerez.Aplicacao;
-import model.curso.matricula.arcomaguerez.ArcoMaguerezEstudoDeCaso;
-import model.curso.matricula.arcomaguerez.Determinante;
-import model.curso.matricula.arcomaguerez.Diagnostico;
-import model.curso.matricula.arcomaguerez.HipotesesDeSolucao;
-import model.curso.matricula.arcomaguerez.Intervencao;
-import model.curso.matricula.arcomaguerez.Meta;
-import model.curso.matricula.arcomaguerez.PontosChave;
-import model.curso.matricula.arcomaguerez.Teorizacao;
-import model.sistema.Arquivo;
-import model.usuario.Aluno;
-
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -35,8 +15,20 @@ import org.apache.struts.action.DynaActionForm;
 import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.upload.FormFile;
 
-import util.FileUploadForm;
 import fachada.Fachada;
+import model.Nanda;
+import model.curso.Curso;
+import model.curso.EstudoDeCaso;
+import model.curso.matricula.MatriculaCursoAluno;
+import model.curso.matricula.arcomaguerez.ArcoMaguerezEstudoDeCaso;
+import model.curso.matricula.arcomaguerez.Avaliacao;
+import model.curso.matricula.arcomaguerez.DiagnosticosImplementacoes;
+import model.curso.matricula.arcomaguerez.Implementacao;
+import model.curso.matricula.arcomaguerez.Planejamento;
+import model.curso.matricula.arcomaguerez.ResultadosEsperados;
+import model.sistema.Arquivo;
+import model.usuario.Aluno;
+import util.FileUploadForm;
 
 public class AlunoAcoes extends DispatchAction {
 
@@ -176,21 +168,21 @@ public class AlunoAcoes extends DispatchAction {
 			String[]  materiaisClinico = ((DynaActionForm)form).getStrings("corrente");
 			String[]  materiaisConcorrente = ((DynaActionForm)form).getStrings("clinico");
 			
-			List<Material> materiaisAmbulatorio = new ArrayList<Material>();
-			for (int i = 0; i < materiaisGeral.length; i++) {
-				materiaisAmbulatorio.add(new Material(Integer.parseInt(materiaisGeral[i])));
-			}
-			for (int i = 0; i < materiaisClinico.length; i++) {
-				materiaisAmbulatorio.add(new Material(Integer.parseInt(materiaisClinico[i])));
-			}
-			for (int i = 0; i < materiaisConcorrente.length; i++) {
-				materiaisAmbulatorio.add(new Material(Integer.parseInt(materiaisConcorrente[i])));
-			}
-			
-			MatriculaCursoAluno matricula = (MatriculaCursoAluno) request.getSession().getAttribute("matricula");
-			Ambulatorio ambulatorio = matricula.getAmbulatorio();
-			ambulatorio.setMateriais(materiaisAmbulatorio);
-			fachada.organizarAmbulatorioAluno(ambulatorio);
+//			List<Material> materiaisAmbulatorio = new ArrayList<Material>();
+//			for (int i = 0; i < materiaisGeral.length; i++) {
+//				materiaisAmbulatorio.add(new Material(Integer.parseInt(materiaisGeral[i])));
+//			}
+//			for (int i = 0; i < materiaisClinico.length; i++) {
+//				materiaisAmbulatorio.add(new Material(Integer.parseInt(materiaisClinico[i])));
+//			}
+//			for (int i = 0; i < materiaisConcorrente.length; i++) {
+//				materiaisAmbulatorio.add(new Material(Integer.parseInt(materiaisConcorrente[i])));
+//			}
+//			
+//			MatriculaCursoAluno matricula = (MatriculaCursoAluno) request.getSession().getAttribute("matricula");
+//			Ambulatorio ambulatorio = matricula.getAmbulatorio();
+//			ambulatorio.setMateriais(materiaisAmbulatorio);
+//			fachada.organizarAmbulatorioAluno(ambulatorio);
 			
 			request.setAttribute("mensagem", "Ambulatório salvo com sucesso");
 			
@@ -221,7 +213,7 @@ public class AlunoAcoes extends DispatchAction {
 			}
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = fachada.getArcoMaguerezPorMatriculaCursoEstudoCaso(matricula, estudoEscolhido);
 			if(arcoMaguerez == null){
-				arcoMaguerez = new ArcoMaguerezEstudoDeCaso(ArcoMaguerezEstudoDeCaso.OBS_REALIDADE, matricula, estudoEscolhido, new PontosChave(), new Teorizacao(), new HipotesesDeSolucao(), new Aplicacao());
+				arcoMaguerez = new ArcoMaguerezEstudoDeCaso(ArcoMaguerezEstudoDeCaso.INVESTIGACAO, matricula, estudoEscolhido, new Planejamento(), new Implementacao(), new ResultadosEsperados(), new Avaliacao());
 				arcoMaguerez = fachada.inserirArcoMaguerez(arcoMaguerez);
 			}
 			request.getSession().setAttribute("arcoMaguerez", arcoMaguerez);
@@ -235,6 +227,30 @@ public class AlunoAcoes extends DispatchAction {
 		return map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 	}
 	
+	public ActionForward  avancarInvestigacao(ActionMapping map, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) {
+		
+		try{
+			
+			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
+			if(arcoMaguerez.getFaseDoArco() < ArcoMaguerezEstudoDeCaso.PLANEJAMENTO){
+				arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.PLANEJAMENTO);
+				arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
+				request.setAttribute("mensagem", "Fase Investigação concluída com sucesso!");
+			}
+//			List<Determinante> determinantes = fachada.buscarDeterminantePorPontoChave(arcoMaguerez.getPlanejamento());
+			
+			request.getSession().setAttribute("arcoMaguerez", arcoMaguerez);
+//			request.getSession().setAttribute("determinantes", determinantes);
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+			request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
+		}
+		
+		return map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
+	}
+	
 	public ActionForward mostrarTelaPlanejamento(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
@@ -243,12 +259,12 @@ public class AlunoAcoes extends DispatchAction {
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
 			
-			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
-				List<Determinante> determinantes = fachada.buscarDeterminantePorPontoChave(arcoMaguerez.getPontosChave());
-				request.getSession().setAttribute("determinantes", determinantes);
+			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.PLANEJAMENTO){
+//				List<Determinante> determinantes = fachada.buscarDeterminantePorPontoChave(arcoMaguerez.getPlanejamento());
+//				request.getSession().setAttribute("determinantes", determinantes);
 				retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 			}else{
-				request.setAttribute("mensagem", "Você ainda não finalizou a fase Observação da Realidade para visualizar esta Fase do Arco");
+				request.setAttribute("mensagem", "Você ainda não finalizou a fase Investigação para visualizar esta Fase do Arco");
 				retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 			}
 		}catch(Exception ex){
@@ -259,50 +275,25 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	
-	public ActionForward  avancarObservacaoRealidade(ActionMapping map, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		
-		try{
-			
-			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-			if(arcoMaguerez.getFaseDoArco() < ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
-				arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE);
-				arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
-				request.setAttribute("mensagem", "Fase Investigação concluída com sucesso!");
-			}
-			List<Determinante> determinantes = fachada.buscarDeterminantePorPontoChave(arcoMaguerez.getPontosChave());
-			
-			request.getSession().setAttribute("arcoMaguerez", arcoMaguerez);
-			request.getSession().setAttribute("determinantes", determinantes);
-			
-		}catch(Exception ex){
-			ex.printStackTrace();
-			request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
-		}
-		
-		return map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
-	}
-	
-	public ActionForward salvarPontosChaves(ActionMapping map, ActionForm form,
+	public ActionForward salvarPlanejamento(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		try{
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
 			
-			if(arcoMaguerez.getFaseDoArco() <= ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
+			if(arcoMaguerez.getFaseDoArco() <= ArcoMaguerezEstudoDeCaso.PLANEJAMENTO){
 				String[]  determinantes = ((DynaActionForm)form).getStrings("determinantes");
-				List<Determinante> listDeterminantes= new ArrayList<Determinante>();
+//				List<Determinante> listDeterminantes= new ArrayList<Determinante>();
 				
 				for (String determ : determinantes) {
 					String determinanteTemp = determ.split("##")[0];
 					String justificativaTemp = determ.split("##")[1];
-					Determinante determinanteAdd = new Determinante(determinanteTemp, justificativaTemp, arcoMaguerez.getPontosChave());
-					listDeterminantes.add(determinanteAdd);
+//					Determinante determinanteAdd = new Determinante(determinanteTemp, justificativaTemp, arcoMaguerez.getPlanejamento());
+//					listDeterminantes.add(determinanteAdd);
 				}
 				
-				List<Determinante> determinantesAdicionados = fachada.inserirDeterminantePontosChave(listDeterminantes, arcoMaguerez.getPontosChave());
-				request.getSession().setAttribute("determinantes", determinantesAdicionados);
+//				List<Determinante> determinantesAdicionados = fachada.inserirDeterminantePontosChave(listDeterminantes, arcoMaguerez.getPlanejamento());
+//				request.getSession().setAttribute("determinantes", determinantesAdicionados);
 				
 				arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 				
@@ -318,7 +309,7 @@ public class AlunoAcoes extends DispatchAction {
 	}
 	
 	
-	public ActionForward avancarPontosChaves(ActionMapping map, ActionForm form,
+	public ActionForward avancarPlanejamento(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
@@ -326,9 +317,9 @@ public class AlunoAcoes extends DispatchAction {
 		try{
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
 	
-			if(arcoMaguerez.getFaseDoArco() <= ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
+			if(arcoMaguerez.getFaseDoArco() <= ArcoMaguerezEstudoDeCaso.PLANEJAMENTO){
 				String[]  determinantes = ((DynaActionForm)form).getStrings("determinantes");
-				List<Determinante> listDeterminantes= new ArrayList<Determinante>();
+//				List<Determinante> listDeterminantes= new ArrayList<Determinante>();
 				
 				for (String determ : determinantes) {
 					String determinanteTemp  = "";
@@ -341,18 +332,18 @@ public class AlunoAcoes extends DispatchAction {
 					}
 					
 					if(!determinanteTemp.equals("")){
-						Determinante determinanteAdd = new Determinante(determinanteTemp, justificativaTemp, arcoMaguerez.getPontosChave());
-						listDeterminantes.add(determinanteAdd);
+//						Determinante determinanteAdd = new Determinante(determinanteTemp, justificativaTemp, arcoMaguerez.getPlanejamento());
+//						listDeterminantes.add(determinanteAdd);
 					}
 				}
 				
-				List<Determinante> determinantesAdicionados = fachada.inserirDeterminantePontosChave(listDeterminantes, arcoMaguerez.getPontosChave());
-				request.getSession().setAttribute("determinantes", determinantesAdicionados);
+//				List<Determinante> determinantesAdicionados = fachada.inserirDeterminantePontosChave(listDeterminantes, arcoMaguerez.getPlanejamento());
+//				request.getSession().setAttribute("determinantes", determinantesAdicionados);
 				
-					arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.TEORIZACAO);
+					arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.IMPLEMENTACAO);
 					arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 				
-				request.setAttribute("mensagem", "Fase Diagnóstico concluída com sucesso!");
+				request.setAttribute("mensagem", "Fase Planejamento concluída com sucesso!");
 			}
 			retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 			
@@ -371,14 +362,14 @@ public class AlunoAcoes extends DispatchAction {
 		try{
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-			List<DeterminanteHipoteses> determinantesHipoteses = fachada.buscarDeterminantesHipotesesPorEstudoCaso(arcoMaguerez.getEstudoDeCaso());
-			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
+//			List<DeterminanteHipoteses> determinantesHipoteses = fachada.buscarDeterminantesHipotesesPorEstudoCaso(arcoMaguerez.getEstudoDeCaso());
+//			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
 			
-			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.TEORIZACAO){
+			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.IMPLEMENTACAO){
 				retorno =  map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 			}else{
-				request.setAttribute("mensagem", "Você ainda não finalizou a fase Pontos-Chave para visualizar esta Fase do Arco");
-				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
+				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
+				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.INVESTIGACAO){
 					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
 				}else{
 					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
@@ -392,16 +383,16 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	public ActionForward salvarTeorizacao(ActionMapping map, ActionForm form,
+	public ActionForward salvarImplementacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = null;
 		try{
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-			Teorizacao teorizacao = arcoMaguerez.getTeorizacao(); 
+			Implementacao teorizacao = arcoMaguerez.getImplementacao(); 
 			
-			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.HIPOTESES){
+			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS){
 //				retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
 				retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 			}else{
@@ -409,7 +400,7 @@ public class AlunoAcoes extends DispatchAction {
 				 
 			    FormFile file = fileUploadForm.getFile();
 			   
-			   if(file.getFileName() != null && !file.getFileName().equals("")){
+			   if(file != null  && file.getFileName() != null && !file.getFileName().equals("")){
 				   if(validarArquivo(file.getFileName())){
 					   if( file.getFileSize() < 16777216){
 						   Arquivo arquivo = new Arquivo();
@@ -420,9 +411,9 @@ public class AlunoAcoes extends DispatchAction {
 						   List<Arquivo> arquivos = new ArrayList<Arquivo>();
 						   arquivos.add(arquivo);
 						   
-						   teorizacao.setArquivos(arquivos);
+//						   teorizacao.setArquivos(arquivos);
 						   teorizacao = fachada.atualizarTeorizacao(teorizacao);
-						   arcoMaguerez.setTeorizacao(teorizacao);
+						   arcoMaguerez.setImplementacao(teorizacao);
 						   
 						   arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 						   
@@ -434,8 +425,8 @@ public class AlunoAcoes extends DispatchAction {
 				   }else{
 					   request.setAttribute("mensagem", "Tipo de arquivo inválido! Escolha apenas .doc, .docx ou .pdf");
 				   }
-			    }else if(file.getFileName().equals("") && (teorizacao.getArquivos() == null || teorizacao.getArquivos().isEmpty())){
-			    	request.setAttribute("mensagem", "Nenhum arquivo foi selecionado!");
+			    }else{
+			    	request.setAttribute("mensagem", "Dados Salvos com sucesso!");
 			    }
 				retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 			}
@@ -446,16 +437,16 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	public ActionForward avancarTeorizacao(ActionMapping map, ActionForm form,
+	public ActionForward avancarImplementacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = null;
 		try{
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-			Teorizacao teorizacao = arcoMaguerez.getTeorizacao(); 
+			Implementacao teorizacao = arcoMaguerez.getImplementacao(); 
 			
-			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.HIPOTESES){
+			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS){
 				retorno = map.findForward(fALUNOESTUDOCASORESULTADOS);
 			}else{
 //				FileUploadForm fileUploadForm = (FileUploadForm)form;
@@ -473,11 +464,11 @@ public class AlunoAcoes extends DispatchAction {
 //						   List<Arquivo> arquivos = new ArrayList<Arquivo>();
 //						   arquivos.add(arquivo);
 //						   
-//						   teorizacao.setArquivos(arquivos);
-//						   teorizacao = fachada.atualizarTeorizacao(teorizacao);
-//						   arcoMaguerez.setTeorizacao(teorizacao);
+//						   resultadosEsperados.setArquivos(arquivos);
+//						   resultadosEsperados = fachada.atualizarTeorizacao(resultadosEsperados);
+//						   arcoMaguerez.setTeorizacao(resultadosEsperados);
 //						   
-//						   arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.HIPOTESES);
+//						   arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS);
 //						   arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 //						   
 //						   request.getSession().setAttribute("arcoMaguerez", arcoMaguerez);
@@ -488,21 +479,21 @@ public class AlunoAcoes extends DispatchAction {
 //				   }else{
 //					   request.setAttribute("mensagem", "Tipo de arquivo inválido! Escolha apenas .doc, .docx ou .pdf");
 //				   }
-//			    }else if(file.getFileName().equals("") && (teorizacao.getArquivos() == null || teorizacao.getArquivos().isEmpty())){
+//			    }else if(file.getFileName().equals("") && (resultadosEsperados.getArquivos() == null || resultadosEsperados.getArquivos().isEmpty())){
 //			    	request.setAttribute("mensagem", "Nenhum arquivo foi selecionado!");
 //			    }
 //			   if(arcoMaguerez.getTeorizacao().getArquivos() == null || arcoMaguerez.getTeorizacao().getArquivos().isEmpty()){
 //				   request.setAttribute("mensagem", "Você não selecionou nenhum arquivo para avançar na fase");
 //				   retorno = map.findForward(fALUNOESTUDOCASOTEORIZACAO);
 //			   }else{
-//				   if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.TEORIZACAO){
-//					   arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.HIPOTESES);
+//				   if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.IMPLEMENTACAO){
+//					   arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS);
 //					   arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 //					   request.setAttribute("mensagem", "Fase Teorização concluída com sucesso!");
 //				   }
-				 	arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.HIPOTESES);
+				 	arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS);
 				   arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
-					request.setAttribute("mensagem", "Fase Planejamento concluída com sucesso!");
+					request.setAttribute("mensagem", "Fase Implementação concluída com sucesso!");
 				   retorno = map.findForward(fALUNOESTUDOCASOHIPOTESESREFRESH);
 //			   }
 			}
@@ -520,19 +511,19 @@ public class AlunoAcoes extends DispatchAction {
 		try{
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-			List<DeterminanteHipoteses> determinantesHipoteses = fachada.buscarDeterminantesHipotesesPorEstudoCaso(arcoMaguerez.getEstudoDeCaso());
-			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
+//			List<DeterminanteHipoteses> determinantesHipoteses = fachada.buscarDeterminantesHipotesesPorEstudoCaso(arcoMaguerez.getEstudoDeCaso());
+//			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
 			
-			List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+			List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 			request.getSession().setAttribute("diagnosticos", diagnosticos);
 			
-			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.HIPOTESES){
+			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS){
 				retorno =  map.findForward(fALUNOESTUDOCASORESULTADOS);
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
-				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
+				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.INVESTIGACAO){
 					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
-				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
+				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PLANEJAMENTO){
 					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 				}else{
 					retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
@@ -546,27 +537,27 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	public ActionForward salvarHipoteses(ActionMapping map, ActionForm form,
+	public ActionForward salvarResultadosEsperados(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = null;
 		try{
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-			List<DeterminanteHipoteses> determinantesHipoteses = fachada.buscarDeterminantesHipotesesPorEstudoCaso(arcoMaguerez.getEstudoDeCaso());
-			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
+//			List<DeterminanteHipoteses> determinantesHipoteses = fachada.buscarDeterminantesHipotesesPorEstudoCaso(arcoMaguerez.getEstudoDeCaso());
+//			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
 			
-			List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+			List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 			request.getSession().setAttribute("diagnosticos", diagnosticos);
 			
-			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.HIPOTESES){
+			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS){
 				retorno =  map.findForward(fALUNOESTUDOCASORESULTADOS);
 				request.setAttribute("mensagem", "Dados salvos com sucesso!");
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
-				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
+				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.INVESTIGACAO){
 					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
-				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
+				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PLANEJAMENTO){
 					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 				}else{
 					retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
@@ -580,32 +571,32 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	public ActionForward avancarHipoteses(ActionMapping map, ActionForm form,
+	public ActionForward avancarResultadosEsperados(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = null;
 		try{
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-			List<DeterminanteHipoteses> determinantesHipoteses = fachada.buscarDeterminantesHipotesesPorEstudoCaso(arcoMaguerez.getEstudoDeCaso());
-			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
+//			List<DeterminanteHipoteses> determinantesHipoteses = fachada.buscarDeterminantesHipotesesPorEstudoCaso(arcoMaguerez.getEstudoDeCaso());
+//			request.getSession().setAttribute("determinantesHipoteses", determinantesHipoteses);
 			
-			List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+			List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 			request.getSession().setAttribute("diagnosticos", diagnosticos);
 			
-			if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.HIPOTESES){
-				arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.APLICACAO);
+			if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS){
+				arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.AVALIACAO);
 			    arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 				
-			    request.setAttribute("mensagem", "Fase Implementação concluída com sucesso!");
+			    request.setAttribute("mensagem", "Fase Resultados Esperados concluída com sucesso!");
 			    retorno =  map.findForward(fALUNOESTUDOCASOAVALIACAO);
-			}else if(arcoMaguerez.getFaseDoArco() > ArcoMaguerezEstudoDeCaso.HIPOTESES){
+			}else if(arcoMaguerez.getFaseDoArco() > ArcoMaguerezEstudoDeCaso.RESULTADOS_ESPERADOS){
 				retorno =  map.findForward(fALUNOESTUDOCASOAVALIACAO);
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
-				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
+				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.INVESTIGACAO){
 					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
-				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
+				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PLANEJAMENTO){
 					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
 				}else{
 					retorno = map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
@@ -630,16 +621,16 @@ public class AlunoAcoes extends DispatchAction {
 			String texto = ((DynaActionForm)form).getString("texto");
 			
 			if(determinante != null && !determinante.equals("")){
-				DeterminanteHipoteses determinanteHipoteses = new DeterminanteHipoteses(Integer.parseInt(determinante));
+//				DeterminanteHipoteses determinanteHipoteses = new DeterminanteHipoteses(Integer.parseInt(determinante));
 				if(idtermoautocomplete != null && !idtermoautocomplete.equals("")){
 					ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-					Cipe cipe = new Cipe(Integer.parseInt(idtermoautocomplete));
+					Nanda cipe = new Nanda(Integer.parseInt(idtermoautocomplete));
 					
-					Diagnostico diagnosticoAdd = new Diagnostico(cipe, texto, determinanteHipoteses, arcoMaguerez.getHipotesesDeSolucao());
-					diagnosticoAdd = fachada.adicionarDiagnostico(diagnosticoAdd);
+//					DiagnosticosImplementacoes diagnosticoAdd = new DiagnosticosImplementacoes(cipe, texto, determinanteHipoteses, arcoMaguerez.getResultadosEsperados());
+//					diagnosticoAdd = fachada.adicionarDiagnostico(diagnosticoAdd);
 					
 					fachada.limparSessaoHibernate();
-					List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+					List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 					request.getSession().setAttribute("diagnosticos", diagnosticos);
 					
 					 request.setAttribute("mensagem", "Diagnóstico inserido com sucesso!");
@@ -669,18 +660,18 @@ public class AlunoAcoes extends DispatchAction {
 			String texto = ((DynaActionForm)form).getString("texto");
 			
 			if(determinante != null && !determinante.equals("") && idDiagnostico != null && !idDiagnostico.equals("")){
-				DeterminanteHipoteses determinanteHipoteses = new DeterminanteHipoteses(Integer.parseInt(determinante));
+//				DeterminanteHipoteses determinanteHipoteses = new DeterminanteHipoteses(Integer.parseInt(determinante));
 				if(idtermoautocomplete != null && !idtermoautocomplete.equals("")){
-					Cipe cipe = new Cipe(Integer.parseInt(idtermoautocomplete));
+					Nanda cipe = new Nanda(Integer.parseInt(idtermoautocomplete));
 					ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
 					
-					Diagnostico diagnosticoEdit = new Diagnostico(cipe, texto, determinanteHipoteses, arcoMaguerez.getHipotesesDeSolucao());
-					diagnosticoEdit.setId(Integer.parseInt(idDiagnostico));
-					diagnosticoEdit = fachada.editarDiagnostico(diagnosticoEdit);
+////					DiagnosticosImplementacoes diagnosticoEdit = new DiagnosticosImplementacoes(cipe, texto, determinanteHipoteses, arcoMaguerez.getResultadosEsperados());
+//					diagnosticoEdit.setId(Integer.parseInt(idDiagnostico));
+//					diagnosticoEdit = fachada.editarDiagnostico(diagnosticoEdit);
 
 					fachada.atualizar();
 					fachada.limparSessaoHibernate();
-					List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+					List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 					request.getSession().setAttribute("diagnosticos", diagnosticos);
 					
 					 request.setAttribute("mensagem", "Diagnóstico editado com sucesso!");
@@ -704,8 +695,8 @@ public class AlunoAcoes extends DispatchAction {
 		try {
 			String idDiagnostico = ((DynaActionForm)form).getString("idDiagnostico");
 			if(idDiagnostico != null  && !idDiagnostico.equals("")){
-				Diagnostico diagnosticoRemover = new Diagnostico(Integer.parseInt(idDiagnostico));
-				fachada.removerDiagnostico(diagnosticoRemover);
+				DiagnosticosImplementacoes diagnosticoRemover = new DiagnosticosImplementacoes(Integer.parseInt(idDiagnostico));
+//				fachada.removerDiagnostico(diagnosticoRemover);
 				
 				fachada.atualizar();
 				request.setAttribute("mensagem", "Diagnóstico removido com sucesso!");
@@ -724,16 +715,16 @@ public class AlunoAcoes extends DispatchAction {
 		try {
 			String idDiagnostico = ((DynaActionForm)form).getString("idDiagnostico");
 			if(idDiagnostico != null && !idDiagnostico.equals("")){
-				Diagnostico diagnostico = new Diagnostico(Integer.parseInt(idDiagnostico));
+				DiagnosticosImplementacoes diagnostico = new DiagnosticosImplementacoes(Integer.parseInt(idDiagnostico));
 				String meta = ((DynaActionForm)form).getString("meta");
 				
-				Meta metaAdd = new Meta(diagnostico, meta);
-				fachada.inserirMeta(metaAdd);
+//				Meta metaAdd = new Meta(diagnostico, meta);
+//				fachada.inserirMeta(metaAdd);
 				
 				fachada.atualizar();
 				fachada.limparSessaoHibernate();
 				ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-				List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+				List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 				request.getSession().setAttribute("diagnosticos", diagnosticos);
     			request.setAttribute("mensagem", "Meta adicionada com sucesso!");
 			}
@@ -755,14 +746,14 @@ public class AlunoAcoes extends DispatchAction {
 			String meta = ((DynaActionForm)form).getString("meta");
 			
 			if(idMetaDiagnostico != null && !idMetaDiagnostico.equals("") && idDiagnostico != null && !idDiagnostico.equals("")){
-				Diagnostico diagnostico = new Diagnostico(Integer.parseInt(idDiagnostico));
-				Meta metaEdit = new Meta(Integer.parseInt(idMetaDiagnostico), diagnostico, meta);
-				fachada.editarMeta(metaEdit);
+				DiagnosticosImplementacoes diagnostico = new DiagnosticosImplementacoes(Integer.parseInt(idDiagnostico));
+//				Meta metaEdit = new Meta(Integer.parseInt(idMetaDiagnostico), diagnostico, meta);
+//				fachada.editarMeta(metaEdit);
 				
 				fachada.atualizar();
 				fachada.limparSessaoHibernate();
 				ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-				List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+				List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 				request.getSession().setAttribute("diagnosticos", diagnosticos);
 				
 				request.setAttribute("mensagem", "Meta editada com sucesso!");
@@ -783,8 +774,8 @@ public class AlunoAcoes extends DispatchAction {
 		try {
 			String idMetaDiagnostico = ((DynaActionForm)form).getString("idMetaDiagnostico");
 			if(idMetaDiagnostico != null  && !idMetaDiagnostico.equals("")){
-				Meta metaRemover = new Meta(Integer.parseInt(idMetaDiagnostico));
-				fachada.removerMetaDiagnostico(metaRemover);
+//				Meta metaRemover = new Meta(Integer.parseInt(idMetaDiagnostico));
+//				fachada.removerMetaDiagnostico(metaRemover);
 				
 				fachada.atualizar();
 				request.setAttribute("mensagem", "Meta removida com sucesso!");
@@ -809,16 +800,16 @@ public class AlunoAcoes extends DispatchAction {
 			String texto = ((DynaActionForm)form).getString("texto");
 			
 			if(idMetaDiagnostico != null && !idMetaDiagnostico.equals("")){
-				Meta meta = new Meta(Integer.parseInt(idMetaDiagnostico));
+//				Meta meta = new Meta(Integer.parseInt(idMetaDiagnostico));
 				if(idtermo3autocomplete != null && !idtermo3autocomplete.equals("")){
-					Cipe cipe = new Cipe(Integer.parseInt(idtermo3autocomplete));
+					Nanda cipe = new Nanda(Integer.parseInt(idtermo3autocomplete));
 					
-					Intervencao intervencaoAdd = new Intervencao(meta, cipe, texto);
-					intervencaoAdd = fachada.adicionarIntervencaoMetaDiagnostico(intervencaoAdd);
+//					Intervencao intervencaoAdd = new Intervencao(meta, cipe, texto);
+//					intervencaoAdd = fachada.adicionarIntervencaoMetaDiagnostico(intervencaoAdd);
 					
 					fachada.limparSessaoHibernate();
 					ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-					List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+					List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 					request.getSession().setAttribute("diagnosticos", diagnosticos);
 					
 					 request.setAttribute("mensagem", "Intervenção inserida com sucesso!");
@@ -846,17 +837,17 @@ public class AlunoAcoes extends DispatchAction {
 			String texto = ((DynaActionForm)form).getString("texto");
 			
 			if(idIntervencaoDiagnostico != null && !idIntervencaoDiagnostico.equals("")){
-				Meta meta = new Meta(Integer.parseInt(idMetaDiagnostico));
+//				Meta meta = new Meta(Integer.parseInt(idMetaDiagnostico));
 				if(idtermo4autocomplete != null && !idtermo4autocomplete.equals("")){
-					Cipe cipe = new Cipe(Integer.parseInt(idtermo4autocomplete));
+					Nanda cipe = new Nanda(Integer.parseInt(idtermo4autocomplete));
 					
-					Intervencao intervencaoEdit = new Intervencao(Integer.parseInt(idIntervencaoDiagnostico), meta, cipe, texto);
-					intervencaoEdit = fachada.editarIntervencaoMetaDiagnostico(intervencaoEdit);
+//					Intervencao intervencaoEdit = new Intervencao(Integer.parseInt(idIntervencaoDiagnostico), meta, cipe, texto);
+//					intervencaoEdit = fachada.editarIntervencaoMetaDiagnostico(intervencaoEdit);
 					
 					fachada.atualizar();
 					fachada.limparSessaoHibernate();
 					ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-					List<Diagnostico> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getHipotesesDeSolucao());
+					List<DiagnosticosImplementacoes> diagnosticos = fachada.buscarDiagnosticoPorHipotesesDeSolucao(arcoMaguerez.getResultadosEsperados());
 					request.getSession().setAttribute("diagnosticos", diagnosticos);
 					
 					 request.setAttribute("mensagem", "Intervenção editada com sucesso!");
@@ -878,8 +869,8 @@ public class AlunoAcoes extends DispatchAction {
 		try {
 			String idIntervencaoDiagnostico = ((DynaActionForm)form).getString("idIntervencaoDiagnostico");
 			if(idIntervencaoDiagnostico != null  && !idIntervencaoDiagnostico.equals("")){
-				Intervencao intervencaoRemover = new Intervencao(Integer.parseInt(idIntervencaoDiagnostico));
-				fachada.removerIntervencaoDiagnostico(intervencaoRemover);
+//				Intervencao intervencaoRemover = new Intervencao(Integer.parseInt(idIntervencaoDiagnostico));
+//				fachada.removerIntervencaoDiagnostico(intervencaoRemover);
 				
 				fachada.atualizar();
 				request.setAttribute("mensagem", "Intervenção removida com sucesso!");
@@ -892,28 +883,28 @@ public class AlunoAcoes extends DispatchAction {
     	  return  map.findForward(fALUNOESTUDOCASOHIPOTESESREFRESH);
 	}
 	
-	public ActionForward mostrarTelaAplicacao(ActionMapping map, ActionForm form,
+	public ActionForward mostrarTelaAvaliacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = null;
 		try{
 			
 			ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-			if(arcoMaguerez.getAplicacao() == null){
-				arcoMaguerez.setAplicacao(new Aplicacao(""));
+			if(arcoMaguerez.getAvaliacao() == null){
+				arcoMaguerez.setAvaliacao(new Avaliacao(""));
 				arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 				request.getSession().setAttribute("arcoMaguerez", arcoMaguerez);
 			}
 			
-			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.APLICACAO){
+			if(arcoMaguerez.getFaseDoArco() >= ArcoMaguerezEstudoDeCaso.AVALIACAO){
 				retorno =  map.findForward(fALUNOESTUDOCASOAVALIACAO);
 			}else{
 				request.setAttribute("mensagem", "Você ainda não finalizou a fase anterior para visualizar esta Fase do Arco");
-				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.OBS_REALIDADE){
+				if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.INVESTIGACAO){
 					retorno =  map.findForward(fALUNOESTUDOCASOINVESTIGACAO);
-				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PONTOS_CHAVE){
+				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.PLANEJAMENTO){
 					retorno =  map.findForward(fALUNOESTUDOCASOPLANEJAMENTO);
-				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.TEORIZACAO){
+				}else if(arcoMaguerez.getFaseDoArco() == ArcoMaguerezEstudoDeCaso.IMPLEMENTACAO){
 					retorno =  map.findForward(fALUNOESTUDOCASOIMPLEMENTACAO);
 				}else{
 					retorno = map.findForward(fALUNOESTUDOCASORESULTADOS);
@@ -927,7 +918,7 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	public ActionForward salvarAplicacao(ActionMapping map, ActionForm form,
+	public ActionForward salvarAvaliacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = map.findForward(fALUNOESTUDOCASOAVALIACAO);
@@ -936,9 +927,9 @@ public class AlunoAcoes extends DispatchAction {
 			if(texto != null && !texto.equals("")){
 				
 				ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
-				arcoMaguerez.getAplicacao().setTexto(texto);
-				Aplicacao aplicacao = fachada.atualizarAplicacao(arcoMaguerez.getAplicacao());
-				arcoMaguerez.setAplicacao(aplicacao);
+				arcoMaguerez.getAvaliacao().setTexto(texto);
+				Avaliacao aplicacao = fachada.atualizarAplicacao(arcoMaguerez.getAvaliacao());
+				arcoMaguerez.setAvaliacao(aplicacao);
 				arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 				request.getSession().setAttribute("arcoMaguerez", arcoMaguerez);
 			}
@@ -952,7 +943,7 @@ public class AlunoAcoes extends DispatchAction {
 		return retorno;
 	}
 	
-	public ActionForward avancarAplicacao(ActionMapping map, ActionForm form,
+	public ActionForward avancarAvaliacao(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		ActionForward retorno = map.findForward(fALUNOESTUDOCASOAVALIACAO);
@@ -962,14 +953,14 @@ public class AlunoAcoes extends DispatchAction {
 				
 				ArcoMaguerezEstudoDeCaso arcoMaguerez = (ArcoMaguerezEstudoDeCaso)  request.getSession().getAttribute("arcoMaguerez");
 				arcoMaguerez.setFaseDoArco(ArcoMaguerezEstudoDeCaso.FINALIZADO);
-				arcoMaguerez.getAplicacao().setTexto(texto);
-				Aplicacao aplicacao = fachada.atualizarAplicacao(arcoMaguerez.getAplicacao());
-				arcoMaguerez.setAplicacao(aplicacao);
+				arcoMaguerez.getAvaliacao().setTexto(texto);
+				Avaliacao aplicacao = fachada.atualizarAplicacao(arcoMaguerez.getAvaliacao());
+				arcoMaguerez.setAvaliacao(aplicacao);
 				arcoMaguerez = fachada.atualizarArcoMaguerez(arcoMaguerez);
 				request.getSession().setAttribute("arcoMaguerez", arcoMaguerez);
 			}
 			
-			request.setAttribute("mensagem", "Fase Aplicação à Realidade concluída com sucesso!");
+			request.setAttribute("mensagem", "Fase Avaliação concluída com sucesso!");
 		}catch(Exception ex){
 			ex.printStackTrace();
 			request.setAttribute("mensagem", "Erro de conexão com o Banco de Dados!");
@@ -1081,12 +1072,12 @@ public class AlunoAcoes extends DispatchAction {
 			print.println("<br />");
 			print.println("Comentários:");
 			print.println("<br />");
-			if(arcoMaguerez != null && arcoMaguerez.getPontosChave() != null && arcoMaguerez.getPontosChave().getAvaliacaoProfessor() != null){
-				print.println(arcoMaguerez.getPontosChave().getAvaliacaoProfessor().getComentario());
+			if(arcoMaguerez != null && arcoMaguerez.getPlanejamento() != null && arcoMaguerez.getPlanejamento().getAvaliacaoProfessor() != null){
+				print.println(arcoMaguerez.getPlanejamento().getAvaliacaoProfessor().getComentario());
 				print.println("<br />");
 				print.println("Nota:");
 				print.println("<br />");
-				print.println(arcoMaguerez.getPontosChave().getAvaliacaoProfessor().getNota());
+				print.println(arcoMaguerez.getPlanejamento().getAvaliacaoProfessor().getNota());
 			}else{
 				print.println("");
 				print.println("<br />");
@@ -1099,12 +1090,12 @@ public class AlunoAcoes extends DispatchAction {
 			print.println("<br />");
 			print.println("Comentários:");
 			print.println("<br />");
-			if(arcoMaguerez != null && arcoMaguerez.getTeorizacao() != null &&  arcoMaguerez.getTeorizacao().getAvaliacaoProfessor() != null){
-				print.println(arcoMaguerez.getTeorizacao().getAvaliacaoProfessor().getComentario());
+			if(arcoMaguerez != null && arcoMaguerez.getImplementacao() != null &&  arcoMaguerez.getImplementacao().getAvaliacaoProfessor() != null){
+				print.println(arcoMaguerez.getImplementacao().getAvaliacaoProfessor().getComentario());
 				print.println("<br />");
 				print.println("Nota:");
 				print.println("<br />");
-				print.println(arcoMaguerez.getTeorizacao().getAvaliacaoProfessor().getNota());
+				print.println(arcoMaguerez.getImplementacao().getAvaliacaoProfessor().getNota());
 			}else{
 				print.println("");
 				print.println("<br />");
@@ -1117,12 +1108,12 @@ public class AlunoAcoes extends DispatchAction {
 			print.println("<br />");
 			print.println("Comentários:");
 			print.println("<br />");
-			if(arcoMaguerez != null && arcoMaguerez.getHipotesesDeSolucao() != null &&  arcoMaguerez.getHipotesesDeSolucao().getAvaliacaoProfessor() != null){
-				print.println(arcoMaguerez.getHipotesesDeSolucao().getAvaliacaoProfessor().getComentario());
+			if(arcoMaguerez != null && arcoMaguerez.getResultadosEsperados() != null &&  arcoMaguerez.getResultadosEsperados().getAvaliacaoProfessor() != null){
+				print.println(arcoMaguerez.getResultadosEsperados().getAvaliacaoProfessor().getComentario());
 				print.println("<br />");
 				print.println("Nota:");
 				print.println("<br />");
-				print.println(arcoMaguerez.getHipotesesDeSolucao().getAvaliacaoProfessor().getNota());
+				print.println(arcoMaguerez.getResultadosEsperados().getAvaliacaoProfessor().getNota());
 			}else{
 				print.println("");
 				print.println("<br />");
@@ -1154,7 +1145,7 @@ public class AlunoAcoes extends DispatchAction {
 			String termoBuscar = request.getParameter("termo-buscar");
 			
 			
-			List<Cipe> cipes = null;
+			List<Nanda> cipes = null;
 			if(eixo != null){
 				if(termoBuscar != null){
 					cipes = fachada.pesquisarCipe(termoBuscar, eixo);
@@ -1181,28 +1172,28 @@ public class AlunoAcoes extends DispatchAction {
 	
 	
 	private void carregarMateriaisAmbulatorio(HttpServletRequest request) {
-		List<Material> materiaisGeral = fachada.getTodosMateriaisPorTipo(Material.GERAL);
-		List<Material> materiaisClinico = fachada.getTodosMateriaisPorTipo(Material.USO_CLINICO);
-		List<Material> materiaisConcorrente = fachada.getTodosMateriaisPorTipo(Material.USO_CORRENTE);
-		
-		MatriculaCursoAluno matricula = (MatriculaCursoAluno) request.getSession().getAttribute("matricula");
-		Ambulatorio ambulatorio = matricula.getAmbulatorio();
-		
-		
-		List<Material> matGeralAdd = ambulatorio.getTodosMateriaisPorTipo(TipoMaterialEnum.GERAL);
-		List<Material> matUsoClinicoAdd = ambulatorio.getTodosMateriaisPorTipo(TipoMaterialEnum.USO_CLINICO);
-		List<Material> matUsoCorrenteAdd = ambulatorio.getTodosMateriaisPorTipo(TipoMaterialEnum.USO_CORRENTE);
-		materiaisGeral.removeAll(matGeralAdd);
-		materiaisClinico.removeAll(matUsoClinicoAdd);
-		materiaisConcorrente.removeAll(matUsoCorrenteAdd);
-		
-		request.getSession().setAttribute("materiaisGeral", materiaisGeral);
-		request.getSession().setAttribute("materiaisClinico", materiaisClinico);
-		request.getSession().setAttribute("materiaisConcorrente", materiaisConcorrente);
-		
-		request.getSession().setAttribute("matGeralAdd", matGeralAdd);
-		request.getSession().setAttribute("matUsoClinicoAdd", matUsoClinicoAdd);
-		request.getSession().setAttribute("matUsoCorrenteAdd", matUsoCorrenteAdd);
+//		List<Material> materiaisGeral = fachada.getTodosMateriaisPorTipo(Material.GERAL);
+//		List<Material> materiaisClinico = fachada.getTodosMateriaisPorTipo(Material.USO_CLINICO);
+//		List<Material> materiaisConcorrente = fachada.getTodosMateriaisPorTipo(Material.USO_CORRENTE);
+//		
+//		MatriculaCursoAluno matricula = (MatriculaCursoAluno) request.getSession().getAttribute("matricula");
+//		Ambulatorio ambulatorio = matricula.getAmbulatorio();
+//		
+//		
+//		List<Material> matGeralAdd = ambulatorio.getTodosMateriaisPorTipo(TipoMaterialEnum.GERAL);
+//		List<Material> matUsoClinicoAdd = ambulatorio.getTodosMateriaisPorTipo(TipoMaterialEnum.USO_CLINICO);
+//		List<Material> matUsoCorrenteAdd = ambulatorio.getTodosMateriaisPorTipo(TipoMaterialEnum.USO_CORRENTE);
+//		materiaisGeral.removeAll(matGeralAdd);
+//		materiaisClinico.removeAll(matUsoClinicoAdd);
+//		materiaisConcorrente.removeAll(matUsoCorrenteAdd);
+//		
+//		request.getSession().setAttribute("materiaisGeral", materiaisGeral);
+//		request.getSession().setAttribute("materiaisClinico", materiaisClinico);
+//		request.getSession().setAttribute("materiaisConcorrente", materiaisConcorrente);
+//		
+//		request.getSession().setAttribute("matGeralAdd", matGeralAdd);
+//		request.getSession().setAttribute("matUsoClinicoAdd", matUsoClinicoAdd);
+//		request.getSession().setAttribute("matUsoCorrenteAdd", matUsoCorrenteAdd);
 	}
 	
 	private boolean validarArquivo(String titulo){

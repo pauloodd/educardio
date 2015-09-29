@@ -6,25 +6,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import model.Endereco;
-import model.curso.Curso;
-import model.curso.DeterminanteHipoteses;
-import model.curso.EstudoDeCaso;
-import model.curso.matricula.AvaliacaoProfessor;
-import model.curso.matricula.ambulatorio.Material;
-import model.curso.matricula.arcomaguerez.HipotesesDeSolucao;
-import model.curso.matricula.arcomaguerez.PontosChave;
-import model.curso.matricula.arcomaguerez.Teorizacao;
-import model.sistema.Arquivo;
-import model.usuario.Administrador;
-import model.usuario.Aluno;
-import model.usuario.Professor;
-
 import org.apache.commons.io.IOUtils;
 import org.hibernate.SessionFactory;
 
 import dados.hibernate.HibernateUtil;
 import fachada.Fachada;
+import model.Endereco;
+import model.curso.Curso;
+import model.curso.EstudoDeCaso;
+import model.curso.matricula.AvaliacaoProfessor;
+import model.curso.matricula.arcomaguerez.Implementacao;
+import model.curso.matricula.arcomaguerez.Planejamento;
+import model.curso.matricula.arcomaguerez.ResultadosEsperados;
+import model.sistema.Arquivo;
+import model.usuario.Administrador;
+import model.usuario.Aluno;
+import model.usuario.Professor;
 
 public class MainPopulaBD {
 	
@@ -157,79 +154,79 @@ public class MainPopulaBD {
 		SessionFactory sf = HibernateUtil.getFabricaDeSessao();
 		sf.getCurrentSession().beginTransaction();
 		
-		Material mat1 = new Material("Mesa e cadeira para o profissional",Material.GERAL);
-		Material mat2 = new Material("Porta retrato",Material.GERAL);
-		Material mat3 = new Material("Mesa clínica",Material.GERAL);
-		Material mat4 = new Material("Armário para guardar os prontuários e receituários",Material.GERAL);
-		Material mat5 = new Material("Computador e impressora",Material.GERAL);
-		Material mat6 = new Material("Fogão",Material.GERAL);
-		Material mat7 = new Material("Abajur",Material.GERAL);
-		Material mat8 = new Material("Geladeira",Material.GERAL);
-		Material mat9 = new Material("Televisão",Material.GERAL);
-		Material mat10 = new Material("Aparelho de DVD/BLU-RAY",Material.GERAL);
-		Material mat11 = new Material("Suporte para Álcool gel/sabão líquido",Material.GERAL);
-		Material mat12 = new Material("Lixeira para lixo comum",Material.GERAL);
-		Material mat13 = new Material("Suporte para papel toalha",Material.GERAL);
-		Material mat14 = new Material("Lixeira para lixo contaminado",Material.GERAL);
-		
-		
-		Fachada.getInstancia().cadastrarMaterial(mat1);
-		Fachada.getInstancia().cadastrarMaterial(mat2);
-		Fachada.getInstancia().cadastrarMaterial(mat3);
-		Fachada.getInstancia().cadastrarMaterial(mat4);
-		Fachada.getInstancia().cadastrarMaterial(mat5);
-		Fachada.getInstancia().cadastrarMaterial(mat6);
-		Fachada.getInstancia().cadastrarMaterial(mat7);
-		Fachada.getInstancia().cadastrarMaterial(mat8);
-		Fachada.getInstancia().cadastrarMaterial(mat9);
-		Fachada.getInstancia().cadastrarMaterial(mat10);
-		Fachada.getInstancia().cadastrarMaterial(mat11);
-		Fachada.getInstancia().cadastrarMaterial(mat12);
-		Fachada.getInstancia().cadastrarMaterial(mat13);
-		Fachada.getInstancia().cadastrarMaterial(mat14);
+//		Material mat1 = new Material("Mesa e cadeira para o profissional",Material.GERAL);
+//		Material mat2 = new Material("Porta retrato",Material.GERAL);
+//		Material mat3 = new Material("Mesa clínica",Material.GERAL);
+//		Material mat4 = new Material("Armário para guardar os prontuários e receituários",Material.GERAL);
+//		Material mat5 = new Material("Computador e impressora",Material.GERAL);
+//		Material mat6 = new Material("Fogão",Material.GERAL);
+//		Material mat7 = new Material("Abajur",Material.GERAL);
+//		Material mat8 = new Material("Geladeira",Material.GERAL);
+//		Material mat9 = new Material("Televisão",Material.GERAL);
+//		Material mat10 = new Material("Aparelho de DVD/BLU-RAY",Material.GERAL);
+//		Material mat11 = new Material("Suporte para Álcool gel/sabão líquido",Material.GERAL);
+//		Material mat12 = new Material("Lixeira para lixo comum",Material.GERAL);
+//		Material mat13 = new Material("Suporte para papel toalha",Material.GERAL);
+//		Material mat14 = new Material("Lixeira para lixo contaminado",Material.GERAL);
+//		
+//		
+//		Fachada.getInstancia().cadastrarMaterial(mat1);
+//		Fachada.getInstancia().cadastrarMaterial(mat2);
+//		Fachada.getInstancia().cadastrarMaterial(mat3);
+//		Fachada.getInstancia().cadastrarMaterial(mat4);
+//		Fachada.getInstancia().cadastrarMaterial(mat5);
+//		Fachada.getInstancia().cadastrarMaterial(mat6);
+//		Fachada.getInstancia().cadastrarMaterial(mat7);
+//		Fachada.getInstancia().cadastrarMaterial(mat8);
+//		Fachada.getInstancia().cadastrarMaterial(mat9);
+//		Fachada.getInstancia().cadastrarMaterial(mat10);
+//		Fachada.getInstancia().cadastrarMaterial(mat11);
+//		Fachada.getInstancia().cadastrarMaterial(mat12);
+//		Fachada.getInstancia().cadastrarMaterial(mat13);
+//		Fachada.getInstancia().cadastrarMaterial(mat14);
 
 		
-		Material mate1 = new Material("Papel Toalha",Material.USO_CORRENTE);
-		Material mate2 = new Material("Álcool 70%",Material.USO_CORRENTE);
-		Material mate3 = new Material("Algodão",Material.USO_CORRENTE);
-		Material mate4 = new Material("Papel ofício",Material.USO_CORRENTE);
-		Material mate5 = new Material("Caneta",Material.USO_CORRENTE);
-		Material mate6 = new Material("Lupa",Material.USO_CORRENTE);
+//		Material mate1 = new Material("Papel Toalha",Material.USO_CORRENTE);
+//		Material mate2 = new Material("Álcool 70%",Material.USO_CORRENTE);
+//		Material mate3 = new Material("Algodão",Material.USO_CORRENTE);
+//		Material mate4 = new Material("Papel ofício",Material.USO_CORRENTE);
+//		Material mate5 = new Material("Caneta",Material.USO_CORRENTE);
+//		Material mate6 = new Material("Lupa",Material.USO_CORRENTE);
+//		
+//		Fachada.getInstancia().cadastrarMaterial(mate1);
+//		Fachada.getInstancia().cadastrarMaterial(mate2);
+//		Fachada.getInstancia().cadastrarMaterial(mate3);
+//		Fachada.getInstancia().cadastrarMaterial(mate4);
+//		Fachada.getInstancia().cadastrarMaterial(mate5);
+//		Fachada.getInstancia().cadastrarMaterial(mate6);
+//		
 		
-		Fachada.getInstancia().cadastrarMaterial(mate1);
-		Fachada.getInstancia().cadastrarMaterial(mate2);
-		Fachada.getInstancia().cadastrarMaterial(mate3);
-		Fachada.getInstancia().cadastrarMaterial(mate4);
-		Fachada.getInstancia().cadastrarMaterial(mate5);
-		Fachada.getInstancia().cadastrarMaterial(mate6);
-		
-		
-		Material mater1 = new Material("Balança pediátrica",Material.USO_CLINICO);
-		Material mater2 = new Material("Régua antropométrica",Material.USO_CLINICO);
-		Material mater3 = new Material("Estetoscópio com duas peças torácicas (diafragma e campânula)",Material.USO_CLINICO);
-		Material mater4 = new Material("Esfigmomanômetro",Material.USO_CLINICO);
-		Material mater5 = new Material("Monitor cardíaco",Material.USO_CLINICO);
-		Material mater6 = new Material("Termômetro",Material.USO_CLINICO);
-		Material mater7 = new Material("Eletrocardiógrafo",Material.USO_CLINICO);
-		Material mater8 = new Material("Glicosímetro",Material.USO_CLINICO);
-		Material mater9 = new Material("Fita métrica",Material.USO_CLINICO);
-		Material mater10 = new Material("Lanterna",Material.USO_CLINICO);
-		Material mater11 = new Material("Otoscópio",Material.USO_CLINICO);
-		Material mater12 = new Material("Ventilador mecânico",Material.USO_CLINICO);
-		
-		
-		Fachada.getInstancia().cadastrarMaterial(mater1);
-		Fachada.getInstancia().cadastrarMaterial(mater2);
-		Fachada.getInstancia().cadastrarMaterial(mater3);
-		Fachada.getInstancia().cadastrarMaterial(mater4);
-		Fachada.getInstancia().cadastrarMaterial(mater5);
-		Fachada.getInstancia().cadastrarMaterial(mater6);
-		Fachada.getInstancia().cadastrarMaterial(mater7);
-		Fachada.getInstancia().cadastrarMaterial(mater8);
-		Fachada.getInstancia().cadastrarMaterial(mater9);
-		Fachada.getInstancia().cadastrarMaterial(mater10);
-		Fachada.getInstancia().cadastrarMaterial(mater11);
-		Fachada.getInstancia().cadastrarMaterial(mater12);
+//		Material mater1 = new Material("Balança pediátrica",Material.USO_CLINICO);
+//		Material mater2 = new Material("Régua antropométrica",Material.USO_CLINICO);
+//		Material mater3 = new Material("Estetoscópio com duas peças torácicas (diafragma e campânula)",Material.USO_CLINICO);
+//		Material mater4 = new Material("Esfigmomanômetro",Material.USO_CLINICO);
+//		Material mater5 = new Material("Monitor cardíaco",Material.USO_CLINICO);
+//		Material mater6 = new Material("Termômetro",Material.USO_CLINICO);
+//		Material mater7 = new Material("Eletrocardiógrafo",Material.USO_CLINICO);
+//		Material mater8 = new Material("Glicosímetro",Material.USO_CLINICO);
+//		Material mater9 = new Material("Fita métrica",Material.USO_CLINICO);
+//		Material mater10 = new Material("Lanterna",Material.USO_CLINICO);
+//		Material mater11 = new Material("Otoscópio",Material.USO_CLINICO);
+//		Material mater12 = new Material("Ventilador mecânico",Material.USO_CLINICO);
+//		
+//		
+//		Fachada.getInstancia().cadastrarMaterial(mater1);
+//		Fachada.getInstancia().cadastrarMaterial(mater2);
+//		Fachada.getInstancia().cadastrarMaterial(mater3);
+//		Fachada.getInstancia().cadastrarMaterial(mater4);
+//		Fachada.getInstancia().cadastrarMaterial(mater5);
+//		Fachada.getInstancia().cadastrarMaterial(mater6);
+//		Fachada.getInstancia().cadastrarMaterial(mater7);
+//		Fachada.getInstancia().cadastrarMaterial(mater8);
+//		Fachada.getInstancia().cadastrarMaterial(mater9);
+//		Fachada.getInstancia().cadastrarMaterial(mater10);
+//		Fachada.getInstancia().cadastrarMaterial(mater11);
+//		Fachada.getInstancia().cadastrarMaterial(mater12);
 		
 		sf.getCurrentSession().getTransaction().commit();
 	
@@ -478,42 +475,42 @@ public class MainPopulaBD {
 		sf.getCurrentSession().beginTransaction();
 		try {
 			
-			DeterminanteHipoteses det = new DeterminanteHipoteses("Aleitamento materno misto e complementado", new EstudoDeCaso(2));
-			DeterminanteHipoteses det2 = new DeterminanteHipoteses("Técnica segura de amamentação", new EstudoDeCaso(2));
-			DeterminanteHipoteses det3 = new DeterminanteHipoteses("O cuidado centrado na família e na criança", new EstudoDeCaso(2));
-			DeterminanteHipoteses det4 = new DeterminanteHipoteses("Formação de rede de apoio social", new EstudoDeCaso(2));
-			DeterminanteHipoteses det5 = new DeterminanteHipoteses("Desenvolvimento da relação de vínculo/apego", new EstudoDeCaso(2));
-			DeterminanteHipoteses det6 = new DeterminanteHipoteses("Nutrição inadequada do lactente e sua relação com o atraso no crescimento e desenvolvimento infantil", new EstudoDeCaso(2));
-			
-			
-			DeterminanteHipoteses det7 = new DeterminanteHipoteses("Violência intradomiciliar", new EstudoDeCaso(3));
-			DeterminanteHipoteses det8 = new DeterminanteHipoteses("As ações da equipe multiprofissional no acolhimento e cuidado das crianças vítimas de violência", new EstudoDeCaso(3));
-			DeterminanteHipoteses det9 = new DeterminanteHipoteses("Atraso no crescimento e desenvolvimento infantil e sua relação com a violência intradomiciliar", new EstudoDeCaso(3));
-			DeterminanteHipoteses det13 = new DeterminanteHipoteses("Lesão de pele", new EstudoDeCaso(3));
-			DeterminanteHipoteses det23 = new DeterminanteHipoteses("Dependência química (álcool)", new EstudoDeCaso(3));
-			DeterminanteHipoteses det33 = new DeterminanteHipoteses("Formação de rede de proteção social", new EstudoDeCaso(3));
-			DeterminanteHipoteses det43 = new DeterminanteHipoteses("Cuidado centrado na família", new EstudoDeCaso(3));
-			DeterminanteHipoteses det53 = new DeterminanteHipoteses("Nutrição da criança inadequada", new EstudoDeCaso(3));
-			DeterminanteHipoteses det63 = new DeterminanteHipoteses("Higiene do ambiente e do corpo", new EstudoDeCaso(3));
-			DeterminanteHipoteses det73 = new DeterminanteHipoteses("Calendário vacinal da criança", new EstudoDeCaso(3));
-			
-			
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det2);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det3);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det4);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det5);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det6);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det7);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det8);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det9);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det13);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det23);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det33);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det43);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det53);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det63);
-			Fachada.getInstancia().adicionarDeterminanteHipoteses(det73);
+//			DeterminanteHipoteses det = new DeterminanteHipoteses("Aleitamento materno misto e complementado", new EstudoDeCaso(2));
+//			DeterminanteHipoteses det2 = new DeterminanteHipoteses("Técnica segura de amamentação", new EstudoDeCaso(2));
+//			DeterminanteHipoteses det3 = new DeterminanteHipoteses("O cuidado centrado na família e na criança", new EstudoDeCaso(2));
+//			DeterminanteHipoteses det4 = new DeterminanteHipoteses("Formação de rede de apoio social", new EstudoDeCaso(2));
+//			DeterminanteHipoteses det5 = new DeterminanteHipoteses("Desenvolvimento da relação de vínculo/apego", new EstudoDeCaso(2));
+//			DeterminanteHipoteses det6 = new DeterminanteHipoteses("Nutrição inadequada do lactente e sua relação com o atraso no crescimento e desenvolvimento infantil", new EstudoDeCaso(2));
+//			
+//			
+//			DeterminanteHipoteses det7 = new DeterminanteHipoteses("Violência intradomiciliar", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det8 = new DeterminanteHipoteses("As ações da equipe multiprofissional no acolhimento e cuidado das crianças vítimas de violência", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det9 = new DeterminanteHipoteses("Atraso no crescimento e desenvolvimento infantil e sua relação com a violência intradomiciliar", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det13 = new DeterminanteHipoteses("Lesão de pele", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det23 = new DeterminanteHipoteses("Dependência química (álcool)", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det33 = new DeterminanteHipoteses("Formação de rede de proteção social", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det43 = new DeterminanteHipoteses("Cuidado centrado na família", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det53 = new DeterminanteHipoteses("Nutrição da criança inadequada", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det63 = new DeterminanteHipoteses("Higiene do ambiente e do corpo", new EstudoDeCaso(3));
+//			DeterminanteHipoteses det73 = new DeterminanteHipoteses("Calendário vacinal da criança", new EstudoDeCaso(3));
+//			
+//			
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det2);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det3);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det4);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det5);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det6);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det7);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det8);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det9);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det13);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det23);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det33);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det43);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det53);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det63);
+//			Fachada.getInstancia().adicionarDeterminanteHipoteses(det73);
 			
 			
 		}catch(Exception e){
@@ -526,18 +523,18 @@ public class MainPopulaBD {
 		SessionFactory sf = HibernateUtil.getFabricaDeSessao();
 		sf.getCurrentSession().beginTransaction();
 		try {
-			PontosChave pontos = new PontosChave();
+			Planejamento pontos = new Planejamento();
 			pontos.setId(1);
 			AvaliacaoProfessor avaliacao = new AvaliacaoProfessor("A", "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. ");
 			pontos.setAvaliacaoProfessor(avaliacao);
 			
 			AvaliacaoProfessor avaliacao2 = new AvaliacaoProfessor("C", "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. ");
-			Teorizacao teorizacao = new Teorizacao();
+			Implementacao teorizacao = new Implementacao();
 			teorizacao.setId(1);
 			teorizacao.setAvaliacaoProfessor(avaliacao2);
 			
 			AvaliacaoProfessor avaliacao3 = new AvaliacaoProfessor("B", "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. ");
-			HipotesesDeSolucao hipoteses = new HipotesesDeSolucao();
+			ResultadosEsperados hipoteses = new ResultadosEsperados();
 			hipoteses.setId(1);
 			hipoteses.setAvaliacaoProfessor(avaliacao3);
 			

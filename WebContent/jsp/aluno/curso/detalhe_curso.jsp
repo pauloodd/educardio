@@ -27,7 +27,9 @@
 		            
 		            Arquivos Disponíveis:<br />
 	                <c:forEach items="${matricula.curso.arquivos}" var="arquivo" varStatus="index">
-	           				<a href="baixarArquivo.do?method=baixarArquivo&idArquivo=${arquivo.id}"><c:out value="${arquivo.nomeArqv}"></c:out></a><br />
+	           				<a href="baixarArquivo.do?method=baixarArquivo&idArquivo=${arquivo.id}">
+	           					<img src="imagens/icons/Status-mail-attachment-icon.png" /><c:out value="${arquivo.nomeArqv}"></c:out>
+	           				</a><br />
 	           		</c:forEach>
 		            <p>Ementa:<br/><c:out value="${matricula.curso.ementa}"></c:out></p>
 		            <p>Objetivos:<br/><c:out value="${matricula.curso.objetivos}"></c:out></p>

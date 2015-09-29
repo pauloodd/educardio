@@ -3,12 +3,12 @@ package dados.basicas;
 import java.util.List;
 
 import model.curso.EstudoDeCaso;
-import model.curso.matricula.arcomaguerez.Diagnostico;
-import model.curso.matricula.arcomaguerez.HipotesesDeSolucao;
+import model.curso.matricula.arcomaguerez.DiagnosticosImplementacoes;
+import model.curso.matricula.arcomaguerez.ResultadosEsperados;
 import dados.DAOGenerico;
 
-public interface DiagnosticoDAO extends DAOGenerico<Diagnostico, Integer> {
+public interface DiagnosticoDAO extends DAOGenerico<DiagnosticosImplementacoes, Integer> {
 
-	public List<Diagnostico> buscarDiagnosticoPorEstudoDeCaso(EstudoDeCaso estudoDeCaso);
-	public List<Diagnostico> buscarDiagnosticoPorHipotesesDeSolucao(HipotesesDeSolucao hipotesesDeSolucao);
+	public List<DiagnosticosImplementacoes> buscarDiagnosticoPorEstudoDeCaso(EstudoDeCaso estudoDeCaso);
+	public List<DiagnosticosImplementacoes> buscarDiagnosticoPorHipotesesDeSolucao(ResultadosEsperados hipotesesDeSolucao);
 }

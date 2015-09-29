@@ -34,8 +34,8 @@
                     <th>Planejamento</th>
                     <th>Implementação</th>
                     <th>Resultados Esperados</th>
-                    <th>avaliação</th> 
-                    <th>Comentários e Menção</th>
+                    <th>Avaliação</th> 
+                    <th>Comentários e Conceito</th>
                 </tr>
             	
             	
@@ -102,13 +102,13 @@
 									     $('#EC<c:out value="${arco.id}"></c:out>').click(function(){
 									 		
 								    		   $("#pontos-chave-comentarios").html('Comentários:<c:out value="${arco.pontosChave.avaliacaoProfessor.comentario}"></c:out>');
-								    		   $("#pontos-chave-nota").html('Menção:<c:out value="${arco.pontosChave.avaliacaoProfessor.nota}"></c:out>');
+								    		   $("#pontos-chave-nota").html('Conceito:<c:out value="${arco.pontosChave.avaliacaoProfessor.nota}"></c:out>');
 								    		   
 								    		   $("#teorizacao-comentarios").html('Comentários:<c:out value="${arco.teorizacao.avaliacaoProfessor.comentario}"></c:out>');
-								    		   $("#teorizacao-nota").html('Menção:<c:out value="${arco.teorizacao.avaliacaoProfessor.nota}"></c:out>');
+								    		   $("#teorizacao-nota").html('Conceito:<c:out value="${arco.teorizacao.avaliacaoProfessor.nota}"></c:out>');
 								    		   
 								    		   $("#hipoteses-comentarios").html('Comentários:<c:out value="${arco.hipotesesDeSolucao.avaliacaoProfessor.comentario}"></c:out>');
-								    		   $("#hipoteses-nota").html('Menção:<c:out value="${arco.hipotesesDeSolucao.avaliacaoProfessor.nota}"></c:out>');
+								    		   $("#hipoteses-nota").html('Conceito:<c:out value="${arco.hipotesesDeSolucao.avaliacaoProfessor.nota}"></c:out>');
 										 		centerPopup();
 										 		loadPopup();
 									    	

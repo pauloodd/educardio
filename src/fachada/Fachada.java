@@ -2,23 +2,18 @@ package fachada;
 
 import java.util.List;
 
-import model.Cipe;
+import dados.hibernate.HibernateUtil;
+import model.Nanda;
 import model.curso.Curso;
-import model.curso.DeterminanteHipoteses;
 import model.curso.EstudoDeCaso;
 import model.curso.matricula.AvaliacaoProfessor;
 import model.curso.matricula.MatriculaCursoAluno;
-import model.curso.matricula.ambulatorio.Ambulatorio;
-import model.curso.matricula.ambulatorio.Material;
-import model.curso.matricula.arcomaguerez.Aplicacao;
 import model.curso.matricula.arcomaguerez.ArcoMaguerezEstudoDeCaso;
-import model.curso.matricula.arcomaguerez.Determinante;
-import model.curso.matricula.arcomaguerez.Diagnostico;
-import model.curso.matricula.arcomaguerez.HipotesesDeSolucao;
-import model.curso.matricula.arcomaguerez.Intervencao;
-import model.curso.matricula.arcomaguerez.Meta;
-import model.curso.matricula.arcomaguerez.PontosChave;
-import model.curso.matricula.arcomaguerez.Teorizacao;
+import model.curso.matricula.arcomaguerez.Avaliacao;
+import model.curso.matricula.arcomaguerez.DiagnosticosImplementacoes;
+import model.curso.matricula.arcomaguerez.Implementacao;
+import model.curso.matricula.arcomaguerez.Planejamento;
+import model.curso.matricula.arcomaguerez.ResultadosEsperados;
 import model.sistema.Arquivo;
 import model.sistema.Erro;
 import model.usuario.Administrador;
@@ -32,7 +27,6 @@ import negocios.ErroNeg;
 import negocios.MatriculaNeg;
 import negocios.ProfessorNeg;
 import negocios.UsuarioNeg;
-import dados.hibernate.HibernateUtil;
 
 
 public class Fachada {
@@ -136,15 +130,15 @@ public class Fachada {
 		return this.adminNeg.getTodos();
 	}
 	
-	public Cipe cadastrarCipe(Cipe cipe){
+	public Nanda cadastrarCipe(Nanda cipe){
 		return cursoNeg.cadastrarCipe(cipe);
 	}
 	
-	public void removerCipe(Cipe cipe){
+	public void removerCipe(Nanda cipe){
 		cursoNeg.removerCipe(cipe);
 	}
 	
-	public Cipe editarCipe(Cipe cipe){
+	public Nanda editarCipe(Nanda cipe){
 		return cursoNeg.editarCipe(cipe);
 	}
 	
@@ -186,18 +180,6 @@ public class Fachada {
 		 return this.cursoNeg.inserirCurso(curso);
 	}
 	
-	public Material cadastrarMaterial(Material material){
-		return this.cursoNeg.cadastrarMaterial(material);
-	}
-	
-	public List<Material> getTodosMateriaisPorTipo(int... tipos) {
-		return this.cursoNeg.getTodosMateriaisPorTipo(tipos);
-	}
-	
-	public Ambulatorio organizarAmbulatorioAluno(Ambulatorio ambulatorio){
-		return this.cursoNeg.organizarAmbulatorioAluno(ambulatorio);
-	}
-	
 	public List<Arquivo> inserirArquivosCurso(List<Arquivo> arquivos){
 		return this.cursoNeg.inserirArquivosCurso(arquivos);
 	}
@@ -214,7 +196,7 @@ public class Fachada {
 		return this.cursoNeg.getArquivoPorId(id);
 	}
 	
-	public List<Cipe> pesquisarCipe(String query, String eixo) {
+	public List<Nanda> pesquisarCipe(String query, String eixo) {
 		return this.cursoNeg.pesquisarCipe(query, eixo);
 	}
 
@@ -244,82 +226,36 @@ public class Fachada {
 		return this.matriculaNeg.inserirArcoMaguerez(arcoMaguerez);
 	}
 	
-	public List<Determinante> buscarDeterminantePorPontoChave(
-			PontosChave pontosChave) {
-		return this.matriculaNeg.buscarDeterminantePorPontoChave(pontosChave);
-	}
-	
 	public ArcoMaguerezEstudoDeCaso atualizarArcoMaguerez(ArcoMaguerezEstudoDeCaso arcoMaguerez){
 		return this.matriculaNeg.atualizarArcoMaguerez(arcoMaguerez);
 	}
 	
-	public List<Determinante> inserirDeterminantePontosChave(List<Determinante> listaDeterminantes, PontosChave pontosChave){
-		return this.matriculaNeg.inserirDeterminantePontosChave(listaDeterminantes, pontosChave);
-	}
-	
-	public List<Arquivo> inserirArquivosTeorizacao(List<Arquivo> arquivos, Teorizacao teorizacao){
+	public List<Arquivo> inserirArquivosTeorizacao(List<Arquivo> arquivos, Implementacao teorizacao){
 		return this.matriculaNeg.inserirArquivosTeorizacao(arquivos, teorizacao);
 	}
 	
-	public Teorizacao atualizarTeorizacao(Teorizacao teorizacao){
+	public Implementacao atualizarTeorizacao(Implementacao teorizacao){
 		return this.matriculaNeg.atualizarTeorizacao(teorizacao);
 	}
 	
-	public List<DeterminanteHipoteses> buscarDeterminantesHipotesesPorEstudoCaso(
-			EstudoDeCaso estudoDeCaso) {
-		return this.matriculaNeg.buscarDeterminantesHipotesesPorEstudoCaso(estudoDeCaso);
-	}
-	
-	public Diagnostico adicionarDiagnostico(Diagnostico diagnostico){
+	public DiagnosticosImplementacoes adicionarDiagnostico(DiagnosticosImplementacoes diagnostico){
 		return this.matriculaNeg.adicionarDiagnostico(diagnostico);
 	}
 	
-	public DeterminanteHipoteses adicionarDeterminanteHipoteses(DeterminanteHipoteses determinanteHipoteses){
-		return this.matriculaNeg.adicionarDeterminanteHipoteses(determinanteHipoteses);
-	}
-		
-	public List<Diagnostico> buscarDiagnosticoPorEstudoDeCaso(
+	public List<DiagnosticosImplementacoes> buscarDiagnosticoPorEstudoDeCaso(
 			EstudoDeCaso estudoDeCaso) {
 		return this.matriculaNeg.buscarDiagnosticoPorEstudoDeCaso(estudoDeCaso);
 	}
 	
-	public void removerDiagnostico(Diagnostico diagnostico){
-		this.matriculaNeg.removerDiagnostico(diagnostico);
-	}
-	
-	public Diagnostico editarDiagnostico(Diagnostico diagnostico){
+	public DiagnosticosImplementacoes editarDiagnostico(DiagnosticosImplementacoes diagnostico){
 		return this.matriculaNeg.editarDiagnostico(diagnostico);
 	}
 	
-	public Meta inserirMeta(Meta meta){
-		return this.matriculaNeg.inserirMeta(meta);
-	}
-		
-	public Meta editarMeta(Meta meta){
-		return this.matriculaNeg.editarMeta(meta);
-	}
-	
-	public void removerMetaDiagnostico(Meta meta){
-		this.matriculaNeg.removerMetaDiagnostico(meta);
-	}
-	
-	public Intervencao adicionarIntervencaoMetaDiagnostico(Intervencao intervencao){
-		return this.matriculaNeg.adicionarIntervencaoMetaDiagnostico(intervencao);
-	}
-	
-	public Intervencao editarIntervencaoMetaDiagnostico(Intervencao intervencao){
-		return this.matriculaNeg.editarIntervencaoMetaDiagnostico(intervencao);
-	}
-	
-	public void removerIntervencaoDiagnostico(Intervencao intervencao){
-		this.matriculaNeg.removerIntervencaoDiagnostico(intervencao);
-	}
-	
-	public List<Diagnostico> buscarDiagnosticoPorHipotesesDeSolucao(HipotesesDeSolucao hipotesesDeSolucao){
+	public List<DiagnosticosImplementacoes> buscarDiagnosticoPorHipotesesDeSolucao(ResultadosEsperados hipotesesDeSolucao){
 		return this.matriculaNeg.buscarDiagnosticoPorHipotesesDeSolucao(hipotesesDeSolucao);
 	}
 	
-	public Aplicacao atualizarAplicacao(Aplicacao aplicacao){
+	public Avaliacao atualizarAplicacao(Avaliacao aplicacao){
 		return this.matriculaNeg.atualizarAplicacao(aplicacao);
 	}
 	
@@ -331,11 +267,11 @@ public class Fachada {
 		return this.matriculaNeg.buscarArcosMaguerezPorCursoEAluno(matricula, curso);
 	}
 	
-	public PontosChave atualizarPontosChave(PontosChave pontosChave){
+	public Planejamento atualizarPontosChave(Planejamento pontosChave){
 		return this.matriculaNeg.atualizarPontosChave(pontosChave);
 	}
 		
-	public HipotesesDeSolucao atualizarHipotesesDeSolucao(HipotesesDeSolucao hipotesesDeSolucao){
+	public ResultadosEsperados atualizarHipotesesDeSolucao(ResultadosEsperados hipotesesDeSolucao){
 		return this.matriculaNeg.atualizarHipotesesDeSolucao(hipotesesDeSolucao);
 	}	
 	
