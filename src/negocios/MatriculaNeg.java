@@ -96,7 +96,7 @@ public class MatriculaNeg {
 		Implementacao implementacao = daoTeorizacao.persistir(arcoMaguerez.getImplementacao());
 		ResultadosEsperados resultadosEsperados = daoHipoteses.persistir(arcoMaguerez.getResultadosEsperados());
 		Avaliacao avaliacao = daoApp.persistir(arcoMaguerez.getAvaliacao());
-		arcoMaguerez.setPontosChave(planejamento);
+//		arcoMaguerez.setPontosChave(planejamento);
 		arcoMaguerez.setImplementacao(implementacao);
 		arcoMaguerez.setResultadosEsperados(resultadosEsperados);
 		arcoMaguerez.setAvaliacao(avaliacao);

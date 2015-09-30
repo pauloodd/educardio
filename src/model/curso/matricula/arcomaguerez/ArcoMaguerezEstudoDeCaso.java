@@ -108,7 +108,7 @@ public class ArcoMaguerezEstudoDeCaso implements Serializable{
 	}
 
 
-	public void setPontosChave(Planejamento planejamento) {
+	public void setPlanejamento(Planejamento planejamento) {
 		this.planejamento = planejamento;
 	}
 	
