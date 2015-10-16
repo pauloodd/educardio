@@ -76,7 +76,7 @@ public class DiagnosticosResultados implements Serializable{
 		return resultadosEsperados;
 	}
 
-	public void setResultadosEsperadoso(ResultadosEsperados resultadosEsperados) {
+	public void setResultadosEsperados(ResultadosEsperados resultadosEsperados) {
 		this.resultadosEsperados = resultadosEsperados;
 	}
 	
